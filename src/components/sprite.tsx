@@ -8,7 +8,8 @@ const Sprite: React.FC<ThreeElements["sprite"] & {textureName: string}> = ({
 }) => {
   const sprite = useRef<THREE.Sprite>(null!);
 
-  const texture = new THREE.TextureLoader().load("./assets/react.png");
+  // Loader uses path relative to root/public/
+  const texture = new THREE.TextureLoader().load("./assets/sprites/" + textureName);
 
   return (
     <sprite {...rest} ref={sprite} scale={1}>

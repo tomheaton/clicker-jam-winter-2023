@@ -12,7 +12,7 @@ const App: React.FC = () => {
       <Canvas>
         <ambientLight />
         {/* <Circle /> */}
-        <Sprite textureName={"awd"}/>
+        <Sprite textureName={"megaman.png"}/>
       </Canvas>
     </div>
   );
