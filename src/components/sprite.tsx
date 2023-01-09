@@ -16,7 +16,7 @@ const Sprite: React.FC<ThreeElements["sprite"] & {textureName: string}> = ({
   texture.magFilter = THREE.NearestFilter;
 
   return (
-    <sprite {...rest} ref={sprite} scale={1}>
+    <sprite {...rest} ref={sprite}>
       <spriteMaterial map={texture} />
     </sprite>
   );
