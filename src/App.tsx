@@ -1,7 +1,6 @@
-import Sprite from "./components/sprite";
-import Circle from "./components/circle";
 import { Canvas } from "@react-three/fiber";
 import React from "react";
+import Sprite from "./components/sprite";
 
 const App: React.FC = () => {
   return (
@@ -13,7 +12,7 @@ const App: React.FC = () => {
       <Canvas>
         <ambientLight />
         {/* <Circle /> */}
-        <Sprite />
+        <Sprite textureName={"awd"}/>
       </Canvas>
     </div>
   );

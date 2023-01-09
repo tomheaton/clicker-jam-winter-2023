@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { ThreeElements, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 
-const Circle: React.FC = (props: ThreeElements["mesh"]) => {
+const Circle: React.FC<ThreeElements["mesh"]> = (props) => {
   const mesh = useRef<THREE.Mesh>(null!);
 
   const [hovered, setHover] = useState(false);
