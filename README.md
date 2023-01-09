@@ -1,5 +1,3 @@
-# nextjs-template
+# clicker-jam-2023
 
-```console
-npx create-next-app app --example https://github.com/tomheaton/nextjs-template
-```
+This is a game made for the [Clicker Jam 2023](https://itch.io/jam/clicker-jam-2023) on itch.io.
