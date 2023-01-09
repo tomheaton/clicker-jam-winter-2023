@@ -1,3 +1,4 @@
+import Sprite from "./components/sprite";
 import Circle from "./components/circle";
 import { Canvas } from "@react-three/fiber";
 import React from "react";
@@ -11,7 +12,8 @@ const App: React.FC = () => {
       <br />
       <Canvas>
         <ambientLight />
-        <Circle />
+        {/* <Circle /> */}
+        <Sprite />
       </Canvas>
     </div>
   );
