@@ -1,6 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import React from "react";
 import Sprite from "./components/sprite";
+import Text from "./components/text";
+import * as THREE from "three";
 
 const App: React.FC = () => {
   return (
@@ -11,8 +13,8 @@ const App: React.FC = () => {
       <br />
       <Canvas>
         <ambientLight />
-        {/* <Circle /> */}
-        <Sprite textureName={"mojito.png"}/>
+        <Sprite textureName={"mojito.png"} scale={8}/>
+        <Text text={"Cum"} size={25} pos={new THREE.Vector3(0,0,0)} bold={true} />
       </Canvas>
     </div>
   );
