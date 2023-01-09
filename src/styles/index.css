@@ -10,3 +10,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@layer {
+  .dev {
+    @apply border-2 border-red-500;
+  }
+}
