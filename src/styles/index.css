@@ -12,7 +12,19 @@ body {
 }
 
 @layer {
+  .btn {
+    @apply px-4 py-2 text-white font-bold rounded-lg hover:bg-neutral-800 border-2;
+  }
+
+  .btn-blue {
+    @apply px-4 py-2 text-white font-bold rounded-lg bg-blue-500 hover:bg-blue-600;
+  }
+
+  .btn-red {
+    @apply px-4 py-2 text-white font-bold rounded-lg bg-red-500 hover:bg-red-600;
+  }
+
   .dev {
-    @apply border-2 border-red-500;
+    @apply border-2 border-red-500 dark:border-blue-500;
   }
 }
