@@ -1,8 +1,7 @@
-import { Canvas } from "@react-three/fiber";
 import React, { useState } from "react";
-import Sprite from "./components/sprite";
-import Text from "./components/text";
-import * as THREE from "three";
+import MainCanvas from "./components/main_canvas";
+// import Text from "./components/text";
+// import * as THREE from "three";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
@@ -21,12 +20,7 @@ const App: React.FC = () => {
       <h1 className={"mt-2 text-white font-bold text-5xl"}>clicker-jam-2023</h1>
       <br />
       {start ? (
-        // TODO: extract to GameCanvas component
-        <Canvas>
-          <ambientLight />
-          {/* <Circle /> */}
-          <Sprite textureName={"mojito.png"} />
-        </Canvas>
+        <MainCanvas></MainCanvas>
       ) : (
         <button
           onClick={handleStart}
