@@ -7,7 +7,9 @@ const App: React.FC = () => {
 
   const handleStart = () => {
     setStart(true);
-    new Audio("walking_in_the_highlands_1.mp3").play();
+    let audio = new Audio("walking_in_the_highlands_1.mp3")
+    audio.loop = true;
+    audio.play();
   };
 
   return (
