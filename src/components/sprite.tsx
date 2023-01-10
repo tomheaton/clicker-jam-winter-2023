@@ -2,8 +2,12 @@ import { ThreeElements } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
-const Sprite: React.FC<ThreeElements["sprite"] & {textureName: string}> = ({
+const Sprite: React.FC<ThreeElements["sprite"] & {
+  textureName: string,
+  color?: number,
+}> = ({
   textureName,
+  color,
   ...rest
 }) => {
   const sprite = useRef<THREE.Sprite>(null!);
@@ -17,9 +21,11 @@ const Sprite: React.FC<ThreeElements["sprite"] & {textureName: string}> = ({
 
   return (
     <sprite {...rest} ref={sprite}>
-      <spriteMaterial map={texture} />
+      <spriteMaterial map={texture} color={color}/>
     </sprite>
   );
+
+
 };
 
 export default Sprite;

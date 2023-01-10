@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import MainCanvas from "./components/main_canvas";
-// import Text from "./components/text";
-// import * as THREE from "three";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
