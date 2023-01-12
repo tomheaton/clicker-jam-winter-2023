@@ -20,10 +20,10 @@ const IngredientButton: React.FC<ThreeElements["sprite"] & {
         // if (onCooldown && (timer >= cooldown)) {
         if (onCooldown)
         {
-            console.log("oncooldown");
+            // console.log("oncooldown");
             if (timer >= cooldown)
             {
-                console.log("resetting cooldown");
+                // console.log("resetting cooldown");
                 setTimer(0);
                 setOnCooldown(false);
             }
@@ -32,12 +32,12 @@ const IngredientButton: React.FC<ThreeElements["sprite"] & {
 
     useEffect(() => {
        const timerTick = setInterval(() => {
-           console.log("hello");
+           // console.log("hello");
            if (onCooldown)
            {
-               setTimer((t) => t+0.01);
+               setTimer((t) => t+0.25);
            }
-        }, 10);
+        }, 250);
 
        return () => {
            clearInterval(timerTick);
@@ -47,12 +47,14 @@ const IngredientButton: React.FC<ThreeElements["sprite"] & {
     const PutOnCoolDown = () => {
         setOnCooldown(true);
         // setCooldownStartTime(0);
-        console.log("Gone in cd");
+        // console.log("Gone in cd");
     };
 
     return (
         <>
-            <SpriteButton {...rest} scale={onCooldown ? 1 + cooldown - (cooldown - timer) : cooldown + 1 } textureName={textureName} onClick={PutOnCoolDown} />
+            <SpriteButton {...rest} 
+                opacity={onCooldown ? (cooldown - (cooldown - timer)) / cooldown : 1}
+                textureName={textureName} onClick={PutOnCoolDown} />
         </>
     );
 };

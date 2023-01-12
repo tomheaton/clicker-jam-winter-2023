@@ -8,9 +8,11 @@ import Rectangle from "./rectangle";
 const SpriteButton: React.FC<ThreeElements["sprite"] & {
   textureName: string,
   onClick: any, // TODO: type of function
+  opacity?: number,
 }> = ({
   textureName,
   onClick,
+  opacity,
   ...rest
 }) => {
 
@@ -29,9 +31,9 @@ const SpriteButton: React.FC<ThreeElements["sprite"] & {
         onPointerOver={() => setHover(true)}
         onPointerOut={() => setHover(false)}
       >
-        <spriteMaterial color={hovered ? 0xFF333333 : 0x00000000 }/>
+        <spriteMaterial color={hovered ? 0xFF333333 : 0xFF222222 } opacity={opacity}/>
       </sprite>
-      <Sprite {...rest} textureName={textureName} />
+      <Sprite {...rest} textureName={textureName} opacity={opacity}/>
     </>
   );
 

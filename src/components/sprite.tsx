@@ -5,9 +5,11 @@ import * as THREE from "three";
 const Sprite: React.FC<ThreeElements["sprite"] & {
   textureName: string,
   color?: number,
+  opacity?: number,
 }> = ({
   textureName,
   color,
+  opacity,
   ...rest
 }) => {
   const sprite = useRef<THREE.Sprite>(null!);
@@ -21,7 +23,7 @@ const Sprite: React.FC<ThreeElements["sprite"] & {
 
   return (
     <sprite {...rest} ref={sprite}>
-      <spriteMaterial map={texture} color={color}/>
+      <spriteMaterial map={texture} color={color} opacity={opacity}/>
     </sprite>
   );
 
