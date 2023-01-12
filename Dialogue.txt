@@ -23,7 +23,7 @@ If shoot:
 -------------------------------------------------------------------------------------------------------------
 If not shoot:
 -Welp time to head back to work. Thanks...y-you really put me in a good mood with that drink. You mind...maybe...if I bring..you know just a couple...coworkers next time?
-----------------------------------------------END------------------------------------------------------------
+----------------------------------------------END CHOICE------------------------------------------------------------
 *Brings coworkers next time. They sit at table and guy comes to counter*
 -Hey thanks for the great night. I have a question. How do you make...friends? I really wanna impress these guys but...I don't know how to
 *serve any ---insert type of drink here--- drink*
