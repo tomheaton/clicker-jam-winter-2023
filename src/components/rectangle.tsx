@@ -2,7 +2,7 @@ import { ThreeElements } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import * as THREE from "three";
 
-const Rectangle: React.FC<ThreeElements["mesh"]> = (props) => {
+const Rectangle: React.FC<ThreeElements["mesh"]> = ({ ...rest }) => {
   const mesh = useRef<THREE.Mesh>(null!);
 
   const [hovered, setHover] = useState(false);
@@ -10,7 +10,7 @@ const Rectangle: React.FC<ThreeElements["mesh"]> = (props) => {
 
   return (
     <mesh
-      {...props}
+      {...rest}
       ref={mesh}
       scale={3}
       onClick={() => setActive(!active)}

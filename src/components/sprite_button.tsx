@@ -6,11 +6,10 @@ import Sprite from "./sprite";
 const SpriteButton: React.FC<
   ThreeElements["sprite"] & {
     textureName: string;
-    onClick: any; // TODO: type of function
+    onClick: (...args: any[]) => void;
     opacity?: number;
   }
 > = ({ textureName, onClick, opacity, ...rest }) => {
-  const mesh = useRef<THREE.Mesh>(null!);
   const sprite = useRef<THREE.Sprite>(null!);
 
   const [hovered, setHover] = useState(false);

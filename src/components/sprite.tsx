@@ -15,6 +15,7 @@ const Sprite: React.FC<
   const texture = new THREE.TextureLoader().load(
     "./assets/sprites/" + textureName
   );
+
   // NOTE: perhaps use nearest filter for minification too
   // NOTE: use nearest filter so that sprites don't look blurry when they're larger
   texture.minFilter = THREE.LinearMipMapLinearFilter;

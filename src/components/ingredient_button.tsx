@@ -2,54 +2,43 @@ import { ThreeElements } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import SpriteButton from "./sprite_button";
 
+const TIME_VALUE: number = 0.25;
+
 const IngredientButton: React.FC<
   ThreeElements["sprite"] & {
     textureName: string;
-    cooldown: number;
+    coolDown: number;
   }
-> = ({ textureName, cooldown, ...rest }) => {
-  const [onCooldown, setOnCooldown] = useState<boolean>(false);
-  const [cooldownStartTime, setCooldownStartTime] = useState<number>(0);
+> = ({ textureName, coolDown, ...rest }) => {
+  const [onCoolDown, setOnCoolDown] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(0);
 
   useEffect(() => {
-    // if (onCooldown && (timer >= cooldown)) {
-    if (onCooldown) {
-      // console.log("oncooldown");
-      if (timer >= cooldown) {
-        // console.log("resetting cooldown");
-        setTimer(0);
-        setOnCooldown(false);
-      }
+    if (onCoolDown && timer >= coolDown) {
+      setTimer(0);
+      setOnCoolDown(false);
     }
-  });
+  }, [coolDown, onCoolDown, timer]);
 
   useEffect(() => {
     const timerTick = setInterval(() => {
-      // console.log("hello");
-      if (onCooldown) {
-        setTimer((t) => t + 0.25);
+      if (onCoolDown) {
+        setTimer((t) => t + TIME_VALUE);
       }
     }, 250);
 
     return () => {
       clearInterval(timerTick);
     };
-  }, [onCooldown]);
-
-  const PutOnCoolDown = () => {
-    setOnCooldown(true);
-    // setCooldownStartTime(0);
-    // console.log("Gone in cd");
-  };
+  }, [onCoolDown]);
 
   return (
     <>
       <SpriteButton
         {...rest}
-        opacity={onCooldown ? (cooldown - (cooldown - timer)) / cooldown : 1}
+        opacity={onCoolDown ? (coolDown - (coolDown - timer)) / coolDown : 1}
         textureName={textureName}
-        onClick={PutOnCoolDown}
+        onClick={() => setOnCoolDown(true)}
       />
     </>
   );

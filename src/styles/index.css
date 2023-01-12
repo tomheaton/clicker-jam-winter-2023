@@ -28,3 +28,8 @@ body {
     @apply border-2 border-red-500 dark:border-blue-500;
   }
 }
+
+button:disabled,
+button[disabled] {
+  @apply opacity-50 cursor-not-allowed;
+}
