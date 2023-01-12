@@ -1,6 +1,6 @@
-import * as THREE from "three";
-import { ThreeElements, useFrame } from "@react-three/fiber";
+import { ThreeElements } from "@react-three/fiber";
 import { useRef, useState } from "react";
+import * as THREE from "three";
 
 const Rectangle: React.FC<ThreeElements["mesh"]> = (props) => {
   const mesh = useRef<THREE.Mesh>(null!);
@@ -17,8 +17,8 @@ const Rectangle: React.FC<ThreeElements["mesh"]> = (props) => {
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}
     >
-      <boxGeometry args={[1, 1, -1]}/>
-      <meshStandardMaterial color={hovered ? "grey" : 0x00000000 } />
+      <boxGeometry args={[1, 1, -1]} />
+      <meshStandardMaterial color={hovered ? "grey" : 0x00000000} />
     </mesh>
   );
 };

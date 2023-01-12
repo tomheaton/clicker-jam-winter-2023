@@ -2,20 +2,19 @@ import { ThreeElements } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
-const Sprite: React.FC<ThreeElements["sprite"] & {
-  textureName: string,
-  color?: number,
-  opacity?: number,
-}> = ({
-  textureName,
-  color,
-  opacity,
-  ...rest
-}) => {
+const Sprite: React.FC<
+  ThreeElements["sprite"] & {
+    textureName: string;
+    color?: number;
+    opacity?: number;
+  }
+> = ({ textureName, color, opacity, ...rest }) => {
   const sprite = useRef<THREE.Sprite>(null!);
 
   // Loader uses path relative to root/public/
-  const texture = new THREE.TextureLoader().load("./assets/sprites/" + textureName);
+  const texture = new THREE.TextureLoader().load(
+    "./assets/sprites/" + textureName
+  );
   // NOTE: perhaps use nearest filter for minification too
   // NOTE: use nearest filter so that sprites don't look blurry when they're larger
   texture.minFilter = THREE.LinearMipMapLinearFilter;
@@ -23,11 +22,9 @@ const Sprite: React.FC<ThreeElements["sprite"] & {
 
   return (
     <sprite {...rest} ref={sprite}>
-      <spriteMaterial map={texture} color={color} opacity={opacity}/>
+      <spriteMaterial map={texture} color={color} opacity={opacity} />
     </sprite>
   );
-
-
 };
 
 export default Sprite;

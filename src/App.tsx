@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MainCanvas from "./components/main_canvas";
-import IngredientButton from "./components/ingredient_button";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
 
   const handleStart = () => {
     setStart(true);
-    let audio = new Audio("walking_in_the_highlands_1.mp3")
+    let audio = new Audio("walking_in_the_highlands_1.mp3");
     audio.loop = true;
     audio.play();
   };
@@ -17,7 +16,7 @@ const App: React.FC = () => {
       className={"bg-black h-screen flex flex-col items-center justify-center"}
     >
       <h1 className={"mt-2 text-white font-bold text-5xl"}>clicker-jam-2023</h1>
-     <br />
+      <br />
       {start ? (
         <MainCanvas></MainCanvas>
       ) : (

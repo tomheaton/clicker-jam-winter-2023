@@ -1,21 +1,15 @@
 import { ThreeElements } from "@react-three/fiber";
-import * as THREE from "three";
 import { useRef, useState } from "react";
-
+import * as THREE from "three";
 import Sprite from "./sprite";
-import Rectangle from "./rectangle";
 
-const SpriteButton: React.FC<ThreeElements["sprite"] & {
-  textureName: string,
-  onClick: any, // TODO: type of function
-  opacity?: number,
-}> = ({
-  textureName,
-  onClick,
-  opacity,
-  ...rest
-}) => {
-
+const SpriteButton: React.FC<
+  ThreeElements["sprite"] & {
+    textureName: string;
+    onClick: any; // TODO: type of function
+    opacity?: number;
+  }
+> = ({ textureName, onClick, opacity, ...rest }) => {
   const mesh = useRef<THREE.Mesh>(null!);
   const sprite = useRef<THREE.Sprite>(null!);
 
@@ -24,20 +18,24 @@ const SpriteButton: React.FC<ThreeElements["sprite"] & {
 
   return (
     <>
-      <sprite 
-        {...rest} 
+      <sprite
+        {...rest}
         ref={sprite}
-        onClick={() => { setActive(!active); onClick(); }}
+        onClick={() => {
+          setActive(!active);
+          onClick();
+        }}
         onPointerOver={() => setHover(true)}
         onPointerOut={() => setHover(false)}
       >
-        <spriteMaterial color={hovered ? 0xFF333333 : 0xFF222222 } opacity={opacity}/>
+        <spriteMaterial
+          color={hovered ? 0xff333333 : 0xff222222}
+          opacity={opacity}
+        />
       </sprite>
-      <Sprite {...rest} textureName={textureName} opacity={opacity}/>
+      <Sprite {...rest} textureName={textureName} opacity={opacity} />
     </>
   );
-
-
 };
 
-export default SpriteButton; 
+export default SpriteButton;

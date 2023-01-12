@@ -1,23 +1,15 @@
-import { ThreeElements } from "@react-three/fiber";
-import { useRef } from "react";
 import * as THREE from "three";
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 
 // WARNING(gonk): THIS SHIT NOT WORKING
 
 const Text: React.FC<{
-  text: string,
-  size: number,
-  pos: THREE.Vector3,
-  bold: boolean
-}> = ({
-  text,
-  size,
-  pos,
-  bold = false,
-}) => {
-
+  text: string;
+  size: number;
+  pos: THREE.Vector3;
+  bold: boolean;
+}> = ({ text, size, pos, bold = false }) => {
   /*
   const font = new FontLoader().parse('fonts/helvetiker_bold.typeface.json');
 
@@ -28,7 +20,7 @@ const Text: React.FC<{
   )
   */
 
-  const font = new FontLoader().parse('fonts/helvetiker_bold.typeface.json');
+  const font = new FontLoader().parse("fonts/helvetiker_bold.typeface.json");
 
   const textOptions = {
     font: font,
@@ -39,12 +31,12 @@ const Text: React.FC<{
     bevelThickness: 10,
     bevelSize: 8,
     bevelOffset: 0,
-    bevelSegments: 5
+    bevelSegments: 5,
   };
 
   const textGeo = new TextGeometry(text, textOptions);
 
-  return <mesh geometry={textGeo} position={pos} />
-}
+  return <mesh geometry={textGeo} position={pos} />;
+};
 
 export default Text;

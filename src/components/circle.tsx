@@ -1,6 +1,6 @@
-import * as THREE from "three";
-import { ThreeElements, useFrame } from "@react-three/fiber";
+import { ThreeElements } from "@react-three/fiber";
 import { useRef, useState } from "react";
+import * as THREE from "three";
 
 const Circle: React.FC<ThreeElements["mesh"]> = (props) => {
   const mesh = useRef<THREE.Mesh>(null!);
@@ -17,7 +17,7 @@ const Circle: React.FC<ThreeElements["mesh"]> = (props) => {
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}
     >
-      <circleGeometry args={[5, 32]}/>
+      <circleGeometry args={[5, 32]} />
       <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
     </mesh>
   );
