@@ -7,8 +7,10 @@ import Rectangle from "./rectangle";
 
 const SpriteButton: React.FC<ThreeElements["sprite"] & {
   textureName: string,
+  onClick: any, // TODO: type of function
 }> = ({
   textureName,
+  onClick,
   ...rest
 }) => {
 
@@ -23,7 +25,7 @@ const SpriteButton: React.FC<ThreeElements["sprite"] & {
       <sprite 
         {...rest} 
         ref={sprite}
-        onClick={() => setActive(!active)}
+        onClick={() => { setActive(!active); onClick(); }}
         onPointerOver={() => setHover(true)}
         onPointerOut={() => setHover(false)}
       >
