@@ -30,14 +30,15 @@ const Game: React.FC = () => {
       }}
       className={"h-screen flex flex-col items-center justify-center w-full"}
     >
+
+      { /* Bar foreground img */ }
       <img
-        style={{
-          imageRendering: "pixelated",
-        }}
-        className={"w-full h-full z-[-10] fixed"}
-        src={`assets/planet_backgrounds/ceres.png`}
-        alt={`Background Image`}
+        className={"w-full h-[22%] absolute bottom-0 z-[0]"}
+        style={{ imageRendering: "pixelated", }}
+        src={ 'assets/bar/bar.png' }
+        alt={ 'Bar background image' }
       />
+
       {/* TOP */}
       <div className={"w-full flex flex-col flex-1 items-center justify-center border-2 border-blue-500 text-white"}>
         <pre>{JSON.stringify(gameData, null, 2)}</pre>
@@ -75,7 +76,7 @@ const Game: React.FC = () => {
           ))}
         </div>
 
-        <div className={"w-1/5 h-full -mt-20"}>
+        <div className={"w-1/5 h-full -mt-20 z-[20]"}>
           <DrinkButton drink={currentDrink} />
         </div>
 
