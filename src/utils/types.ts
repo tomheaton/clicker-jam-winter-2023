@@ -11,7 +11,7 @@ export type Drink = {
   cooldown: number;
 };
 
-export type DataType = {
+export type Data = {
   ingredients: Ingredient[];
-  drink: Drink;
+  drinks: Drink[];
 };
