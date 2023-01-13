@@ -40,8 +40,11 @@ const Game: React.FC = () => {
           "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
         }
       >
-        <SlideMenu>
+        <SlideMenu fromLeft={false}>
           <p>lol</p>
+        </SlideMenu>
+        <SlideMenu fromLeft={true}>
+          <p>left</p>
         </SlideMenu>
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>
