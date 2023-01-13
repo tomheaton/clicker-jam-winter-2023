@@ -9,6 +9,7 @@ import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
 import Shop from "./shop";
 import SlideMenu from "./slide_menu";
+import StatsMenu from "./stats_menu";
 
 const Game: React.FC = () => {
   const gameData = useContext(GameDataContext);
@@ -55,9 +56,11 @@ const Game: React.FC = () => {
           "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
         }
       >
+
         <SlideMenu fromLeft={false}>
-          <p>lol</p>
+          <StatsMenu />
         </SlideMenu>
+
         <SlideMenu fromLeft={true}>
           <p>left</p>
           {DATA.items.map((item) => (
