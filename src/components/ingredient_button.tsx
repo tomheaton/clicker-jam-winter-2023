@@ -57,7 +57,7 @@ const IngredientButton: React.FC<Props> = ({
           <p className={"text-black bg-red-500 z-[4]"}>
             {name}: This is a test description
             <br />
-            Level: {currentUpgrade < upgradeCount ? currentUpgrade : "Max"}
+            Level: {currentUpgrade < upgradeCount-1 ? currentUpgrade : "Max"}
           </p>
         </div>
 
