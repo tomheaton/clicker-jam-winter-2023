@@ -2,50 +2,47 @@ import { useEffect, useState } from "react";
 
 const TIME_VALUE: number = 0.25;
 
+// TODO: upgrade description popup
+
 const IngredientButton: React.FC<{
+  upgradeCount: number; 
   textureName: string;
-  coolDown: number;
-}> = ({ textureName, coolDown }) => {
-  const [onCoolDown, setOnCoolDown] = useState<boolean>(false);
-  const [timer, setTimer] = useState<number>(0);
+  upgradeCosts: number[];
+  ingredientName: string; // Use for the upgrade description popup
+  upgradeDescriptions: string[];
+}> = ({ upgradeCount, textureName, upgradeCosts, ingredientName, upgradeDescriptions }) => {
 
-  useEffect(() => {
-    const timerTick = setInterval(() => {
-      if (onCoolDown) {
-        setTimer((t) => t + TIME_VALUE);
-      }
-    }, 250);
+  const [currentUpgrade, setCurrentUpgrade] = useState<number>(0);
 
-    return () => {
-      clearInterval(timerTick);
-    };
-  }, [onCoolDown]);
+  const upgradeIngredient = () => {
+    // TODO (gonk): add if statement to check if player has enough money
+    // after tom implemented the global state thing (react thing nerd thing)
+    if (currentUpgrade >= upgradeCount) return;
 
-  useEffect(() => {
-    if (onCoolDown && timer >= coolDown) {
-      setTimer(0);
-      setOnCoolDown(false);
-    }
-  }, [coolDown, onCoolDown, timer]);
+    setCurrentUpgrade(t => t+1);
+    console.log("Upgraded " + ingredientName + " to level: " + currentUpgrade);
+  };
 
-  let opacity = onCoolDown ? (coolDown - (coolDown - timer)) / coolDown : 1;
+  const showUpgradeDescriptionPopup = () => {
+      // TODO: show popup
+  }
 
   return (
-    <button
-      className={"border-2 border-white"}
-      onClick={() => setOnCoolDown(true)}
-      disabled={onCoolDown}
-    >
-      <img
-        style={{
-          imageRendering: "pixelated",
-          opacity,
-        }}
-        className={"w-[200px] h-[200px]"}
-        src={`assets/sprites/${textureName}`}
-        alt={`${textureName} sprite`}
-      />
-    </button>
+    <div>
+      <button
+        className={"border-2 border-white"}
+        onClick={() => upgradeIngredient()}
+      >
+        <img
+          style={{
+            imageRendering: "pixelated",
+          }}
+          className={"w-[200px] h-[200px]"}
+          src={`assets/sprites/${textureName}`}
+          alt={`${textureName} sprite`}
+        />
+      </button>
+    </div>
   );
 };
 
