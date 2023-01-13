@@ -32,7 +32,7 @@ const IngredientButton: React.FC<{
 
   return (
     <button
-      className={"border-2 border-white"}
+      className={"border-2 border-white flex-1"}
       onClick={() => setOnCoolDown(true)}
       disabled={onCoolDown}
     >
@@ -41,7 +41,8 @@ const IngredientButton: React.FC<{
           imageRendering: "pixelated",
           opacity,
         }}
-        className={"w-[200px] h-[200px]"}
+        className={"w-full h-full"}
+        // className={"w-[200px] h-[200px]"}
         src={`assets/sprites/${textureName}`}
         alt={`${textureName} sprite`}
       />
