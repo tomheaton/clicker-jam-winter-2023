@@ -3,7 +3,7 @@ import { DATA } from "../data";
 import {
   GameDataActions,
   GameDataContext,
-  GameDataDispatchContext
+  GameDataDispatchContext,
 } from "../hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
@@ -40,12 +40,17 @@ const Game: React.FC = () => {
           "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
         }
       >
-        <SlideMenu />
+        <SlideMenu>
+          <p>lol</p>
+        </SlideMenu>
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>
-          {DATA.ingredients.slice(0, 4).slice(0, mp).map((ingredient) => (
-            <IngredientButton ingredient={ingredient} />
-          ))}
+          {DATA.ingredients
+            .slice(0, 4)
+            .slice(0, mp)
+            .map((ingredient) => (
+              <IngredientButton ingredient={ingredient} />
+            ))}
         </div>
 
         <div className={"h-full -mt-20"}>
@@ -53,9 +58,12 @@ const Game: React.FC = () => {
         </div>
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>
-          {DATA.ingredients.slice(0, 4).slice(mp).map((ingredient) => (
-            <IngredientButton ingredient={ingredient} />
-          ))}
+          {DATA.ingredients
+            .slice(0, 4)
+            .slice(mp)
+            .map((ingredient) => (
+              <IngredientButton ingredient={ingredient} />
+            ))}
         </div>
       </div>
     </div>

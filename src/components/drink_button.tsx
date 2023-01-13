@@ -58,7 +58,7 @@ const DrinkButton: React.FC<Props> = ({
           opacity,
         }}
         className={"w-full h-full"}
-        src={`assets/sprites/${texture}`}
+        src={`assets/drinks/${texture}_1.png`}
         alt={`${name} sprite`}
       />
     </button>

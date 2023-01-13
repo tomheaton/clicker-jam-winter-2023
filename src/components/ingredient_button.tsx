@@ -1,8 +1,10 @@
-import { useContext, useState } from "react";
+import { PropsWithChildren, useContext, useState } from "react";
 import { GameDataActions, GameDataDispatchContext } from "../hooks/game_data";
 import { Ingredient } from "../utils/types";
 
 const TIME_VALUE: number = 0.25;
+
+type LOL = PropsWithChildren
 
 // TODO: upgrade description popup
 
@@ -57,7 +59,7 @@ const IngredientButton: React.FC<Props> = ({
             imageRendering: "pixelated",
           }}
           className={"w-[200px] h-[200px]"}
-          src={`assets/sprites/${texture}`}
+          src={`assets/ingredients/${texture}.png`}
           alt={`${name} sprite`}
         />
       </button>

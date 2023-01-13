@@ -11,7 +11,11 @@ export type Drink = {
   cooldown: number;
 };
 
+// TODO: @Tufty62
+export type Item = {};
+
 export type Data = {
   ingredients: Ingredient[];
   drinks: Drink[];
+  items: Item[];
 };
