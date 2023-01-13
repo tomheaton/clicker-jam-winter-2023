@@ -12,7 +12,7 @@ const Game: React.FC = () => {
   const gameData = useContext(GameDataContext);
   const dispatch = useContext(GameDataDispatchContext);
 
-  let mp = parseInt((DATA.ingredients.length / 2).toFixed(0));
+  let mp = parseInt((DATA.ingredients.slice(0, 4).length / 2).toFixed(0));
 
   return (
     <div
@@ -42,17 +42,17 @@ const Game: React.FC = () => {
         {/* <SlideMenu /> */}
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>
-          {DATA.ingredients.slice(0, mp).map((ingredient) => (
+          {DATA.ingredients.slice(0, 4).slice(0, mp).map((ingredient) => (
             <IngredientButton ingredient={ingredient} />
           ))}
         </div>
 
         <div className={"h-full -mt-20"}>
-          <DrinkButton drink={DATA.drink} />
+          <DrinkButton drink={DATA.drinks[0]} />
         </div>
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>
-          {DATA.ingredients.slice(mp).map((ingredient) => (
+          {DATA.ingredients.slice(0, 4).slice(mp).map((ingredient) => (
             <IngredientButton ingredient={ingredient} />
           ))}
         </div>
