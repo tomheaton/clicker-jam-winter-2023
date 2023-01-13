@@ -7,7 +7,7 @@ import {
 } from "../hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
-import SlideMenu from "./sliding_menu";
+import SlideMenu from "./slide_menu";
 
 const Game: React.FC = () => {
   const gameData = useContext(GameDataContext);

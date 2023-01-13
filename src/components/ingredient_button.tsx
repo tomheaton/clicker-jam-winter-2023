@@ -4,7 +4,7 @@ import { Ingredient } from "../utils/types";
 
 const TIME_VALUE: number = 0.25;
 
-type LOL = PropsWithChildren
+type LOL = PropsWithChildren;
 
 // TODO: upgrade description popup
 
