@@ -127,7 +127,14 @@ export const DRINKS: Drink[] = [
 ];
 
 // TODO: @Tufty62
-const ITEMS: Item[] = [];
+const ITEMS: Item[] = [
+  {
+    name: "A WHOLE MASSIVE ROCKET",
+    texture: "moojito",
+    itemCost: 2000000,
+    itemDescription: "ZOOOOOOOOOOOOOOOOM"
+  }
+];
 
 export const DATA: Data = {
   ingredients: INGREDIENTS,

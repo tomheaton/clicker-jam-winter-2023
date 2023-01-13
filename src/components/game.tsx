@@ -57,7 +57,9 @@ const Game: React.FC = () => {
         </SlideMenu>
         <SlideMenu fromLeft={true}>
           <p>left</p>
-          <Shop/>
+          {DATA.items
+          .map((item) => (<Shop item={item}></Shop>))
+          } 
         </SlideMenu>
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>
