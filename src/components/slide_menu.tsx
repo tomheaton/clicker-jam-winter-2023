@@ -13,7 +13,7 @@ const SlideMenu: React.FC<Props> = ({
 }) => {
   const [pinned, setPinned] = useState<boolean>(startPinned);
 
-  const notPinnedClassName = `bg-green-500 z-[1] top-0 h-2/3 ease-in-out duration-300 fixed w-1/3
+  const notPinnedClassName = `z-[1] top-0 h-2/3 ease-in-out duration-300 fixed w-1/3
     ${fromLeft ? `-left-1/3 hover:left-0` : `-right-1/3 hover:right-0`}`;
 
   const pinnedClassName = `bg-green-500 z-[1] top-0 h-2/3 fixed w-1/3
@@ -21,6 +21,7 @@ const SlideMenu: React.FC<Props> = ({
 
   return (
     <div className={pinned ? pinnedClassName : notPinnedClassName}>
+
       {/* 'Show Menu' button */}
       <button
         className={`-z-10 w-20 h-20 top-0 fixed ${
@@ -43,13 +44,11 @@ const SlideMenu: React.FC<Props> = ({
 
       {/* Pin button */}
       <button
-        className={`btn-red mt-2 ${fromLeft ? "float-right" : "float-left"}`}
+        className={`btn-red rounded-none ${fromLeft ? "float-right" : "float-left"} z-10`}
         onClick={() => setPinned((t) => !t)}
       >
         Pin
       </button>
-
-      <br />
 
       <div>{children}</div>
     </div>

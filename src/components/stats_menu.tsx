@@ -7,7 +7,7 @@ const StatsMenu: React.FC = () => {
   const gameData = useContext(GameDataContext);
 
   return (
-    <div className={"bg-blue-500 h-full "}>
+    <div className={"bg-blue-500"}>
       <h1 className={"text-center p-7"}>Stats</h1>  
       <div className={"p-7"}>
 

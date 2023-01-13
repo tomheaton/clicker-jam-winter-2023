@@ -69,8 +69,6 @@ const Game: React.FC = () => {
           ))}
         </SlideMenu>
 
-        <SlideMenu/>
-
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>
           {currentIngredients.slice(0, mp).map((ingredient) => (
             <IngredientButton ingredient={ingredient} />
