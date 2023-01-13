@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Item } from "../utils/types";
 
 type Props = {
@@ -9,32 +8,21 @@ type Props = {
 const Shop: React.FC<Props> = ({
   item: { name, texture, itemCost, itemDescription },
 }) => {
-  const item = {};
   const [tab, setTab] = useState<"tab1" | "tab2" | "tab3">("tab1");
-
-  const Tab1 = () => {
-    setTab("tab1");
-  };
-
-  const Tab2 = () => {
-    setTab("tab2");
-  };
-
-  const Tab3 = () => {
-    setTab("tab3");
-  };
 
   return (
     <div className="bg-white w-full">
-      <button className="bg-blue-500" onClick={Tab1}>
-        Bar Upgrades
-      </button>
-      <button className="bg-blue-500" onClick={Tab2}>
-        Clicker Upgrades
-      </button>
-      <button className="bg-blue-500" onClick={Tab3}>
-        Rocket Upgrades
-      </button>
+      <div className={"space-x-2 p-2"}>
+        <button className={"btn-blue"} onClick={() => setTab("tab1")}>
+          Bar Upgrades
+        </button>
+        <button className={"btn-blue"} onClick={() => setTab("tab2")}>
+          Clicker Upgrades
+        </button>
+        <button className={"btn-blue"} onClick={() => setTab("tab3")}>
+          Rocket Upgrades
+        </button>
+      </div>
 
       <div>
         {tab == "tab1" && (

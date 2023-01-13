@@ -1,3 +1,4 @@
+import { getIngredients } from "../utils";
 import { Data, Drink, Ingredient, Item } from "../utils/types";
 
 export const INGREDIENTS: Ingredient[] = [
@@ -92,37 +93,47 @@ export const DRINKS: Drink[] = [
     name: "Moojito",
     texture: "moojito",
     cooldown: 5,
-    ingredients: ["boba", "milk"],
+    ingredients: getIngredients(["boba", "milk"]),
   },
   {
     name: "H2 Ouzini ",
     texture: "h2_ouzini",
     cooldown: 5,
-    ingredients: ["boba", "topping_veggies", "water"],
+    ingredients: getIngredients(["boba", "topping_veggies", "water"]),
   },
   {
     name: "Sunrise Spice",
     texture: "sunrise_spice",
     cooldown: 5,
-    ingredients: ["topping_veggies", "cherry", "juice"],
+    ingredients: getIngredients(["topping_veggies", "cherry", "juice"]),
   },
   {
     name: "Lilac Lager",
     texture: "lilac_lager",
     cooldown: 5,
-    ingredients: ["juice", "sprinkles", "cream"],
+    ingredients: getIngredients(["juice", "sprinkles", "cream"]),
   },
   {
     name: "Battery Acid",
     texture: "battery_acid",
     cooldown: 5,
-    ingredients: ["neon_liquid", "fizz", "sprinkles", "glow_powder"],
+    ingredients: getIngredients([
+      "neon_liquid",
+      "fizz",
+      "sprinkles",
+      "glow_powder",
+    ]),
   },
   {
     name: "Final Elixir",
     texture: "final_elixir",
     cooldown: 5,
-    ingredients: ["glow_powder", "void", "stars", "rainbow_swirl"],
+    ingredients: getIngredients([
+      "glow_powder",
+      "void",
+      "stars",
+      "rainbow_swirl",
+    ]),
   },
 ];
 
@@ -131,8 +142,8 @@ const ITEMS: Item[] = [
     name: "A WHOLE MASSIVE ROCKET",
     texture: "moojito",
     itemCost: 2000000,
-    itemDescription: "ZOOOOOOOOOOOOOOOOM"
-  }
+    itemDescription: "ZOOOOOOOOOOOOOOOOM",
+  },
 ];
 
 export const DATA: Data = {

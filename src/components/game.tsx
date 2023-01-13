@@ -15,8 +15,9 @@ const Game: React.FC = () => {
   const dispatch = useContext(GameDataDispatchContext);
 
   let currentDrink = DATA.drinks[0];
+  let currentIngredients = currentDrink.ingredients;
 
-  let mp = parseInt((DATA.ingredients.slice(0, 4).length / 2).toFixed(0));
+  let mp = parseInt((currentIngredients.length / 2).toFixed(0));
 
   return (
     <div
@@ -55,36 +56,31 @@ const Game: React.FC = () => {
           "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
         }
       >
-        <SlideMenu fromLeft={false}>
-          <p>lol</p>
-        </SlideMenu>
-        <SlideMenu fromLeft={true}>
+        <SlideMenu fromLeft>
           <p>left</p>
           {DATA.items.map((item) => (
-            <Shop item={item}></Shop>
+            <Shop item={item} />
           ))}
         </SlideMenu>
 
-        <div className={"grid grid-cols-2 gap-4 m-4"}>
-          {DATA.ingredients
-            .slice(0, 4)
-            .slice(0, mp)
-            .map((ingredient) => (
-              <IngredientButton ingredient={ingredient} />
-            ))}
+        <SlideMenu>
+          <p>lol</p>
+        </SlideMenu>
+
+        <div className={"w-2/5 flex items-center justify-evenly m-4"}>
+          {currentIngredients.slice(0, mp).map((ingredient) => (
+            <IngredientButton ingredient={ingredient} />
+          ))}
         </div>
 
-        <div className={"h-full -mt-20"}>
+        <div className={"w-1/5 h-full -mt-20"}>
           <DrinkButton drink={currentDrink} />
         </div>
 
-        <div className={"grid grid-cols-2 gap-4 m-4"}>
-          {DATA.ingredients
-            .slice(0, 4)
-            .slice(mp)
-            .map((ingredient) => (
-              <IngredientButton ingredient={ingredient} />
-            ))}
+        <div className={"w-2/5 flex items-center justify-evenly m-4"}>
+          {currentIngredients.slice(mp).map((ingredient) => (
+            <IngredientButton ingredient={ingredient} />
+          ))}
         </div>
       </div>
     </div>
