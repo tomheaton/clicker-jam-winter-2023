@@ -13,6 +13,8 @@ const Game: React.FC = () => {
   const gameData = useContext(GameDataContext);
   const dispatch = useContext(GameDataDispatchContext);
 
+  let currentDrink = DATA.drinks[0];
+
   let mp = parseInt((DATA.ingredients.slice(0, 4).length / 2).toFixed(0));
 
   return (
@@ -57,7 +59,7 @@ const Game: React.FC = () => {
         </div>
 
         <div className={"h-full -mt-20"}>
-          <DrinkButton drink={DATA.drinks[0]} />
+          <DrinkButton drink={currentDrink} />
         </div>
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>

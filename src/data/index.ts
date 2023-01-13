@@ -1,6 +1,6 @@
 import { Data, Drink, Ingredient, Item } from "../utils/types";
 
-const INGREDIENTS: Ingredient[] = [
+export const INGREDIENTS: Ingredient[] = [
   {
     name: "Boba",
     texture: "boba",
@@ -16,6 +16,12 @@ const INGREDIENTS: Ingredient[] = [
   {
     name: "Topping Veggies",
     texture: "topping_veggies",
+    upgradeCosts: [1, 5, 10, 15],
+    upgradeDescriptions: [],
+  },
+  {
+    name: "Water",
+    texture: "water",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
@@ -81,36 +87,42 @@ const INGREDIENTS: Ingredient[] = [
   },
 ];
 
-const DRINKS: Drink[] = [
+export const DRINKS: Drink[] = [
   {
     name: "Moojito",
     texture: "moojito",
     cooldown: 5,
+    ingredients: ["boba", "milk"],
   },
   {
     name: "H2 Ouzini ",
     texture: "h2_ouzini",
     cooldown: 5,
+    ingredients: ["boba", "topping_veggies", "water"],
   },
   {
     name: "Sunrise Spice",
     texture: "sunrise_spice",
     cooldown: 5,
+    ingredients: ["topping_veggies", "cherry", "juice"],
   },
   {
     name: "Lilac Lager",
     texture: "lilac_lager",
     cooldown: 5,
+    ingredients: ["juice", "sprinkles", "cream"],
   },
   {
     name: "Battery Acid",
     texture: "battery_acid",
     cooldown: 5,
+    ingredients: ["neon_liquid", "fizz", "sprinkles", "glow_powder"],
   },
   {
     name: "Final Elixir",
     texture: "final_elixir",
     cooldown: 5,
+    ingredients: ["glow_powder", "void", "stars", "rainbow_swirl"],
   },
 ];
 
@@ -121,4 +133,16 @@ export const DATA: Data = {
   ingredients: INGREDIENTS,
   drinks: DRINKS,
   items: ITEMS,
+  // TODO: @tomheaton
+  // planets: PLANETS,
 };
+
+// TODO: @tomheaton
+export const PLANETS = [
+  "ceres",
+  "earth",
+  "sun",
+  "galaxy",
+  "universe",
+  "multiverse",
+] as const;
