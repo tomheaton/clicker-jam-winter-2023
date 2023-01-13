@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Game from "./components/game";
 import {
   GameDataContext,
@@ -10,6 +10,26 @@ import {
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
   const [gameData, dispatch] = useReducer(gameDataReducer, initialGameData);
+
+  // useEffect(() => {
+  //   console.log("here");
+
+  //   const onUnload = (e: BeforeUnloadEvent) => {
+  //     e.preventDefault();
+  //     console.log("DON'T LEAVE ME!");
+  //     alert("DON'T LEAVE ME!");
+
+  //     const confirmationMessage = "Some message";
+  //     e.returnValue = confirmationMessage;
+  //     return confirmationMessage;
+  //   };
+
+  //   window.addEventListener("beforeunload", onUnload);
+
+  //   return () => {
+  //     window.removeEventListener("beforeunload", onUnload);
+  //   };
+  // }, []);
 
   const handleStart = () => {
     setStart(true);

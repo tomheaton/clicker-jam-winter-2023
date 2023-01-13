@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-type GameDataType = {
+type GameData = {
   score: number;
   money: number;
 };
@@ -15,29 +15,41 @@ type GameDataAction = {
   value: number;
 };
 
-export const initialGameData: GameDataType = {
+export const initialGameData: GameData = {
   score: 69,
   money: 420,
 };
 
 export const gameDataReducer = (
-  state: GameDataType,
+  oldState: GameData,
   action: GameDataAction
 ) => {
+  let state: GameData;
+
   switch (action.type) {
     case GameDataActions.ADD_MONEY:
-      return {
-        ...state,
-        money: state.money + action.value,
+      console.log("adding money");
+
+      state = {
+        ...oldState,
+        money: oldState.money + action.value,
       };
+      break;
     case GameDataActions.SUBTRACT_MONEY:
-      return {
-        ...state,
-        money: state.money - action.value,
+      console.log("subtracting money");
+      state = {
+        ...oldState,
+        money: oldState.money - action.value,
       };
+      break;
   }
+
+  console.log("saving data");
+  localStorage.setItem("gameData", JSON.stringify(state));
+
+  return state;
 };
 
-export const GameDataContext = createContext<GameDataType | null>(null);
+export const GameDataContext = createContext<GameData | null>(null);
 export const GameDataDispatchContext =
   createContext<React.Dispatch<GameDataAction> | null>(null);
