@@ -82,9 +82,11 @@ const App: React.FC = () => {
 
   return (
     <div
-      className={"bg-black-500 h-screen flex flex-col items-center justify-center"}
+      className={
+        "bg-black-500 h-screen flex flex-col items-center justify-center"
+      }
     >
-      <h1 className={"mt-2 text-white font-bold text-5xl"}>clicker-jam-2023</h1>
+      <h1 className={"mt-2 font-bold text-5xl"}>clicker-jam-2023</h1>
       <br />
       <img
         style={{
@@ -95,12 +97,7 @@ const App: React.FC = () => {
         alt={"game icon"}
       />
       <br />
-      <button
-        onClick={handleStart}
-        className={
-          "px-4 py-2 text-white font-bold rounded-lg bg-blue-500 hover:bg-blue-600"
-        }
-      >
+      <button onClick={handleStart} className={"btn-blue"}>
         start game
       </button>
     </div>
