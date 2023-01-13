@@ -1,10 +1,15 @@
 import { useContext } from "react";
-import { LogicContext } from "../hooks/logic_provider";
+import {
+  GameDataActions,
+  GameDataContext,
+  GameDataDispatchContext,
+} from "../hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
 
 const Game: React.FC = () => {
-  const gameData = useContext(LogicContext);
+  const gameData = useContext(GameDataContext);
+  const dispatch = useContext(GameDataDispatchContext);
 
   return (
     <div
@@ -14,11 +19,19 @@ const Game: React.FC = () => {
     >
       <div className={"w-full flex flex-1 border-2 border-blue-500"}>
         <pre>{JSON.stringify(gameData, null, 2)}</pre>
+        <br />
+        <button
+          onClick={() => {
+            dispatch!({ type: GameDataActions.ADD_MONEY, value: 11 });
+          }}
+        >
+          increase score
+        </button>
       </div>
       <div
         className={"w-full h-2/5 flex justify-evenly border-2 border-red-500"}
       >
-        { /* Ingredient upgrade buttons */ }
+        {/* Ingredient upgrade buttons */}
         <div className={"grid grid-cols-2 gap-4 m-4"}>
           <IngredientButton
             upgradeCount={5}
@@ -59,7 +72,6 @@ const Game: React.FC = () => {
         <div className={"flex items-center justify-center"}>
           <DrinkButton textureName={"mojito.png"} coolDown={5} />
         </div>
-
       </div>
     </div>
   );

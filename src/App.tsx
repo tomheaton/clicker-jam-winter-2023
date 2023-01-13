@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import Game from "./components/game";
-import { LogicContext } from "./hooks/logic_provider";
+import {
+  GameDataContext,
+  GameDataDispatchContext,
+  initialGameData,
+  gameDataReducer,
+} from "./hooks/game_data";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
+  const [gameData, dispatch] = useReducer(gameDataReducer, initialGameData);
 
   const handleStart = () => {
     setStart(true);
@@ -14,14 +20,11 @@ const App: React.FC = () => {
 
   if (start) {
     return (
-      <LogicContext.Provider
-        value={{
-          score: 69,
-          money: 420,
-        }}
-      >
-        <Game />
-      </LogicContext.Provider>
+      <GameDataContext.Provider value={gameData}>
+        <GameDataDispatchContext.Provider value={dispatch}>
+          <Game />
+        </GameDataDispatchContext.Provider>
+      </GameDataContext.Provider>
     );
   }
 
