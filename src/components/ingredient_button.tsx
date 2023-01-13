@@ -1,6 +1,10 @@
 import { PropsWithChildren, useContext, useState } from "react";
-import { GameDataActions, GameDataDispatchContext } from "../hooks/game_data";
 import { Ingredient } from "../utils/types";
+import {
+  GameDataActions,
+  GameDataContext,
+  GameDataDispatchContext,
+} from "../hooks/game_data";
 
 const TIME_VALUE: number = 0.25;
 
@@ -25,6 +29,14 @@ const IngredientButton: React.FC<Props> = ({
     // TODO (gonk): add if statement to check if player has enough money
     // after tom implemented the global state thing (react thing nerd thing)
     if (currentUpgrade >= upgradeCount - 1) return;
+
+    if (currentUpgrade == 0)
+    {
+        dispatch!({
+          type: GameDataActions.INCREASE_DRINKS_PER_CLICK ,
+          value: 1,
+        });
+    }
 
     dispatch!({
       type: GameDataActions.SUBTRACT_MONEY,

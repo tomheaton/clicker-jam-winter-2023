@@ -43,10 +43,10 @@ const Game: React.FC = () => {
       <div className={"w-full flex flex-col flex-1 items-center justify-center border-2 border-blue-500 text-white"}>
         <button
           onClick={() => {
-            dispatch!({ type: GameDataActions.ADD_MONEY, value: 11 });
+            dispatch!({ type: GameDataActions.ADD_MONEY, value: 10000 });
           }}
         >
-          increase money
+          Increase Maney (10K)
         </button>
       </div>
 
@@ -58,6 +58,8 @@ const Game: React.FC = () => {
       >
 
         <SlideMenu fromLeft={false}>
+          { /* TODO: make an element here that shows the money outside the menu */ }
+          { /* <p className={""}>${gameData.money}</p> */ }
           <StatsMenu />
         </SlideMenu>
 
