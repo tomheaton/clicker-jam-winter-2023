@@ -1,4 +1,10 @@
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import {
+  GameDataActions,
+  GameDataContext,
+  GameDataDispatchContext,
+} from "../hooks/game_data";
 
 const TIME_VALUE: number = 0.25;
 
@@ -14,11 +20,19 @@ const IngredientButton: React.FC<{
 
   const [currentUpgrade, setCurrentUpgrade] = useState<number>(0);
 
+  const dispatch = useContext(GameDataDispatchContext);
+
   const upgradeIngredient = () => {
+
     // TODO (gonk): add if statement to check if player has enough money
     // after tom implemented the global state thing (react thing nerd thing)
     if (currentUpgrade >= upgradeCount) return;
 
+    console.log(currentUpgrade,"String", upgradeCount)
+   
+    if (currentUpgrade < upgradeCount - 1){
+    dispatch!({type: GameDataActions.SUBTRACT_MONEY, value: upgradeCosts[currentUpgrade]})
+    }
     setCurrentUpgrade(t => t+1);
   };
 
@@ -26,11 +40,15 @@ const IngredientButton: React.FC<{
       // TODO: show popup
   }
 
+
+
   return (
     <div>
       <button
         className={"border-2 border-white group relative"}
-        onClick={() => upgradeIngredient()}
+        onClick={() => {
+          upgradeIngredient();
+          }}
       >
         <p
           className={"scale-0 text-xl absolute bg-red-500 -right-[200px] -top-[50px] group-hover:scale-100"}
