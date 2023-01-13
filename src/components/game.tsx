@@ -7,6 +7,7 @@ import {
 } from "../hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
+import Shop from "./shop";
 import SlideMenu from "./slide_menu";
 
 const Game: React.FC = () => {
@@ -48,6 +49,7 @@ const Game: React.FC = () => {
         </SlideMenu>
         <SlideMenu fromLeft={true}>
           <p>left</p>
+          <Shop/>
         </SlideMenu>
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>
