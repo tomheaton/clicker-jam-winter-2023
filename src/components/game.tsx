@@ -20,11 +20,19 @@ const Game: React.FC = () => {
 
   return (
     <div
-      style={{ backgroundImage: "url('./assets/planet_backgrounds/ceres.png')" }}
+      style={{ /*backgroundImage: "url('./assets/planet_backgrounds/ceres.png')"*/ }}
       className={
-        "bg-cover h-screen flex flex-col items-center justify-center w-full"
+        "bg-red-500 h-screen flex flex-col items-center justify-center w-full"
       }
     >
+      <img
+        style={{
+          imageRendering: "pixelated",
+        }}
+        className={"w-full h-full z-[-10] fixed"}
+        src={`assets/planet_backgrounds/ceres.png`}
+        alt={`Background Image`}
+      />
       {/* TOP */}
       <div className={"w-full flex flex-1 border-2 border-blue-500"}>
         <pre>{JSON.stringify(gameData, null, 2)}</pre>
