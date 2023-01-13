@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MainCanvas from "./components/main_canvas";
+import Game from "./components/game";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
@@ -11,16 +11,17 @@ const App: React.FC = () => {
     audio.play();
   };
 
+  if (start) {
+    return <Game />;
+  }
+
   return (
     <div
       className={"bg-black h-screen flex flex-col items-center justify-center"}
     >
       <h1 className={"mt-2 text-white font-bold text-5xl"}>clicker-jam-2023</h1>
       <br />
-      {start ? (
-        <MainCanvas></MainCanvas>
-      ) : (
-        <button
+      <button
           onClick={handleStart}
           className={
             "px-4 py-2 text-white font-bold rounded-lg bg-blue-500 hover:bg-blue-600"
@@ -28,7 +29,6 @@ const App: React.FC = () => {
         >
           start game
         </button>
-      )}
     </div>
   );
 };

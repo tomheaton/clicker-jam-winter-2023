@@ -11,6 +11,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  color: white;
+  background-color: black;
+}
+
 @layer {
   .btn {
     @apply px-4 py-2 text-white font-bold rounded-lg hover:bg-neutral-800 border-2;

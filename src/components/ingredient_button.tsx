@@ -1,24 +1,13 @@
-import { ThreeElements } from "@react-three/fiber";
 import { useEffect, useState } from "react";
-import SpriteButton from "./sprite_button";
 
 const TIME_VALUE: number = 0.25;
 
-const IngredientButton: React.FC<
-  ThreeElements["sprite"] & {
-    textureName: string;
-    coolDown: number;
-  }
-> = ({ textureName, coolDown, ...rest }) => {
+const IngredientButton: React.FC<{
+  textureName: string;
+  coolDown: number;
+}> = ({ textureName, coolDown }) => {
   const [onCoolDown, setOnCoolDown] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(0);
-
-  useEffect(() => {
-    if (onCoolDown && timer >= coolDown) {
-      setTimer(0);
-      setOnCoolDown(false);
-    }
-  }, [coolDown, onCoolDown, timer]);
 
   useEffect(() => {
     const timerTick = setInterval(() => {
@@ -32,15 +21,31 @@ const IngredientButton: React.FC<
     };
   }, [onCoolDown]);
 
+  useEffect(() => {
+    if (onCoolDown && timer >= coolDown) {
+      setTimer(0);
+      setOnCoolDown(false);
+    }
+  }, [coolDown, onCoolDown, timer]);
+
+  let opacity = onCoolDown ? (coolDown - (coolDown - timer)) / coolDown : 1;
+
   return (
-    <>
-      <SpriteButton
-        {...rest}
-        opacity={onCoolDown ? (coolDown - (coolDown - timer)) / coolDown : 1}
-        textureName={textureName}
-        onClick={() => setOnCoolDown(true)}
+    <button
+      className={"border-2 border-white"}
+      onClick={() => setOnCoolDown(true)}
+      disabled={onCoolDown}
+    >
+      <img
+        style={{
+          imageRendering: "pixelated",
+          opacity,
+        }}
+        className={"w-[200px] h-[200px]"}
+        src={`assets/sprites/${textureName}`}
+        alt={`${textureName} sprite`}
       />
-    </>
+    </button>
   );
 };
 
