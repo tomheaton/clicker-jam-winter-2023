@@ -47,7 +47,7 @@ const IngredientButton: React.FC<Props> = ({
       >
         <p
           className={
-            "scale-0 text-xl absolute bg-red-500 -right-[200px] -top-[50px] group-hover:scale-100"
+            "scale-0 text-xl absolute bg-red-500 -right-[200px] -top-[50px] group-hover:scale-100 z-[2]"
           }
         >
           {name}: This is a test description
