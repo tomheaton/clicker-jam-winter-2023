@@ -19,8 +19,9 @@ const Game: React.FC = () => {
 
   return (
     <div
+      style={{ backgroundImage: "url('./assets/planet_backgrounds/ceres.png')" }}
       className={
-        "bg-black h-screen flex flex-col items-center justify-center w-full"
+        "bg-cover h-screen flex flex-col items-center justify-center w-full"
       }
     >
       {/* TOP */}
