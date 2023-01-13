@@ -20,7 +20,6 @@ const IngredientButton: React.FC<{
     if (currentUpgrade >= upgradeCount) return;
 
     setCurrentUpgrade(t => t+1);
-    console.log("Upgraded " + ingredientName + " to level: " + currentUpgrade);
   };
 
   const showUpgradeDescriptionPopup = () => {
@@ -30,9 +29,16 @@ const IngredientButton: React.FC<{
   return (
     <div>
       <button
-        className={"border-2 border-white"}
+        className={"border-2 border-white group relative"}
         onClick={() => upgradeIngredient()}
       >
+        <p
+          className={"scale-0 text-xl absolute bg-red-500 -right-[200px] -top-[50px] group-hover:scale-100"}
+        >
+          {ingredientName}: This is a test description
+          <br/>
+          Level: {currentUpgrade < upgradeCount ? currentUpgrade : "Max"}
+        </p>
         <img
           style={{
             imageRendering: "pixelated",
