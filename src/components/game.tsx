@@ -41,14 +41,12 @@ const Game: React.FC = () => {
 
       {/* TOP */}
       <div className={"w-full flex flex-col flex-1 items-center justify-center border-2 border-blue-500 text-white"}>
-        <pre>{JSON.stringify(gameData, null, 2)}</pre>
-        <br />
         <button
           onClick={() => {
             dispatch!({ type: GameDataActions.ADD_MONEY, value: 11 });
           }}
         >
-          increase score
+          increase money
         </button>
       </div>
 

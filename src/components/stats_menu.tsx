@@ -12,19 +12,19 @@ const StatsMenu: React.FC = () => {
       <div className={"p-7"}>
 
         <p className={""}>
-          Money: {JSON.stringify(gameData.money, null, 2)}
+          Money: ${JSON.stringify(gameData.money, null, 2)}
         </p>
 
         <p className={""}>
-          Drink selling price: TODO {}
+          Drink selling price: {JSON.stringify(gameData.drinkPrice, null, 2)}
         </p>
 
         <p className={""}>
-          Drinks/click: TODO {}
+          Drinks/click: {JSON.stringify(gameData.drinksPerClick, null, 2)}
         </p>
 
         <p className={""}>
-          Drinks/s: TODO {}
+          Drinks/s: {JSON.stringify(gameData.drinksPerSecond, null, 2)}
         </p>
 
       </div>
