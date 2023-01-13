@@ -46,7 +46,8 @@ const App: React.FC = () => {
 
     console.log("parsed data", parsedData);
 
-    if (!parsedData || !parsedData.score || !parsedData.money) {
+    if (!parsedData || !parsedData.money || !parsedData.drinkPrice || !parsedData.drinksPerClick ||
+         !parsedData.drinksPerSecond) {
       alert("don't mess with the local storage!");
       return;
     }
@@ -57,9 +58,20 @@ const App: React.FC = () => {
     });
 
     dispatch({
-      type: GameDataActions.SET_SCORE,
-      value: parsedData.score,
+      type: GameDataActions.SET_DRINK_PRICE,
+      value: parsedData.drinkPrice,
     });
+
+    dispatch({
+      type: GameDataActions.SET_DRINKS_PER_CLICK,
+      value: parsedData.drinksPerClick,
+    });
+
+    dispatch({
+      type: GameDataActions.SET_DRINKS_PER_SECOND,
+      value: parsedData.drinksPerSecond,
+    });
+
   }, []);
 
   const handleStart = () => {

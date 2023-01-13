@@ -9,6 +9,7 @@ import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
 import Shop from "./shop";
 import SlideMenu from "./slide_menu";
+import StatsMenu from "./stats_menu";
 
 const Game: React.FC = () => {
   const gameData = useContext(GameDataContext);
@@ -29,14 +30,15 @@ const Game: React.FC = () => {
       }}
       className={"h-screen flex flex-col items-center justify-center w-full"}
     >
+      {/* Bar foreground img */}
       <img
-        style={{
-          imageRendering: "pixelated",
-        }}
-        className={"w-full h-full z-[-10] fixed"}
-        src={`assets/planet_backgrounds/ceres.png`}
-        alt={`Background Image`}
+        className={"w-full h-[22%] absolute bottom-0 z-[0]"}
+        style={{ imageRendering: "pixelated" }}
+        src={"assets/bar/bar.png"}
+        alt={"Bar background image"}
+        a
       />
+
       {/* TOP */}
       <div
         className={
@@ -48,10 +50,10 @@ const Game: React.FC = () => {
         <button
           className={"btn-blue"}
           onClick={() => {
-            dispatch!({ type: GameDataActions.ADD_MONEY, value: 11 });
+            dispatch!({ type: GameDataActions.ADD_MONEY, value: 10000 });
           }}
         >
-          increase score
+          Increase Maney (10K)
         </button>
       </div>
 
@@ -61,7 +63,14 @@ const Game: React.FC = () => {
           "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
         }
       >
-        <SlideMenu fromLeft>
+        <SlideMenu fromLeft={false}>
+          {/* TODO: make an element here that shows the money outside the menu */}
+          {/* <p className={""}>${gameData.money}</p> */}
+          <StatsMenu />
+        </SlideMenu>
+
+        <SlideMenu fromLeft={true}>
+          <p>left</p>
           {DATA.items.map((item) => (
             <Shop item={item} />
           ))}
@@ -75,7 +84,7 @@ const Game: React.FC = () => {
           ))}
         </div>
 
-        <div className={"w-1/5 h-full -mt-20"}>
+        <div className={"w-1/5 h-full -mt-20 z-[20]"}>
           <DrinkButton drink={currentDrink} />
         </div>
 

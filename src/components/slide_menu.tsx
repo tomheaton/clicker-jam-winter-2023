@@ -20,7 +20,15 @@ const SlideMenu: React.FC<Props> = ({
     ${fromLeft ? `left-0` : `right-0`}`;
 
   return (
-    <div className={pinned ? pinnedClassName : notPinnedClassName}>
+    <div className={pinned ? pinnedClassName : notPinnedClassName} >
+      {/* Background image */}
+      <img
+        className={"w-full h-full absolute z-[-9]"}
+        style={{ imageRendering: "pixelated", }}
+        src={ 'assets/UI/slide_menu_background.png' }
+        alt={ 'Slide menu background image' }
+      />
+
       {/* 'Show Menu' button */}
       <button
         className={`-z-10 w-20 h-20 top-0 fixed ${
@@ -43,13 +51,16 @@ const SlideMenu: React.FC<Props> = ({
 
       {/* Pin button */}
       <button
-        className={`btn-red mt-2 ${fromLeft ? "float-right" : "float-left"}`}
+        className={`w-20 h-20 ${fromLeft ? "float-right" : "float-left"} z-10`}
         onClick={() => setPinned((t) => !t)}
       >
-        Pin
+          <img
+            className={`w-full h-full ${ fromLeft ? "" : "-scale-x-100" }`}
+            style={{ imageRendering: "pixelated", }}
+            src={ `assets/UI/${ pinned ? "pin_button_pinned.png" : "pin_button_not_pinned.png" }` }
+            alt={ 'Pin button image' }
+          />
       </button>
-
-      <br />
 
       <div>{children}</div>
     </div>
