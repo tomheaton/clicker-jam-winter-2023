@@ -1,16 +1,52 @@
-import { useContext } from "react";
+import { PropsWithChildren, useContext } from "react";
 import {
   GameDataActions,
   GameDataContext,
   GameDataDispatchContext,
 } from "../hooks/game_data";
+import { type DataType } from "../utils/types";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
-import SlideMenu from "./sliding_menu";
 
-const Game: React.FC = () => {
+const DATA: DataType = {
+  ingredients: [
+    {
+      name: "Lime",
+      texture: "mojito.png",
+      upgradeCosts: [1, 5, 10, 15],
+      upgradeDescriptions: [],
+    },
+    {
+      name: "Alcohol",
+      texture: "mojito.png",
+      upgradeCosts: [1, 5, 10, 15],
+      upgradeDescriptions: [],
+    },
+    {
+      name: "Ice",
+      texture: "mojito.png",
+      upgradeCosts: [1, 5, 10, 15],
+      upgradeDescriptions: [],
+    },
+    {
+      name: "Mint",
+      texture: "mojito.png",
+      upgradeCosts: [1, 5, 10, 15],
+      upgradeDescriptions: [],
+    },
+  ],
+  drink: {
+    name: "Mojito",
+    texture: "mojito.png",
+    cooldown: 5,
+  },
+};
+
+const Game: React.FC<PropsWithChildren> = () => {
   const gameData = useContext(GameDataContext);
   const dispatch = useContext(GameDataDispatchContext);
+
+  let mp = parseInt((DATA.ingredients.length / 2).toFixed(0));
 
   return (
     <div
@@ -18,6 +54,7 @@ const Game: React.FC = () => {
         "bg-black h-screen flex flex-col items-center justify-center w-full"
       }
     >
+      {/* TOP */}
       <div className={"w-full flex flex-1 border-2 border-blue-500"}>
         <pre>{JSON.stringify(gameData, null, 2)}</pre>
         <br />
@@ -29,50 +66,29 @@ const Game: React.FC = () => {
           increase score
         </button>
       </div>
+
+      {/* BOTTOM */}
       <div
-        className={"w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"}
+        className={
+          "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
+        }
       >
-        <SlideMenu />
-        {/* Ingredient upgrade buttons */}
+        {/* <SlideMenu /> */}
+
         <div className={"grid grid-cols-2 gap-4 m-4"}>
-          <IngredientButton
-            upgradeCount={5}
-            textureName={"mojito.png"}
-            upgradeCosts={[1, 5, 10, 15]}
-            ingredientName={"Lime"}
-            upgradeDescriptions={[]}
-          />
+          {DATA.ingredients.slice(0, mp).map((ingredient) => (
+            <IngredientButton ingredient={ingredient} />
+          ))}
         </div>
-        <div className={"grid grid-cols-2 gap-4 m-4"}>
-          <IngredientButton
-            upgradeCount={5}
-            textureName={"mojito.png"}
-            upgradeCosts={[1, 5, 10, 15]}
-            ingredientName={"Alcohol"}
-            upgradeDescriptions={[]}
-          />
-        </div>
-        <div className={"grid grid-cols-2 gap-4 m-4"}>
-          <IngredientButton
-            upgradeCount={5}
-            textureName={"mojito.png"}
-            upgradeCosts={[1, 5, 10, 15]}
-            ingredientName={"Ice"}
-            upgradeDescriptions={[]}
-          />
-        </div>
-        <div className={"grid grid-cols-2 gap-4 m-4"}>
-          <IngredientButton
-            upgradeCount={5}
-            textureName={"mojito.png"}
-            upgradeCosts={[1, 5, 10, 15]}
-            ingredientName={"Mint"}
-            upgradeDescriptions={[]}
-          />
+
+        <div className={"h-full -mt-20"}>
+          <DrinkButton drink={DATA.drink} />
         </div>
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>
-          <DrinkButton textureName={"mojito.png"} coolDown={5} />
+          {DATA.ingredients.slice(mp).map((ingredient) => (
+            <IngredientButton ingredient={ingredient} />
+          ))}
         </div>
       </div>
     </div>

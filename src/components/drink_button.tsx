@@ -1,30 +1,28 @@
-import { useContext } from "react";
-import { useEffect, useState } from "react";
-import {
-  GameDataActions,
-  GameDataContext,
-  GameDataDispatchContext,
-} from "../hooks/game_data";
+import { useContext, useEffect, useState } from "react";
+import { GameDataActions, GameDataDispatchContext } from "../hooks/game_data";
+import { type Drink } from "../utils/types";
 
 const TIME_VALUE: number = 0.25;
+// TODO: add multiplier
 const multiplier = 1.0;
+// random sell value for now
+const drinkSellValue = 5;
 
-const DrinkButton: React.FC<{
+type Props = {
+  drink: Drink;
+};
 
-  textureName: string;
-  coolDown: number;
-}> = ({ textureName, coolDown }) => {
-
+const DrinkButton: React.FC<Props> = ({
+  drink: { name, texture, cooldown },
+}) => {
   const dispatch = useContext(GameDataDispatchContext);
 
-  const drinkSellValue = 5; //random sell value for now
-
-  const [onCoolDown, setOnCoolDown] = useState<boolean>(false);
+  const [onCooldown, setOnCoolDown] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(0);
 
   useEffect(() => {
     const timerTick = setInterval(() => {
-      if (onCoolDown) {
+      if (onCooldown) {
         setTimer((t) => t + TIME_VALUE);
       }
     }, 250);
@@ -32,22 +30,20 @@ const DrinkButton: React.FC<{
     return () => {
       clearInterval(timerTick);
     };
-  }, [onCoolDown]);
+  }, [onCooldown]);
 
   useEffect(() => {
-    if (onCoolDown && timer >= coolDown) {
+    if (onCooldown && timer >= cooldown) {
       setTimer(0);
       setOnCoolDown(false);
     }
-  }, [coolDown, onCoolDown, timer]);
+  }, [cooldown, onCooldown, timer]);
 
-  let opacity = onCoolDown ? (coolDown - (coolDown - timer)) / coolDown : 1;
+  let opacity = onCooldown ? (cooldown - (cooldown - timer)) / cooldown : 1;
 
   const theWorstPlaceForAFunction = () => {
-    dispatch!({ type: GameDataActions.ADD_MONEY, value : drinkSellValue});
-  }
-
-
+    dispatch!({ type: GameDataActions.ADD_MONEY, value: drinkSellValue });
+  };
 
   return (
     <button
@@ -56,7 +52,7 @@ const DrinkButton: React.FC<{
         setOnCoolDown(true);
         theWorstPlaceForAFunction();
       }}
-      disabled={onCoolDown}
+      disabled={onCooldown}
     >
       <img
         style={{
@@ -64,8 +60,8 @@ const DrinkButton: React.FC<{
           opacity,
         }}
         className={"w-full h-full"}
-        src={`assets/sprites/${textureName}`}
-        alt={`${textureName} sprite`}
+        src={`assets/sprites/${texture}`}
+        alt={`${name} sprite`}
       />
     </button>
   );
