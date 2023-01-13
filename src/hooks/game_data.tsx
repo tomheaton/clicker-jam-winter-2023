@@ -6,6 +6,8 @@ type GameData = {
 };
 
 export enum GameDataActions {
+  SET_SCORE = "set_score",
+  SET_MONEY = "set_money",
   ADD_MONEY = "add_money",
   SUBTRACT_MONEY = "subtract_money",
 }
@@ -20,23 +22,27 @@ export const initialGameData: GameData = {
   money: 420,
 };
 
-export const gameDataReducer = (
-  oldState: GameData,
-  action: GameDataAction
-) => {
+export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
   let state: GameData;
 
   switch (action.type) {
+    case GameDataActions.SET_MONEY:
+      return {
+        ...oldState,
+        money: action.value,
+      };
+    case GameDataActions.SET_SCORE:
+      return {
+        ...oldState,
+        score: action.value,
+      };
     case GameDataActions.ADD_MONEY:
-      console.log("adding money");
-
       state = {
         ...oldState,
         money: oldState.money + action.value,
       };
       break;
     case GameDataActions.SUBTRACT_MONEY:
-      console.log("subtracting money");
       state = {
         ...oldState,
         money: oldState.money - action.value,

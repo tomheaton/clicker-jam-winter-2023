@@ -5,6 +5,7 @@ import {
   GameDataDispatchContext,
   initialGameData,
   gameDataReducer,
+  GameDataActions,
 } from "./hooks/game_data";
 
 const App: React.FC = () => {
@@ -30,6 +31,36 @@ const App: React.FC = () => {
   //     window.removeEventListener("beforeunload", onUnload);
   //   };
   // }, []);
+
+  useEffect(() => {
+    console.log("loading saved data");
+
+    const savedData = localStorage.getItem("gameData");
+
+    if (!savedData) {
+      console.log("no saved data");
+      return;
+    }
+
+    const parsedData = JSON.parse(savedData);
+
+    console.log("parsed data", parsedData);
+
+    if (!parsedData || !parsedData.score || !parsedData.money) {
+      alert("don't mess with the local storage!");
+      return;
+    }
+
+    dispatch({
+      type: GameDataActions.SET_MONEY,
+      value: parsedData.money,
+    });
+
+    dispatch({
+      type: GameDataActions.SET_SCORE,
+      value: parsedData.score,
+    });
+  }, []);
 
   const handleStart = () => {
     setStart(true);
