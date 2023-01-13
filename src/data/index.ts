@@ -126,7 +126,6 @@ export const DRINKS: Drink[] = [
   },
 ];
 
-// TODO: @Tufty62
 const ITEMS: Item[] = [
   {
     name: "A WHOLE MASSIVE ROCKET",

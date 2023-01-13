@@ -20,10 +20,13 @@ const Game: React.FC = () => {
 
   return (
     <div
-      style={{ imageRendering: "pixelated", backgroundSize:"100%", backgroundRepeat:"no-repeat", backgroundImage: "url('./assets/planet_backgrounds/ceres.png')" }}
-      className={
-        "h-screen flex flex-col items-center justify-center w-full"
-      }
+      style={{
+        imageRendering: "pixelated",
+        backgroundSize: "100%",
+        backgroundRepeat: "no-repeat",
+        backgroundImage: "url('./assets/planet_backgrounds/ceres.png')",
+      }}
+      className={"h-screen flex flex-col items-center justify-center w-full"}
     >
       <img
         style={{
@@ -57,9 +60,9 @@ const Game: React.FC = () => {
         </SlideMenu>
         <SlideMenu fromLeft={true}>
           <p>left</p>
-          {DATA.items
-          .map((item) => (<Shop item={item}></Shop>))
-          } 
+          {DATA.items.map((item) => (
+            <Shop item={item}></Shop>
+          ))}
         </SlideMenu>
 
         <div className={"grid grid-cols-2 gap-4 m-4"}>
