@@ -64,7 +64,8 @@ const App: React.FC = () => {
 
   const handleStart = () => {
     setStart(true);
-    let audio = new Audio("walking_in_the_highlands_1.mp3");
+    // let audio = new Audio("/assets/music/walking_in_the_highlands_1.mp3");
+    let audio = new Audio("/assets/music/battery_acid.mp3");
     audio.loop = true;
     audio.play();
   };

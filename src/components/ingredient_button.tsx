@@ -24,19 +24,13 @@ const IngredientButton: React.FC<Props> = ({
   const handleUpgrade = () => {
     // TODO (gonk): add if statement to check if player has enough money
     // after tom implemented the global state thing (react thing nerd thing)
-    if (currentUpgrade >= upgradeCount) return;
+    if (currentUpgrade >= upgradeCount - 1) return;
 
-    if (currentUpgrade < upgradeCount - 1) {
-      dispatch!({
-        type: GameDataActions.SUBTRACT_MONEY,
-        value: upgradeCosts[currentUpgrade],
-      });
-    }
+    dispatch!({
+      type: GameDataActions.SUBTRACT_MONEY,
+      value: upgradeCosts[currentUpgrade],
+    });
     setCurrentUpgrade((t) => t + 1);
-  };
-
-  const showUpgradeDescriptionPopup = () => {
-    // TODO: show popup
   };
 
   return (
@@ -45,15 +39,29 @@ const IngredientButton: React.FC<Props> = ({
         className={"border-2 border-white group relative"}
         onClick={handleUpgrade}
       >
-        <p
+
+        { /* Popup description TODO: css it properly */ }
+        <div
           className={
-            "scale-0 text-xl absolute bg-red-500 -right-[200px] -top-[50px] group-hover:scale-100 z-[2]"
+            "w-[300px] h-[300px] scale-0 text-xl absolute -right-[30px] -top-[200px] group-hover:scale-100 z-[2]"
           }
         >
-          {name}: This is a test description
-          <br />
-          Level: {currentUpgrade < upgradeCount ? currentUpgrade : "Max"}
-        </p>
+          <img
+            style={{
+              imageRendering: "pixelated",
+            }}
+            className={"w-[300px] h-[300px] absolute -right[200px] -top-[50px] z-[-1]"}
+            src={`assets/UI/ingredient_upgrade_description_bubble.png`}
+            alt={`Description sprite`}
+          />
+          <p className={"text-black bg-red-500 z-[4]"}>
+            {name}: This is a test description
+            <br />
+            Level: {currentUpgrade < upgradeCount ? currentUpgrade : "Max"}
+          </p>
+        </div>
+
+        { /* Ingredient sprite */ }
         <img
           style={{
             imageRendering: "pixelated",
