@@ -29,7 +29,7 @@ const Game: React.FC = () => {
         </button>
       </div>
       <div
-        className={"w-full h-2/5 flex justify-evenly border-2 border-red-500"}
+        className={"w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"}
       >
         {/* Ingredient upgrade buttons */}
         <div className={"grid grid-cols-2 gap-4 m-4"}>
@@ -69,7 +69,7 @@ const Game: React.FC = () => {
           />
         </div>
 
-        <div className={"flex items-center justify-center"}>
+        <div className={"grid grid-cols-2 gap-4 m-4"}>
           <DrinkButton textureName={"mojito.png"} coolDown={5} />
         </div>
       </div>
