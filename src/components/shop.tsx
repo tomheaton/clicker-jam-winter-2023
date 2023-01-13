@@ -1,11 +1,17 @@
 import React from 'react'
 import {useState} from 'react'
+import { Item } from '../utils/types'
+
+type Props = {
+    item : Item
+};
+
+const Shop: React.FC<Props> = ({
+    item : {name, texture, itemCost, itemDescription}
+}) => {
 
 
-const Shop: React.FC<{
-}>
- = () => {
-
+    const item = {}
     const [tab, setTab] = useState<"tab1" | "tab2" | "tab3">("tab1")
 
 
@@ -40,17 +46,26 @@ const Shop: React.FC<{
 
             <div>
                 {tab == "tab1" && <div>
-                    <p>hello</p></div>}
-            </div>
+                    <p>Go to Rocket Section</p>
+                    </div>}
             <div>
                 {tab == "tab2" && <div>
                     <p>NO</p></div>}
             </div>
             <div>
-                {tab == "tab3" && <div>
-                    <p>beep boop bap</p></div>}
+            {tab == "tab3" && 
+                    <><img
+                        style={{
+                            imageRendering: "pixelated",
+                        }}
+                        className={"w-[100px] h-[100px]"}
+                        src={`assets/drinks/moojito_1.png`}
+                    >
+                    </img><p>Item Name: {name}  Item Cost: {itemCost} Item Description: {itemDescription}</p></>
+                }
             </div>
         </div>
+    </div>
     );
 }
 
