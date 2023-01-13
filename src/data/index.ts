@@ -88,6 +88,7 @@ export const INGREDIENTS: Ingredient[] = [
   },
 ];
 
+// TODO: remove cooldown
 export const DRINKS: Drink[] = [
   {
     name: "Moojito",

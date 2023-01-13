@@ -14,6 +14,7 @@ export enum GameDataActions {
 
   // TODO: @gonk increase by percentage too (instead of just flat rate)
   INCREASE_DRINK_PRICE = "increase_drink_price",
+  // TODO: @gonk change this drink price to drink price multiplier
   SET_DRINK_PRICE = "set_drink_price",
   INCREASE_DRINKS_PER_CLICK = "increase_drinks_per_click",
   SET_DRINKS_PER_CLICK = "set_drinks_per_click",
@@ -28,7 +29,7 @@ type GameDataAction = {
 
 export const initialGameData: GameData = {
   money: 100,
-  drinksPerClick: 0.5,
+  drinksPerClick: 1,
   drinkPrice: 20,
   drinksPerSecond: 0,
 };
