@@ -19,7 +19,7 @@ const IngredientButton: React.FC<Props> = ({
 
   const upgradeCount = upgradeCosts.length;
 
-  const upgradeIngredient = () => {
+  const handleUpgrade = () => {
     // TODO (gonk): add if statement to check if player has enough money
     // after tom implemented the global state thing (react thing nerd thing)
     if (currentUpgrade >= upgradeCount) return;
@@ -41,9 +41,7 @@ const IngredientButton: React.FC<Props> = ({
     <div>
       <button
         className={"border-2 border-white group relative"}
-        onClick={() => {
-          upgradeIngredient();
-        }}
+        onClick={handleUpgrade}
       >
         <p
           className={

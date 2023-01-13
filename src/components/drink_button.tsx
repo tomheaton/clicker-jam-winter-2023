@@ -41,17 +41,15 @@ const DrinkButton: React.FC<Props> = ({
 
   let opacity = onCooldown ? (cooldown - (cooldown - timer)) / cooldown : 1;
 
-  const theWorstPlaceForAFunction = () => {
+  const handleCooldown = () => {
+    setOnCoolDown(true);
     dispatch!({ type: GameDataActions.ADD_MONEY, value: drinkSellValue });
   };
 
   return (
     <button
       className={"border-2 border-white h-full w-full"}
-      onClick={() => {
-        setOnCoolDown(true);
-        theWorstPlaceForAFunction();
-      }}
+      onClick={handleCooldown}
       disabled={onCooldown}
     >
       <img
