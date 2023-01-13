@@ -1,16 +1,22 @@
+import { useContext } from "react";
+import { LogicContext } from "../hooks/logic_provider";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
 
 const Game: React.FC = () => {
+  const gameData = useContext(LogicContext);
+
   return (
     <div
       className={
         "bg-black h-screen flex flex-col items-center justify-center w-full"
       }
     >
-      <div className={"w-full flex flex-1 border-2 border-blue-500"}>top</div>
+      <div className={"w-full flex flex-1 border-2 border-blue-500"}>
+        <pre>{JSON.stringify(gameData, null, 2)}</pre>
+      </div>
       <div
-        className={"w-full flex flex-1 justify-evenly border-2 border-red-500"}
+        className={"w-full h-2/5 flex justify-evenly border-2 border-red-500"}
       >
         { /* Ingredient upgrade buttons */ }
         <div className={"grid grid-cols-2 gap-4 m-4"}>
@@ -53,6 +59,7 @@ const Game: React.FC = () => {
         <div className={"flex items-center justify-center"}>
           <DrinkButton textureName={"mojito.png"} coolDown={5} />
         </div>
+
       </div>
     </div>
   );

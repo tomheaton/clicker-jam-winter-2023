@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Game from "./components/game";
+import { LogicContext } from "./hooks/logic_provider";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
@@ -12,7 +13,16 @@ const App: React.FC = () => {
   };
 
   if (start) {
-    return <Game />;
+    return (
+      <LogicContext.Provider
+        value={{
+          score: 69,
+          money: 420,
+        }}
+      >
+        <Game />
+      </LogicContext.Provider>
+    );
   }
 
   return (
@@ -22,13 +32,13 @@ const App: React.FC = () => {
       <h1 className={"mt-2 text-white font-bold text-5xl"}>clicker-jam-2023</h1>
       <br />
       <button
-          onClick={handleStart}
-          className={
-            "px-4 py-2 text-white font-bold rounded-lg bg-blue-500 hover:bg-blue-600"
-          }
-        >
-          start game
-        </button>
+        onClick={handleStart}
+        className={
+          "px-4 py-2 text-white font-bold rounded-lg bg-blue-500 hover:bg-blue-600"
+        }
+      >
+        start game
+      </button>
     </div>
   );
 };
