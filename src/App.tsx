@@ -81,8 +81,7 @@ const App: React.FC = () => {
 
   return (
     <div
-      style={{ backgroundImage: "url('./assets/planet_backgrounds/ceres.png')" }}
-      className={"bg-black h-screen flex flex-col items-center justify-center"}
+      className={"bg-black-500 h-screen flex flex-col items-center justify-center"}
     >
       <h1 className={"mt-2 text-white font-bold text-5xl"}>clicker-jam-2023</h1>
       <br />

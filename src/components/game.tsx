@@ -20,9 +20,9 @@ const Game: React.FC = () => {
 
   return (
     <div
-      style={{ /*backgroundImage: "url('./assets/planet_backgrounds/ceres.png')"*/ }}
+      style={{ imageRendering: "pixelated", backgroundSize:"100%", backgroundRepeat:"no-repeat", backgroundImage: "url('./assets/planet_backgrounds/ceres.png')" }}
       className={
-        "bg-red-500 h-screen flex flex-col items-center justify-center w-full"
+        "h-screen flex flex-col items-center justify-center w-full"
       }
     >
       <img
