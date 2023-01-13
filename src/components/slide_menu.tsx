@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 type Props = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   fromLeft?: boolean;
   startPinned?: boolean;
 };
@@ -19,21 +19,14 @@ const SlideMenu: React.FC<Props> = ({
   const pinnedClassName = `bg-green-500 z-[1] top-0 h-2/3 fixed w-1/3
     ${fromLeft ? `left-0` : `right-0`}`;
 
-  const buttonClassName = `-z-10 w-20 h-20 top-0 fixed ${
-    fromLeft ? "left-0" : "right-0 "
-  }`;
-
-  // NOTE: when changing the width and height ('h-[50px]') also change the 'calc()' part
-  const pinButtonClassName = `btn-red mt-2${
-    fromLeft
-      ? "left-[calc(100%-50px)] float-right"
-      : "right-[calc(100%-50px)] float-left"
-  }`;
-
   return (
     <div className={pinned ? pinnedClassName : notPinnedClassName}>
       {/* 'Show Menu' button */}
-      <button className={buttonClassName}>
+      <button
+        className={`-z-10 w-20 h-20 top-0 fixed ${
+          fromLeft ? "left-0" : "right-0"
+        }`}
+      >
         <img
           style={{
             imageRendering: "pixelated",
@@ -50,7 +43,7 @@ const SlideMenu: React.FC<Props> = ({
 
       {/* Pin button */}
       <button
-        className={pinButtonClassName}
+        className={`btn-red mt-2 ${fromLeft ? "float-right" : "float-left"}`}
         onClick={() => setPinned((t) => !t)}
       >
         Pin

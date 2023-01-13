@@ -38,7 +38,7 @@ const Game: React.FC = () => {
         alt={`Background Image`}
       />
       {/* TOP */}
-      <div className={"w-full flex flex-1 border-2 border-blue-500"}>
+      <div className={"w-full flex flex-col flex-1 items-center justify-center border-2 border-blue-500 text-white"}>
         <pre>{JSON.stringify(gameData, null, 2)}</pre>
         <br />
         <button
@@ -57,15 +57,12 @@ const Game: React.FC = () => {
         }
       >
         <SlideMenu fromLeft>
-          <p>left</p>
           {DATA.items.map((item) => (
             <Shop item={item} />
           ))}
         </SlideMenu>
 
-        <SlideMenu>
-          <p>lol</p>
-        </SlideMenu>
+        <SlideMenu/>
 
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>
           {currentIngredients.slice(0, mp).map((ingredient) => (
