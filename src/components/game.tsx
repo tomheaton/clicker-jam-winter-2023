@@ -1,48 +1,14 @@
-import { PropsWithChildren, useContext } from "react";
+import { useContext } from "react";
+import { DATA } from "../data";
 import {
   GameDataActions,
   GameDataContext,
-  GameDataDispatchContext,
+  GameDataDispatchContext
 } from "../hooks/game_data";
-import { type DataType } from "../utils/types";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
 
-const DATA: DataType = {
-  ingredients: [
-    {
-      name: "Lime",
-      texture: "mojito.png",
-      upgradeCosts: [1, 5, 10, 15],
-      upgradeDescriptions: [],
-    },
-    {
-      name: "Alcohol",
-      texture: "mojito.png",
-      upgradeCosts: [1, 5, 10, 15],
-      upgradeDescriptions: [],
-    },
-    {
-      name: "Ice",
-      texture: "mojito.png",
-      upgradeCosts: [1, 5, 10, 15],
-      upgradeDescriptions: [],
-    },
-    {
-      name: "Mint",
-      texture: "mojito.png",
-      upgradeCosts: [1, 5, 10, 15],
-      upgradeDescriptions: [],
-    },
-  ],
-  drink: {
-    name: "Mojito",
-    texture: "mojito.png",
-    cooldown: 5,
-  },
-};
-
-const Game: React.FC<PropsWithChildren> = () => {
+const Game: React.FC = () => {
   const gameData = useContext(GameDataContext);
   const dispatch = useContext(GameDataDispatchContext);
 
