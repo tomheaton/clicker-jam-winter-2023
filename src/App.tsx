@@ -1,11 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import Game from "./components/game";
-import {
-  GameDataActions,
-  GameDataContext,
-  gameDataReducer,
-  initialGameData,
-} from "./hooks/game_data";
+import { GameDataActions, GameDataContext, gameDataReducer, GameDataSchema, initialGameData } from "./hooks/game_data";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
@@ -40,48 +35,34 @@ const App: React.FC = () => {
       return;
     }
 
-    const parsedData = JSON.parse(savedData);
-    console.log("parsed data", parsedData);
+    let parsedData;
 
-    if (
-      !parsedData ||
-      !parsedData.money ||
-      !parsedData.drinkPrice ||
-      !parsedData.drinksPerClick ||
-      !parsedData.drinksPerSecond
-    ) {
+    try {
+      parsedData = JSON.parse(savedData);
+      console.log("parsed data", parsedData);
+    } catch (e) {
+      console.error(e);
+    }
+    const result = GameDataSchema.safeParse(parsedData);
+
+    if (!result.success) {
       console.log("resetting local storage");
       // alert("don't mess with the local storage!");
       return;
     }
 
     dispatch({
-      type: GameDataActions.SET_MONEY,
-      value: parsedData.money,
-    });
-
-    dispatch({
-      type: GameDataActions.SET_DRINK_PRICE,
-      value: parsedData.drinkPrice,
-    });
-
-    dispatch({
-      type: GameDataActions.SET_DRINKS_PER_CLICK,
-      value: parsedData.drinksPerClick,
-    });
-
-    dispatch({
-      type: GameDataActions.SET_DRINKS_PER_SECOND,
-      value: parsedData.drinksPerSecond,
+      type: GameDataActions.LOAD,
+      payload: result.data,
     });
   }, []);
 
-  const handleStart = () => {
+  const handleStart = async () => {
     setStart(true);
     // let audio = new Audio("/assets/music/walking_in_the_highlands_1.mp3");
     let audio = new Audio("/assets/music/battery_acid.mp3");
     audio.loop = true;
-    audio.play();
+    await audio.play();
   };
 
   if (start) {

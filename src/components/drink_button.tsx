@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GameDataActions, GameDataContext } from "../hooks/game_data";
-import { type Drink } from "../utils/types";
+import { Drink } from "../utils/types";
 
 const TIME_VALUE: number = 0.25;
 // TODO: add multiplier
@@ -13,8 +13,8 @@ type Props = {
 };
 
 const DrinkButton: React.FC<Props> = ({
-  drink: { name, texture, cooldown, ingredients },
-}) => {
+                                        drink: { name, texture, cooldown, ingredients },
+                                      }) => {
   const { data: gameData, dispatch } = useContext(GameDataContext);
 
   // TODO: remove cooldown
@@ -46,7 +46,7 @@ const DrinkButton: React.FC<Props> = ({
 
   const handleCooldown = () => {
     setOnCoolDown(true);
-    dispatch!({ type: GameDataActions.ADD_MONEY, value: drinkSellValue });
+    dispatch!({ type: GameDataActions.INCREASE_MONEY, payload: drinkSellValue });
   };
 
   const increaseStage = () => {
@@ -55,8 +55,8 @@ const DrinkButton: React.FC<Props> = ({
     if (stage > ingredients.length - 1) {
       setStage(0);
       dispatch!({
-        type: GameDataActions.ADD_MONEY,
-        value: drinkSellValue * gameData!.drinkPrice,
+        type: GameDataActions.INCREASE_MONEY,
+        payload: drinkSellValue * gameData!.drinkPrice,
       });
     }
   };

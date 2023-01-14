@@ -1,9 +1,6 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { DATA } from "../data";
-import {
-  GameDataActions,
-  GameDataContext
-} from "../hooks/game_data";
+import { GameDataActions, GameDataContext } from "../hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
 import Shop from "./shop";
@@ -47,13 +44,13 @@ const Game: React.FC = () => {
         <button
           className={"btn-blue"}
           onClick={() => {
-            dispatch!({ type: GameDataActions.ADD_MONEY, value: 10000 });
+            dispatch({ type: GameDataActions.INCREASE_MONEY, payload: 10000 });
           }}
         >
           Increase Money (10K)
         </button>
 
-        { /* Money counter */ }
+        { /* Money counter */}
         <p className={"bg-black fixed top-0 right-40"}>${gameData.money}</p>
 
         {/* Left menu */}

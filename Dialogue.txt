@@ -5,14 +5,14 @@ Background Speech (appears randomly):
 -Good bar but no atmosphere
 -Go fish
 -I'm gonna be walkin home tonight
--Fuggetaboutit
+-Forggetaboutit
 
 Main Character 1 (has problems with work):
 -Man, do I need a nice zesty, drink. What u recommend?
 If you give a drink that doesn't suit their taste:
 -Ah it's...good. Thanks. Maybe I'll come back ere
 If you give correct drink:
--Wow, that was amazing. *Starts piling all their unncessary stress on barkeeper*
+-Wow, that was amazing. *Starts piling all their unnecessary stress on barkeeper*
 /Gives option to shoot character for being annoying/
 ------------------------------------------------------------------------------------------------------------
 If shoot:
@@ -28,7 +28,7 @@ If not shoot:
 -Hey thanks for the great night. I have a question. How do you make...friends? I really wanna impress these guys but...I don't know how to
 *serve any ---insert type of drink here--- drink*
 -Wow you're giving me this? Thanks, I'll try see what they think
--They...they really liked it! Thanks a bunch. We'll probably come back here again. Thanks...for helping me. 
+-They...they really liked it! Thanks a bunch. We'll probably come back here again. Thanks...for helping me.
 END QUEST SUCCESSFULLY
 *serve other type of drink which is not what was asked*
 *Character dies*

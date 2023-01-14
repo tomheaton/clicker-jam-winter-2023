@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { GameDataActions, GameDataContext } from "../hooks/game_data";
 import { Ingredient } from "../utils/types";
 
@@ -11,8 +11,8 @@ type Props = {
 };
 
 const IngredientButton: React.FC<Props> = ({
-  ingredient: { name, texture, upgradeCosts, upgradeDescriptions },
-}) => {
+                                             ingredient: { name, texture, upgradeCosts, upgradeDescriptions },
+                                           }) => {
   const [currentUpgrade, setCurrentUpgrade] = useState<number>(0);
 
   const { dispatch } = useContext(GameDataContext);
@@ -27,13 +27,13 @@ const IngredientButton: React.FC<Props> = ({
     if (currentUpgrade == 0) {
       dispatch!({
         type: GameDataActions.INCREASE_DRINKS_PER_CLICK,
-        value: 1,
+        payload: 1,
       });
     }
 
     dispatch!({
-      type: GameDataActions.SUBTRACT_MONEY,
-      value: upgradeCosts[currentUpgrade],
+      type: GameDataActions.DECREASE_MONEY,
+      payload: upgradeCosts[currentUpgrade],
     });
     setCurrentUpgrade((t) => t + 1);
   };
@@ -65,7 +65,7 @@ const IngredientButton: React.FC<Props> = ({
             <br />
             {currentUpgrade < upgradeCosts.length ? `$${upgradeCosts[currentUpgrade]}` : ""}
             <br />
-            {currentUpgrade == 0 ? "Decreases the clicks required to make a drink by 1!" : (currentUpgrade < upgradeCosts.length ? upgradeDescriptions[currentUpgrade-1] : "Max") }
+            {currentUpgrade == 0 ? "Decreases the clicks required to make a drink by 1!" : (currentUpgrade < upgradeCosts.length ? upgradeDescriptions[currentUpgrade - 1] : "Max")}
           </p>
         </div>
 

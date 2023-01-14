@@ -150,10 +150,12 @@ const ITEMS: Item[] = [
   },
 ];
 
+// TODO: @tomheaton
 export const MUSIC = [
   "batter_acid",
 ] as const;
 
+// TODO: @tomheaton
 export const SOUNDS = [
   // "click",
 ] as const;
@@ -172,7 +174,9 @@ export const DATA: Data = {
   ingredients: INGREDIENTS,
   drinks: DRINKS,
   items: ITEMS,
+  // @ts-ignore
   music: MUSIC,
+  // @ts-ignore
   sounds: SOUNDS,
   planets: PLANETS,
 };

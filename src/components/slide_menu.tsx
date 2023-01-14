@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 type Props = {
   children?: React.ReactNode;
@@ -7,10 +7,10 @@ type Props = {
 };
 
 const SlideMenu: React.FC<Props> = ({
-  children,
-  fromLeft = false,
-  startPinned = false,
-}) => {
+                                      children,
+                                      fromLeft = false,
+                                      startPinned = false,
+                                    }) => {
   const [pinned, setPinned] = useState<boolean>(startPinned);
 
   const notPinnedClassName = `bg-green-500 z-[1] top-0 h-2/3 ease-in-out duration-300 fixed w-1/3

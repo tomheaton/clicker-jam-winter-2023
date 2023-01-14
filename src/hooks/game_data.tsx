@@ -1,31 +1,41 @@
-import { createContext } from "react";
+import React, { createContext } from "react";
+import { z } from "zod";
 
-type GameData = {
+type GameDataOld = {
   money: number;
   drinkPrice: number;
   drinksPerClick: number;
   drinksPerSecond: number;
 };
 
+export const GameDataSchema = z.object({
+  money: z.number().min(0),
+  drinkPrice: z.number().min(0),
+  drinksPerClick: z.number().min(0),
+  drinksPerSecond: z.number().min(0),
+});
+
+type GameData = z.infer<typeof GameDataSchema>;
+
 export enum GameDataActions {
-  SET_MONEY = "set_money",
-  ADD_MONEY = "add_money",
-  SUBTRACT_MONEY = "subtract_money",
+  LOAD = "load",
+  INCREASE_MONEY = "increase_money",
+  DECREASE_MONEY = "decrease_money",
 
   // TODO: @gonk increase by percentage too (instead of just flat rate)
   INCREASE_DRINK_PRICE = "increase_drink_price",
   // TODO: @gonk change this drink price to drink price multiplier
-  SET_DRINK_PRICE = "set_drink_price",
   INCREASE_DRINKS_PER_CLICK = "increase_drinks_per_click",
-  SET_DRINKS_PER_CLICK = "set_drinks_per_click",
   INCREASE_DRINKS_PER_SECOND = "increase_drinks_per_second",
-  SET_DRINKS_PER_SECOND = "set_drinks_per_second",
 }
 
 type GameDataAction = {
-  type: GameDataActions;
-  value: number;
-};
+  type: Exclude<GameDataActions, GameDataActions.LOAD>;
+  payload: number;
+} | {
+  type: GameDataActions.LOAD;
+  payload: GameData;
+}
 
 export const initialGameData: GameData = {
   money: 100,
@@ -38,56 +48,41 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
   let state: GameData;
 
   switch (action.type) {
-    case GameDataActions.SET_MONEY:
-      return {
-        ...oldState,
-        money: action.value,
-      };
-    case GameDataActions.ADD_MONEY:
+    case GameDataActions.LOAD:
       state = {
-        ...oldState,
-        money: oldState.money + action.value,
+        ...action.payload as GameData,
       };
       break;
-    case GameDataActions.SUBTRACT_MONEY:
+    case GameDataActions.INCREASE_MONEY:
       state = {
         ...oldState,
-        money: oldState.money - action.value,
+        money: oldState.money + action.payload,
+      };
+      break;
+    case GameDataActions.DECREASE_MONEY:
+      state = {
+        ...oldState,
+        money: oldState.money - action.payload,
       };
       break;
     case GameDataActions.INCREASE_DRINK_PRICE:
       state = {
         ...oldState,
-        drinkPrice: oldState.drinkPrice + action.value,
+        drinkPrice: oldState.drinkPrice + action.payload,
       };
       break;
-    case GameDataActions.SET_DRINK_PRICE:
-      return {
-        ...oldState,
-        drinkPrice: action.value,
-      };
     case GameDataActions.INCREASE_DRINKS_PER_CLICK:
       state = {
         ...oldState,
-        drinksPerClick: oldState.drinksPerClick + action.value,
+        drinksPerClick: oldState.drinksPerClick + action.payload,
       };
       break;
-    case GameDataActions.SET_DRINKS_PER_CLICK:
-      return {
-        ...oldState,
-        drinksPerClick: action.value,
-      };
     case GameDataActions.INCREASE_DRINKS_PER_SECOND:
       state = {
         ...oldState,
-        drinksPerSecond: oldState.drinksPerSecond + action.value,
+        drinksPerSecond: oldState.drinksPerSecond + action.payload,
       };
       break;
-    case GameDataActions.SET_DRINKS_PER_SECOND:
-      return {
-        ...oldState,
-        drinksPerSecond: action.value,
-      };
   }
 
   console.log("saving data");
@@ -96,12 +91,9 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
   return state;
 };
 
-export const GameDataContext = createContext<{
+type GameDataContextType = {
   data: GameData;
   dispatch: React.Dispatch<GameDataAction>;
-}>(
-  {} as {
-    data: GameData;
-    dispatch: React.Dispatch<GameDataAction>;
-  }
-);
+};
+
+export const GameDataContext = createContext<GameDataContextType>({} as GameDataContextType);

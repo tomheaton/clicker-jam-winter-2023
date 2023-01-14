@@ -6,8 +6,8 @@ type Props = {
 };
 
 const Shop: React.FC<Props> = ({
-  item: { name, texture, itemCost, itemDescription },
-}) => {
+                                 item: { name, texture, itemCost, itemDescription },
+                               }) => {
   const [tab, setTab] = useState<number>(0);
 
   return (
@@ -47,13 +47,9 @@ const Shop: React.FC<Props> = ({
               src={`assets/drinks/moojito_1.png`}
               alt={`Moojito sprite`}
             />
-            <p>
-              Name: {name}
-              <br />
-              Cost: ${itemCost}
-              <br />
-              Description: {itemDescription}
-            </p>
+            <p>Name: {name}</p>
+            <p>Cost: ${itemCost}</p>
+            <p>Description: {itemDescription}</p>
           </div>
         )}
       </div>
