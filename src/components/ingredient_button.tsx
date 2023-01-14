@@ -1,10 +1,6 @@
 import { PropsWithChildren, useContext, useState } from "react";
+import { GameDataActions, GameDataDispatchContext } from "../hooks/game_data";
 import { Ingredient } from "../utils/types";
-import {
-  GameDataActions,
-  GameDataContext,
-  GameDataDispatchContext,
-} from "../hooks/game_data";
 
 const TIME_VALUE: number = 0.25;
 
@@ -30,12 +26,11 @@ const IngredientButton: React.FC<Props> = ({
     // after tom implemented the global state thing (react thing nerd thing)
     if (currentUpgrade >= upgradeCount - 1) return;
 
-    if (currentUpgrade == 0)
-    {
-        dispatch!({
-          type: GameDataActions.INCREASE_DRINKS_PER_CLICK ,
-          value: 1,
-        });
+    if (currentUpgrade == 0) {
+      dispatch!({
+        type: GameDataActions.INCREASE_DRINKS_PER_CLICK,
+        value: 1,
+      });
     }
 
     dispatch!({
@@ -51,8 +46,7 @@ const IngredientButton: React.FC<Props> = ({
         className={"border-2 border-white group relative"}
         onClick={handleUpgrade}
       >
-
-        { /* Popup description TODO: css it properly */ }
+        {/* Popup description TODO: css it properly */}
         <div
           className={
             "w-[300px] h-[300px] scale-0 text-xl absolute -right-[30px] -top-[200px] group-hover:scale-100 z-[2]"
@@ -62,18 +56,20 @@ const IngredientButton: React.FC<Props> = ({
             style={{
               imageRendering: "pixelated",
             }}
-            className={"w-[300px] h-[300px] absolute -right[200px] -top-[50px] z-[-1]"}
-            src={`assets/UI/ingredient_upgrade_description_bubble.png`}
+            className={
+              "w-[300px] h-[300px] absolute -right[200px] -top-[50px] z-[-1]"
+            }
+            src={`assets/ui/ingredient_upgrade_description_bubble.png`}
             alt={`Description sprite`}
           />
           <p className={"text-black bg-red-500 z-[4]"}>
             {name}: This is a test description
             <br />
-            Level: {currentUpgrade < upgradeCount-1 ? currentUpgrade : "Max"}
+            Level: {currentUpgrade < upgradeCount - 1 ? currentUpgrade : "Max"}
           </p>
         </div>
 
-        { /* Ingredient sprite */ }
+        {/* Ingredient sprite */}
         <img
           style={{
             imageRendering: "pixelated",
