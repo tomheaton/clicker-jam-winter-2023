@@ -179,7 +179,7 @@ const CLICKABLE_UPGRADES: {
       name: "More hands",
       texture: "more_hands",
       description:
-        "More hands means more drinks! However the surgery pill ain't payin itself and people might look at you weirdly.",
+        "More hands means more drinks! However the surgery bill ain't payin itself and people might look at you weirdly.",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
@@ -188,7 +188,7 @@ const CLICKABLE_UPGRADES: {
       name: "More hands",
       texture: "more_hands",
       description:
-        "More hands means more drinks! However the surgery pill ain't payin itself and people might look at you weirdly.",
+        "More hands means more drinks! However the surgery bill ain't payin itself and people might look at you weirdly.",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
