@@ -41,8 +41,8 @@ export const INGREDIENTS: Ingredient[] = [
     upgradeDescriptions: [],
   },
   {
-    name: "Cherry",
-    texture: "cherry",
+    name: "Cherries",
+    texture: "cherries",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
@@ -60,7 +60,7 @@ export const INGREDIENTS: Ingredient[] = [
   },
   {
     name: "Sprinkles",
-    texture: "sprinkles_multiverse",
+    texture: "sprinkles_universe",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
@@ -138,7 +138,7 @@ export const DRINKS: Drink[] = [
     name: "Sunrise Spice",
     texture: "sunrise_spice",
     cooldown: 5,
-    ingredients: getIngredients(["topping_veggies_sun", "cherry", "juice_sun"]),
+    ingredients: getIngredients(["topping_veggies_sun", "cherries", "juice_sun"]),
   },
   {
     name: "Lilac Lager",
@@ -150,7 +150,7 @@ export const DRINKS: Drink[] = [
     name: "Battery Acid",
     texture: "battery_acid",
     cooldown: 5,
-    ingredients: getIngredients(["neon_liqUId", "fizz", "sprinkles_universe", "glow_powder_universe"]),
+    ingredients: getIngredients(["neon_liquid", "fizz", "sprinkles_universe", "glow_powder_universe"]),
   },
   {
     name: "Final Elixir",
