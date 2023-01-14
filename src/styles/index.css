@@ -31,3 +31,7 @@ button:disabled,
 button[disabled] {
   @apply opacity-50 cursor-not-allowed;
 }
+
+.pixel img {
+  image-rendering: pixelated;
+}
