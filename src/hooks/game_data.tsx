@@ -1,5 +1,6 @@
-import React, { createContext } from "react";
+import React, { createContext, useContext } from "react";
 import { z } from "zod";
+import { INGREDIENTS } from "@data/index";
 
 type GameDataOld = {
   money: number;
@@ -7,6 +8,8 @@ type GameDataOld = {
   drinksPerClick: number;
   drinksPerSecond: number;
   level: number;
+  ingredients: { [key: string]: number; };
+  // ingredients: { name: string, level: number }[];
 };
 
 export const GameDataSchema = z.object({
@@ -15,9 +18,13 @@ export const GameDataSchema = z.object({
   drinksPerClick: z.number().min(0),
   drinksPerSecond: z.number().min(0),
   level: z.number().min(0),
+  ingredients: z.record(z.number().min(0)),
+  // ingredients: z.array(z.object({})),
 });
 
 type GameData = z.infer<typeof GameDataSchema>;
+
+// type GameData = GameDataOld;
 
 export enum GameDataActions {
   LOAD = "load",
@@ -30,15 +37,19 @@ export enum GameDataActions {
   INCREASE_DRINKS_PER_CLICK = "increase_drinks_per_click",
   INCREASE_DRINKS_PER_SECOND = "increase_drinks_per_second",
   SET_LEVEL = "set_level",
+  UPGRADE_INGREDIENT = "upgrade_ingredient",
 }
 
 type GameDataAction = {
-  type: Exclude<GameDataActions, GameDataActions.LOAD>;
+  type: Exclude<GameDataActions, [GameDataActions.LOAD, GameDataActions.UPGRADE_INGREDIENT]>;
   payload: number;
 } | {
   type: GameDataActions.LOAD;
   payload: GameData;
-}
+} | {
+  type: GameDataActions.UPGRADE_INGREDIENT;
+  payload: string;
+};
 
 export const initialGameData: GameData = {
   money: 100,
@@ -46,6 +57,15 @@ export const initialGameData: GameData = {
   drinkPrice: 20,
   drinksPerSecond: 0,
   level: 0,
+  ingredients: (() => {
+    const ingredients: Record<string, number> = {};
+
+    INGREDIENTS.forEach((ingredient) => {
+      ingredients[ingredient.texture] = 0;
+    });
+
+    return ingredients;
+  })(),
 };
 
 export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
@@ -93,6 +113,15 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         level: action.payload,
       };
       break;
+    case GameDataActions.UPGRADE_INGREDIENT:
+      state = {
+        ...oldState,
+        ingredients: {
+          ...oldState.ingredients,
+          [action.payload]: oldState.ingredients[action.payload] + 1,
+        },
+      };
+      break;
   }
 
   console.log("saving data");
@@ -107,3 +136,11 @@ type GameDataContextType = {
 };
 
 export const GameDataContext = createContext<GameDataContextType>({} as GameDataContextType);
+
+export const useGameData = () => {
+  const { data: gameData, dispatch } = useContext(GameDataContext);
+  return {
+    gameData,
+    dispatch,
+  };
+};

@@ -20,7 +20,7 @@ const Game: React.FC = () => {
         imageRendering: "pixelated",
         backgroundSize: "100%",
         backgroundRepeat: "no-repeat",
-        backgroundImage: "url('./assets/planet_backgrounds/ceres.png')",
+        backgroundImage: `url('./assets/planets/${DATA.planets[gameData.level]}.png')`,
       }}
       className={"h-screen flex flex-col items-center justify-center w-full"}
     >
@@ -35,10 +35,12 @@ const Game: React.FC = () => {
       {/* TOP */}
       <div
         className={
-          "w-full flex flex-col flex-1 items-center justify-center border-2 border-blue-500 text-white"
+          "w-full flex flex-col flex-1 items-center justify-center border-2 border-blue-500"
         }
       >
-        <pre>{JSON.stringify(gameData, null, 2)}</pre>
+        {/*<pre>{JSON.stringify(gameData, null, 2)}</pre>*/}
+        {/*<pre>{JSON.stringify(gameData.ingredients, null, 2)}</pre>*/}
+        {DATA.planets[gameData.level]}
         <br />
         <button
           className={"btn-blue"}
@@ -89,7 +91,11 @@ const Game: React.FC = () => {
       >
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>
           {currentIngredients.slice(0, mp).map((ingredient) => (
-            <IngredientButton key={ingredient.name} ingredient={ingredient} />
+            <IngredientButton
+              key={ingredient.name}
+              ingredient={ingredient}
+              initialLevel={gameData.ingredients[ingredient.texture]}
+            />
           ))}
         </div>
 
@@ -99,7 +105,11 @@ const Game: React.FC = () => {
 
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>
           {currentIngredients.slice(mp).map((ingredient) => (
-            <IngredientButton key={ingredient.name} ingredient={ingredient} />
+            <IngredientButton
+              key={ingredient.name}
+              ingredient={ingredient}
+              initialLevel={gameData.ingredients[ingredient.texture]}
+            />
           ))}
         </div>
       </div>

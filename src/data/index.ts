@@ -1,12 +1,12 @@
 import { getIngredients } from "../utils";
-import { Data, Drink, Ingredient, Item, Upgrades } from "@utils/types";
+import { Drink, Ingredient, Item, Upgrades } from "@utils/types";
 
 // NOTE: when editing the descriptions, put one less description than upgrading costs, as first description is
 // builtin to the component
 export const INGREDIENTS: Ingredient[] = [
   {
     name: "Boba",
-    // FIX @tomheaton: change this to boba_ceres, it wasn't really working when i tried idk why
+    // FIXME @tomheaton: change this to boba_ceres, it wasn't really working when i tried idk why
     texture: "boba",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],

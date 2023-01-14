@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { GameDataActions, GameDataContext } from "@hooks/game_data";
+import React, { useState } from "react";
+import { GameDataActions, useGameData } from "@hooks/game_data";
 import { Ingredient } from "@utils/types";
 
 const TIME_VALUE: number = 0.25;
@@ -8,34 +8,41 @@ const TIME_VALUE: number = 0.25;
 
 type Props = {
   ingredient: Ingredient;
+  initialLevel: number;
 };
 
 const IngredientButton: React.FC<Props> = ({
                                              ingredient: { name, texture, upgradeCosts, upgradeDescriptions },
+                                             initialLevel,
                                            }) => {
-  const [currentUpgrade, setCurrentUpgrade] = useState<number>(0);
+  const { dispatch } = useGameData();
 
-  const { dispatch } = useContext(GameDataContext);
+  const [currentUpgrade, setCurrentUpgrade] = useState<number>(initialLevel);
 
   const upgradeCount = upgradeCosts.length;
 
   const handleUpgrade = () => {
     // TODO (gonk): add if statement to check if player has enough money
-    // after tom implemented the global state thing (react thing nerd thing)
     if (currentUpgrade >= upgradeCount) return;
 
     if (currentUpgrade == 0) {
-      dispatch!({
+      dispatch({
         type: GameDataActions.INCREASE_DRINKS_PER_CLICK,
         payload: 1,
       });
     }
 
-    dispatch!({
+    dispatch({
       type: GameDataActions.DECREASE_MONEY,
       payload: upgradeCosts[currentUpgrade],
     });
+
     setCurrentUpgrade((t) => t + 1);
+
+    dispatch({
+      type: GameDataActions.UPGRADE_INGREDIENT,
+      payload: texture,
+    });
   };
 
   return (
@@ -46,26 +53,25 @@ const IngredientButton: React.FC<Props> = ({
       >
         {/* Popup description TODO: css it properly */}
         <div
-          className={
-            "w-[300px] h-[300px] scale-0 text-xl absolute -right-[30px] -top-[200px] group-hover:scale-100 z-[2]"
-          }
+          className={"w-[300px] h-[300px] scale-0 text-xl absolute -right-[30px] -top-[200px] group-hover:scale-100 z-[2]"}
         >
           <img
-            style={{
-              imageRendering: "pixelated",
-            }}
-            className={
-              "w-[300px] h-[300px] absolute -right[200px] -top-[50px] z-[-1]"
-            }
+            className={"pixel w-[300px] h-[300px] absolute -right[200px] -top-[50px] z-[-1]"}
             src={`assets/ui/ingredient_upgrade_description_bubble.png`}
             alt={`Description sprite`}
           />
           <p className={"text-black bg-red-500 z-[4]"}>
-            {name}
+            {name} {initialLevel.toString()}
             <br />
             {currentUpgrade < upgradeCosts.length ? `$${upgradeCosts[currentUpgrade]}` : ""}
             <br />
-            {currentUpgrade == 0 ? "Decreases the clicks required to make a drink by 1!" : (currentUpgrade < upgradeCosts.length ? upgradeDescriptions[currentUpgrade - 1] : "Max")}
+            {currentUpgrade == 0 ?
+              (
+                "Decreases the clicks required to make a drink by 1!"
+              ) : (
+                currentUpgrade < upgradeCosts.length ? upgradeDescriptions[currentUpgrade - 1] : "Max"
+              )
+            }
           </p>
         </div>
 

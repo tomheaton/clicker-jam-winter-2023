@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useState } from "react";
 import Game from "./components/game";
 import { GameDataActions, GameDataContext, gameDataReducer, GameDataSchema, initialGameData } from "@hooks/game_data";
+import { toast } from "react-hot-toast";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
@@ -65,6 +66,11 @@ const App: React.FC = () => {
     await audio.play();
   };
 
+  const handleReset = () => {
+    console.log("resetting game");
+    toast.success("Game Reset!");
+  };
+
   if (start) {
     return (
       <GameDataContext.Provider value={{ data: gameData, dispatch }}>
@@ -92,6 +98,10 @@ const App: React.FC = () => {
       <br />
       <button onClick={handleStart} className={"btn-blue"}>
         start game
+      </button>
+      <br/>
+      <button onClick={handleReset} className={"btn-red"}>
+        reset
       </button>
     </div>
   );
