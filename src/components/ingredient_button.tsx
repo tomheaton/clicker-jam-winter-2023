@@ -22,7 +22,7 @@ const IngredientButton: React.FC<Props> = ({
   const handleUpgrade = () => {
     // TODO (gonk): add if statement to check if player has enough money
     // after tom implemented the global state thing (react thing nerd thing)
-    if (currentUpgrade >= upgradeCount - 1) return;
+    if (currentUpgrade >= upgradeCount) return;
 
     if (currentUpgrade == 0) {
       dispatch!({
@@ -63,7 +63,9 @@ const IngredientButton: React.FC<Props> = ({
           <p className={"text-black bg-red-500 z-[4]"}>
             {name}
             <br />
-            {currentUpgrade == 0 ? "Decreases the clicks required to make a drink by 1!" : (currentUpgrade < upgradeCosts.length - 1 ? upgradeDescriptions[currentUpgrade] : "Max") }
+            {currentUpgrade < upgradeCosts.length ? `$${upgradeCosts[currentUpgrade]}` : ""}
+            <br />
+            {currentUpgrade == 0 ? "Decreases the clicks required to make a drink by 1!" : (currentUpgrade < upgradeCosts.length ? upgradeDescriptions[currentUpgrade-1] : "Max") }
           </p>
         </div>
 
