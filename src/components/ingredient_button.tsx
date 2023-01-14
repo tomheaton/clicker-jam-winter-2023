@@ -61,9 +61,9 @@ const IngredientButton: React.FC<Props> = ({
             alt={`Description sprite`}
           />
           <p className={"text-black bg-red-500 z-[4]"}>
-            {name}: This is a test description
+            {name}
             <br />
-            Level: {currentUpgrade < upgradeCount - 1 ? currentUpgrade : "Max"}
+            {currentUpgrade == 0 ? "Decreases the clicks required to make a drink by 1!" : (currentUpgrade < upgradeCosts.length - 1 ? upgradeDescriptions[currentUpgrade] : "Max") }
           </p>
         </div>
 

@@ -1,6 +1,8 @@
 import { getIngredients } from "../utils";
 import { Data, Drink, Ingredient, Item } from "../utils/types";
 
+// NOTE: when editing the descriptions, put one less description than upgrading costs, as first description is
+// builtin to the component
 export const INGREDIENTS: Ingredient[] = [
   {
     name: "Boba",
@@ -13,7 +15,7 @@ export const INGREDIENTS: Ingredient[] = [
     name: "Milk",
     texture: "milk",
     upgradeCosts: [1, 5, 10, 15],
-    upgradeDescriptions: [],
+    upgradeDescriptions: ["This is upgrade one", "omg another upgrade", "wow another one bites the dust"],
   },
   {
     name: "Topping Veggies",
