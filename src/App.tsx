@@ -1,11 +1,11 @@
 import React, { useEffect, useReducer, useState } from "react";
 import Game from "./components/game";
 import {
+  GameDataActions,
   GameDataContext,
   GameDataDispatchContext,
-  initialGameData,
   gameDataReducer,
-  GameDataActions,
+  initialGameData,
 } from "./hooks/game_data";
 
 const App: React.FC = () => {
@@ -34,7 +34,6 @@ const App: React.FC = () => {
 
   useEffect(() => {
     console.log("loading saved data");
-
     const savedData = localStorage.getItem("gameData");
 
     if (!savedData) {
@@ -43,7 +42,6 @@ const App: React.FC = () => {
     }
 
     const parsedData = JSON.parse(savedData);
-
     console.log("parsed data", parsedData);
 
     if (
@@ -53,7 +51,8 @@ const App: React.FC = () => {
       !parsedData.drinksPerClick ||
       !parsedData.drinksPerSecond
     ) {
-      alert("don't mess with the local storage!");
+      console.log("resetting local storage");
+      // alert("don't mess with the local storage!");
       return;
     }
 

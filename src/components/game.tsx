@@ -3,7 +3,7 @@ import { DATA } from "../data";
 import {
   GameDataActions,
   GameDataContext,
-  GameDataDispatchContext
+  GameDataDispatchContext,
 } from "../hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
@@ -62,12 +62,6 @@ const Game: React.FC = () => {
           "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
         }
       >
-        <SlideMenu fromLeft>
-          {/* TODO: make an element here that shows the money outside the menu */}
-          {/* <p className={""}>${gameData.money}</p> */}
-          <StatsMenu />
-        </SlideMenu>
-
         {/* Left menu */}
         <SlideMenu fromLeft>
           {DATA.items.map((item) => (
@@ -76,7 +70,11 @@ const Game: React.FC = () => {
         </SlideMenu>
 
         {/* Right menu */}
-        <SlideMenu />
+        <SlideMenu>
+          {/* TODO: make an element here that shows the money outside the menu */}
+          {/* <p className={""}>${gameData.money}</p> */}
+          <StatsMenu />
+        </SlideMenu>
 
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>
           {currentIngredients.slice(0, mp).map((ingredient) => (

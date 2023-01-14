@@ -7,7 +7,7 @@ const StatsMenu: React.FC = () => {
   return (
     <div className={"p-10"}>
       <h1 className={"text-center text-xl font-bold"}>Stats</h1>
-      <div>
+      <div className={"mt-4"}>
         <p>Money: ${gameData?.money ?? "none"}</p>
         <p>Drink selling price: {gameData?.drinkPrice ?? "none"}</p>
         <p>Drinks per click: {gameData?.drinksPerClick ?? "none"}</p>
