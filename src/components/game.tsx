@@ -62,13 +62,13 @@ const Game: React.FC = () => {
           "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
         }
       >
-        <SlideMenu fromLeft={false}>
+        <SlideMenu fromLeft>
           {/* TODO: make an element here that shows the money outside the menu */}
           {/* <p className={""}>${gameData.money}</p> */}
           <StatsMenu />
         </SlideMenu>
 
-        <SlideMenu fromLeft={true}>
+        <SlideMenu>
           {DATA.items.map((item) => (
             <Shop item={item} />
           ))}
