@@ -96,6 +96,12 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
   return state;
 };
 
-export const GameDataContext = createContext<GameData | null>(null);
-export const GameDataDispatchContext =
-  createContext<React.Dispatch<GameDataAction> | null>(null);
+export const GameDataContext = createContext<{
+  data: GameData;
+  dispatch: React.Dispatch<GameDataAction>;
+}>(
+  {} as {
+    data: GameData;
+    dispatch: React.Dispatch<GameDataAction>;
+  }
+);

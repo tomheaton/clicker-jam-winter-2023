@@ -3,7 +3,6 @@ import Game from "./components/game";
 import {
   GameDataActions,
   GameDataContext,
-  GameDataDispatchContext,
   gameDataReducer,
   initialGameData,
 } from "./hooks/game_data";
@@ -87,10 +86,8 @@ const App: React.FC = () => {
 
   if (start) {
     return (
-      <GameDataContext.Provider value={gameData}>
-        <GameDataDispatchContext.Provider value={dispatch}>
-          <Game />
-        </GameDataDispatchContext.Provider>
+      <GameDataContext.Provider value={{ data: gameData, dispatch }}>
+        <Game />
       </GameDataContext.Provider>
     );
   }

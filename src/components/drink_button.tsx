@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { GameDataActions, GameDataDispatchContext } from "../hooks/game_data";
+import { GameDataActions, GameDataContext } from "../hooks/game_data";
 import { type Drink } from "../utils/types";
-import { GameDataContext } from "../hooks/game_data";
 
 const TIME_VALUE: number = 0.25;
 // TODO: add multiplier
@@ -16,8 +15,7 @@ type Props = {
 const DrinkButton: React.FC<Props> = ({
   drink: { name, texture, cooldown, ingredients },
 }) => {
-  const dispatch = useContext(GameDataDispatchContext);
-  const gameData = useContext(GameDataContext);
+  const { data: gameData, dispatch } = useContext(GameDataContext);
 
   // TODO: remove cooldown
   // NOTE(gonk): i left it for now so we can copy it to the drinks per second logic

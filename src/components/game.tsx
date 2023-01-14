@@ -2,8 +2,7 @@ import { useContext } from "react";
 import { DATA } from "../data";
 import {
   GameDataActions,
-  GameDataContext,
-  GameDataDispatchContext,
+  GameDataContext
 } from "../hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
@@ -12,8 +11,7 @@ import SlideMenu from "./slide_menu";
 import StatsMenu from "./stats_menu";
 
 const Game: React.FC = () => {
-  const gameData = useContext(GameDataContext);
-  const dispatch = useContext(GameDataDispatchContext);
+  const { data: gameData, dispatch } = useContext(GameDataContext);
 
   let currentDrink = DATA.drinks[0];
   let currentIngredients = currentDrink.ingredients;

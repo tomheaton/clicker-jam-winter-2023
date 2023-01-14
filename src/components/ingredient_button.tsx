@@ -1,10 +1,8 @@
-import { PropsWithChildren, useContext, useState } from "react";
-import { GameDataActions, GameDataDispatchContext } from "../hooks/game_data";
+import { useContext, useState } from "react";
+import { GameDataActions, GameDataContext } from "../hooks/game_data";
 import { Ingredient } from "../utils/types";
 
 const TIME_VALUE: number = 0.25;
-
-type LOL = PropsWithChildren;
 
 // TODO: upgrade description popup
 
@@ -17,7 +15,7 @@ const IngredientButton: React.FC<Props> = ({
 }) => {
   const [currentUpgrade, setCurrentUpgrade] = useState<number>(0);
 
-  const dispatch = useContext(GameDataDispatchContext);
+  const { dispatch } = useContext(GameDataContext);
 
   const upgradeCount = upgradeCosts.length;
 

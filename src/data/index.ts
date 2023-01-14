@@ -148,13 +148,13 @@ const ITEMS: Item[] = [
   },
 ];
 
-export const DATA: Data = {
-  ingredients: INGREDIENTS,
-  drinks: DRINKS,
-  items: ITEMS,
-  // TODO: @tomheaton
-  // planets: PLANETS,
-};
+export const MUSIC = [
+  "batter_acid",
+] as const;
+
+export const SOUNDS = [
+  // "click",
+] as const;
 
 // TODO: @tomheaton
 export const PLANETS = [
@@ -164,4 +164,13 @@ export const PLANETS = [
   "galaxy",
   "universe",
   "multiverse",
-] as const;
+];
+
+export const DATA: Data = {
+  ingredients: INGREDIENTS,
+  drinks: DRINKS,
+  items: ITEMS,
+  music: MUSIC,
+  sounds: SOUNDS,
+  planets: PLANETS,
+};

@@ -1,3 +1,4 @@
+import { MUSIC, PLANETS, SOUNDS } from "../data";
 
 export type Ingredient = {
   name: string;
@@ -13,10 +14,6 @@ export type Drink = {
   ingredients: Ingredient[];
 };
 
-// TODO: @tomheaton
-// export type Planet = typeof PLANETS[number];
-// export type Planet = string;
-
 export type Item = {
   name: string;
   texture: string;
@@ -24,10 +21,17 @@ export type Item = {
   itemDescription: string;
 };
 
+export type Planet = typeof PLANETS[number];
+
+export type Music = typeof MUSIC[number];
+
+export type Sound = typeof SOUNDS[number];
+
 export type Data = {
   ingredients: Ingredient[];
   drinks: Drink[];
   items: Item[];
-  // TODO: @tomheaton
-  // planets: Planet[];
+  music: Music[];
+  sounds: Sound[];
+  planets: Planet[];
 };

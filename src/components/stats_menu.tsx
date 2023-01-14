@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { GameDataContext } from "../hooks/game_data";
 
 const StatsMenu: React.FC = () => {
-  const gameData = useContext(GameDataContext);
+  const {data: gameData} = useContext(GameDataContext);
 
   return (
     <div className={"p-10"}>
