@@ -1,5 +1,5 @@
 import { getIngredients } from "../utils";
-import { Data, Drink, Ingredient, Item } from "@utils/types";
+import { Data, Drink, Ingredient, Item } from "../utils/types";
 
 // NOTE: when editing the descriptions, put one less description than upgrading costs, as first description is
 // builtin to the component
@@ -148,6 +148,109 @@ const ITEMS: Item[] = [
     itemCost: 2000000,
     itemDescription: "ZOOOOOOOOOOOOOOOOM",
   },
+];
+
+const CLICKABLE_UPGRADES: Upgrades[][] = [
+        // Ceres upgrades
+  [
+    {
+      name: "More hands",
+      texture: "more_hands",
+      description: "More hands means more drinks! However the surgery pill ain't payin itself and people might look at you weirdly.",
+      costs: [ 20, 100, 200, 500 ],
+      flatIncrease: true,
+      increases: [ 1, 2, 5, 10 ]
+    },
+    {
+      name: "More cups",
+      texture: "more_cups",
+      description: "So many cups...",
+      costs: [ 20, 100, 200, 500 ],
+      flatIncrease: true,
+      increases: [ 1, 2, 5, 10 ]
+    },
+  ],
+
+  // Earth upgrades
+  [
+
+  ],
+
+  // Sun upgrades
+  [
+
+  ],
+
+  // Galaxy upgrades
+  [
+
+  ],
+
+  // Universe upgrades
+  [
+
+  ],
+
+  // Multiverse upgrades
+  [
+
+  ]
+];
+
+
+const BAR_UPGRADES: Upgrades[][] = [
+  // Ceres upgrades
+  [
+    {
+      name: "More customers",
+      texture: "more_customers",
+      description: "Is the bar even big enough?",
+      costs: [ 20, 100, 200, 500 ],
+      flatIncrease: true,
+      increases: [ 1, 2, 5, 10 ]
+    },
+    {
+      name: "Better drinks",
+      texture: "",
+      description: "Maybe if our drinks tasted good we'd get more money...",
+      costs: [ 20, 100, 200, 500 ],
+      flatIncrease: true,
+      increases: [ 1, 2, 5, 10 ]
+    },
+    {
+      name: "Rocks",
+      texture: "",
+      description: "Rocks. People from the around here love rocks right?",
+      costs: [ 20, 100, 200, 500 ],
+      flatIncrease: true,
+      increases: [ 1, 2, 5, 10 ]
+    },
+  ],
+
+  // Earth upgrades
+  [
+
+  ],
+
+  // Sun upgrades
+  [
+
+  ],
+
+  // Galaxy upgrades
+  [
+
+  ],
+
+  // Universe upgrades
+  [
+
+  ],
+
+  // Multiverse upgrades
+  [
+
+  ]
 ];
 
 // TODO: @tomheaton

@@ -14,11 +14,21 @@ export type Drink = {
   ingredients: Ingredient[];
 };
 
+// TODO: change this to rocket upgrades type
 export type Item = {
   name: string;
   texture: string;
   itemCost: number;
   itemDescription: string;
+};
+
+export type Upgrades = {
+  name: string;
+  texture: string;
+  description: string;
+  costs: number[];
+  flatIncrease: boolean; // 1: the upgrade increases the drinks/click at a flat rate, 0: it's a multiplier
+  increases: number[];
 };
 
 export type Planet = typeof PLANETS[number];
