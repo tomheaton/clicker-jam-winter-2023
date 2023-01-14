@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { Drink } from "@utils/types";
+import ClickMarker from "@components/click_marker";
 
 const TIME_VALUE: number = 0.25;
 // TODO: add multiplier
@@ -19,7 +20,7 @@ const DrinkButton: React.FC<Props> = ({
 
   // TODO: remove cooldown
   // NOTE(gonk): i left it for now so we can copy it to the drinks per second logic
-  const [onCooldown, setOnCoolDown] = useState<boolean>(false);
+  const [onCooldown, setOnCooldown] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(0);
   const [stage, setStage] = useState<number>(0);
 
@@ -38,14 +39,14 @@ const DrinkButton: React.FC<Props> = ({
   useEffect(() => {
     if (onCooldown && timer >= cooldown) {
       setTimer(0);
-      setOnCoolDown(false);
+      setOnCooldown(false);
     }
   }, [cooldown, onCooldown, timer]);
 
   let opacity = onCooldown ? (cooldown - (cooldown - timer)) / cooldown : 1;
 
   const handleCooldown = () => {
-    setOnCoolDown(true);
+    setOnCooldown(true);
     dispatch!({ type: GameDataActions.INCREASE_MONEY, payload: drinkSellValue });
   };
 
@@ -84,9 +85,10 @@ const DrinkButton: React.FC<Props> = ({
 
   return (
     <button
-      className={"h-full w-full hover:scale-110 hover:ease-in-out active:scale-125"}
+      className={"h-full w-full hover:scale-110 hover:ease-in-out active:scale-125 relative"}
       onClick={increaseStage}
     >
+      <ClickMarker money={120}/>
       <img
         className={"pixel w-full h-full"}
         src={`assets/drinks/${texture}_${stage + 1}.png`}
