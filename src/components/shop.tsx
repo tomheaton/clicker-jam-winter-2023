@@ -14,7 +14,7 @@ const Shop: React.FC<Props> = ({
 
   return (
     <div className={"p-10"}>
-      <div className={"p-2 flex justify-evenly"}>
+      <div className={"p-2 flex justify-evenly space-x-4"}>
         <button className={"btn-blue"} onClick={() => setTab(0)}>
           Bar Upgrades
         </button>
