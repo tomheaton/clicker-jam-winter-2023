@@ -68,6 +68,10 @@ const App: React.FC = () => {
 
   const handleReset = () => {
     console.log("resetting game");
+    dispatch({
+      type: GameDataActions.LOAD,
+      payload: initialGameData,
+    });
     toast.success("Game Reset!");
   };
 
@@ -99,7 +103,7 @@ const App: React.FC = () => {
       <button onClick={handleStart} className={"btn-blue"}>
         start game
       </button>
-      <br/>
+      <br />
       <button onClick={handleReset} className={"btn-red"}>
         reset
       </button>
