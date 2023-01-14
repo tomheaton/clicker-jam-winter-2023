@@ -52,14 +52,10 @@ const Game: React.FC = () => {
         >
           Increase Money (10K)
         </button>
-      </div>
 
-      {/* BOTTOM */}
-      <div
-        className={
-          "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
-        }
-      >
+        { /* Money counter */ }
+        <p className={"bg-black fixed top-0 right-40"}>${gameData.money}</p>
+
         {/* Left menu */}
         <SlideMenu fromLeft>
           {DATA.items.map((item) => (
@@ -69,11 +65,16 @@ const Game: React.FC = () => {
 
         {/* Right menu */}
         <SlideMenu>
-          {/* TODO: make an element here that shows the money outside the menu */}
-          {/* <p className={""}>${gameData.money}</p> */}
           <StatsMenu />
         </SlideMenu>
+      </div>
 
+      {/* BOTTOM */}
+      <div
+        className={
+          "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
+        }
+      >
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>
           {currentIngredients.slice(0, mp).map((ingredient) => (
             <IngredientButton ingredient={ingredient} />
