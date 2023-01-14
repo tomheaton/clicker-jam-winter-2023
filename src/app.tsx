@@ -92,10 +92,7 @@ const App: React.FC = () => {
       <h1 className={"mt-2 font-bold text-5xl"}>clicker-jam-2023</h1>
       <br />
       <img
-        style={{
-          imageRendering: "pixelated",
-        }}
-        className={"w-[200px] h-[200px]"}
+        className={"pixel w-[200px] h-[200px]"}
         src={"/icon.png"}
         alt={"game icon"}
       />

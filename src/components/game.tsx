@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { DATA } from "../data";
-import { GameDataActions, GameDataContext } from "@hooks/game_data";
+import { GameDataActions, useGameData } from "@hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
 import Shop from "./shop";
@@ -8,7 +8,7 @@ import SlideMenu from "./slide_menu";
 import StatsMenu from "./stats_menu";
 
 const Game: React.FC = () => {
-  const { data: gameData, dispatch } = useContext(GameDataContext);
+  const { gameData, dispatch } = useGameData();
 
   const currentDrink = DATA.drinks[gameData.level];
   const currentIngredients = currentDrink.ingredients;
@@ -17,17 +17,14 @@ const Game: React.FC = () => {
   return (
     <div
       style={{
-        imageRendering: "pixelated",
         backgroundSize: "100%",
-        backgroundRepeat: "no-repeat",
         backgroundImage: `url('./assets/planets/${DATA.planets[gameData.level]}.png')`,
       }}
-      className={"h-screen flex flex-col items-center justify-center w-full"}
+      className={"pixel bg-no-repeat h-screen flex flex-col items-center justify-center w-full"}
     >
       {/* Bar foreground image */}
       <img
-        className={"w-full h-[22%] absolute bottom-0 z-[0]"}
-        style={{ imageRendering: "pixelated" }}
+        className={"pixel w-full h-[22%] absolute bottom-0 z-[0]"}
         src={"assets/bar/bar.png"}
         alt={"Bar background image"}
       />

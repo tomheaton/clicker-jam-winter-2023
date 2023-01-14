@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { GameDataContext } from "@hooks/game_data";
+import React from "react";
+import { useGameData } from "@hooks/game_data";
 
 const StatsMenu: React.FC = () => {
-  const { data: gameData } = useContext(GameDataContext);
+  const { gameData } = useGameData();
 
   return (
     <div className={"p-10"}>

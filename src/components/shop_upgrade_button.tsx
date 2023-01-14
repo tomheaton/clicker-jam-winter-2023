@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Upgrades } from "@utils/types";
 
 type Props = {
@@ -19,7 +19,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
       className={"w-[64px] h-[64px] group"}
       onClick={handleBuy}
     >
-      <img 
+      <img
         className={"pixel w-full h-full"}
         src={`assets/upgrades/test_upgrade_sprite.png`}
         alt={`${name} upgrade sprite`}

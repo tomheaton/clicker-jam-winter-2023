@@ -46,10 +46,7 @@ const Shop: React.FC<Props> = ({
         {tab == 2 && (
           <div>
             <img
-              style={{
-                imageRendering: "pixelated",
-              }}
-              className={"w-[100px] h-[100px]"}
+              className={"pixel w-[100px] h-[100px]"}
               src={`assets/drinks/moojito_1.png`}
               alt={`Moojito sprite`}
             />

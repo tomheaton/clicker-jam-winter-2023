@@ -36,10 +36,7 @@ const SlideMenu: React.FC<Props> = ({
         }`}
       >
         <img
-          style={{
-            imageRendering: "pixelated",
-          }}
-          className={"w-full h-full"}
+          className={"pixel w-full h-full"}
           src={`assets/ui/${
             fromLeft
               ? "slide_menu_arrow_right.png"

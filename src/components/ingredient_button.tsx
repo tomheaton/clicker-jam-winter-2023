@@ -15,14 +15,14 @@ const IngredientButton: React.FC<Props> = ({
                                              ingredient: { name, texture, upgradeCosts, upgradeDescriptions },
                                              initialLevel,
                                            }) => {
-  const { dispatch } = useGameData();
+  const { gameData, dispatch } = useGameData();
 
   const [currentUpgrade, setCurrentUpgrade] = useState<number>(initialLevel);
 
   const upgradeCount = upgradeCosts.length;
 
   const handleUpgrade = () => {
-    // TODO (gonk): add if statement to check if player has enough money
+    if (gameData.money < upgradeCosts[currentUpgrade]) return;
     if (currentUpgrade >= upgradeCount) return;
 
     if (currentUpgrade == 0) {
@@ -51,36 +51,38 @@ const IngredientButton: React.FC<Props> = ({
         className={"border-2 border-white group relative"}
         onClick={handleUpgrade}
       >
-        {/* Popup description TODO: css it properly */}
+        {/* Popup description */}
         <div
-          className={"w-[300px] h-[300px] scale-0 text-xl absolute -right-[30px] -top-[200px] group-hover:scale-100 z-[2]"}
+          style={{
+            backgroundSize: "100%",
+            backgroundImage: "url('./assets/ui/ingredient_upgrade_description_bubble.png')",
+          }}
+          className={"pixel bg-no-repeat w-[300px] h-[300px] scale-0 absolute -right-[30px] -top-[200px] group-hover:scale-100 z-[2] flex items-center justify-center"}
         >
-          <img
-            className={"pixel w-[300px] h-[300px] absolute -right[200px] -top-[50px] z-[-1]"}
-            src={`assets/ui/ingredient_upgrade_description_bubble.png`}
-            alt={`Description sprite`}
-          />
-          <p className={"text-black bg-red-500 z-[4]"}>
-            {name} {initialLevel.toString()}
-            <br />
-            {currentUpgrade < upgradeCosts.length ? `$${upgradeCosts[currentUpgrade]}` : ""}
-            <br />
-            {currentUpgrade == 0 ?
-              (
-                "Decreases the clicks required to make a drink by 1!"
-              ) : (
-                currentUpgrade < upgradeCosts.length ? upgradeDescriptions[currentUpgrade - 1] : "Max"
-              )
-            }
-          </p>
+          <div className={"text-black z-[4] ml-6 -mt-16 w-4/5 text-sm text-center"}>
+            <p className={"text-lg font-semibold"}>
+              {name}
+            </p>
+            {currentUpgrade < upgradeCosts.length && (
+              <p>
+                ${upgradeCosts[currentUpgrade]}
+              </p>
+              )}
+            <p>
+              {currentUpgrade == 0 ?
+                (
+                  "Decreases the clicks required to make a drink by 1!"
+                ) : (
+                  currentUpgrade < upgradeCosts.length ? upgradeDescriptions[currentUpgrade - 1] : "Max"
+                )
+              }
+            </p>
+          </div>
         </div>
 
         {/* Ingredient sprite */}
         <img
-          style={{
-            imageRendering: "pixelated",
-          }}
-          className={"w-[200px] h-[200px]"}
+          className={"pixel w-[200px] h-[200px]"}
           src={`assets/ingredients/${texture}.png`}
           alt={`${name} sprite`}
         />

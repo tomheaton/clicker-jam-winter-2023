@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { GameDataActions, GameDataContext } from "@hooks/game_data";
+import React, { useEffect, useState } from "react";
+import { GameDataActions, useGameData } from "@hooks/game_data";
 import { Drink } from "@utils/types";
 
 const TIME_VALUE: number = 0.25;
@@ -15,7 +15,7 @@ type Props = {
 const DrinkButton: React.FC<Props> = ({
                                         drink: { name, texture, cooldown, ingredients },
                                       }) => {
-  const { data: gameData, dispatch } = useContext(GameDataContext);
+  const { gameData, dispatch } = useGameData();
 
   // TODO: remove cooldown
   // NOTE(gonk): i left it for now so we can copy it to the drinks per second logic
@@ -67,11 +67,7 @@ const DrinkButton: React.FC<Props> = ({
       onClick={increaseStage}
     >
       <img
-        style={{
-          imageRendering: "pixelated",
-          opacity,
-        }}
-        className={"w-full h-full"}
+        className={"pixel w-full h-full"}
         src={`assets/drinks/${texture}_${stage + 1}.png`}
         alt={`${name} sprite`}
       />
