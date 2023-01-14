@@ -1,13 +1,18 @@
-import { getIngredients } from "../utils";
 import { Drink, Ingredient, Item, Upgrades } from "@utils/types";
+import { getIngredients } from "../utils";
 
 // NOTE: when editing the descriptions, put one less description than upgrading costs, as first description is
 // builtin to the component
 export const INGREDIENTS: Ingredient[] = [
   {
     name: "Boba",
-    // FIXME @tomheaton: change this to boba_ceres, it wasn't really working when i tried idk why
-    texture: "boba",
+    texture: "boba_ceres",
+    upgradeCosts: [1, 5, 10, 15],
+    upgradeDescriptions: [],
+  },
+  {
+    name: "Boba",
+    texture: "boba_earth",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
@@ -19,7 +24,13 @@ export const INGREDIENTS: Ingredient[] = [
   },
   {
     name: "Topping Veggies",
-    texture: "topping_veggies",
+    texture: "topping_veggies_earth",
+    upgradeCosts: [1, 5, 10, 15],
+    upgradeDescriptions: [],
+  },
+  {
+    name: "Topping Veggies",
+    texture: "topping_veggies_sun",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
@@ -37,13 +48,25 @@ export const INGREDIENTS: Ingredient[] = [
   },
   {
     name: "Juice",
-    texture: "juice",
+    texture: "juice_sun",
+    upgradeCosts: [1, 5, 10, 15],
+    upgradeDescriptions: [],
+  },
+  {
+    name: "Juice",
+    texture: "juice_galaxy",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
   {
     name: "Sprinkles",
-    texture: "sprinkles",
+    texture: "sprinkles_multiverse",
+    upgradeCosts: [1, 5, 10, 15],
+    upgradeDescriptions: [],
+  },
+  {
+    name: "Sprinkles",
+    texture: "sprinkles_galaxy",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
@@ -67,7 +90,13 @@ export const INGREDIENTS: Ingredient[] = [
   },
   {
     name: "Glow Powder",
-    texture: "glow_powder",
+    texture: "glow_powder_universe",
+    upgradeCosts: [1, 5, 10, 15],
+    upgradeDescriptions: [],
+  },
+  {
+    name: "Glow Powder",
+    texture: "glow_powder_multiverse",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
@@ -97,47 +126,37 @@ export const DRINKS: Drink[] = [
     name: "Moojito",
     texture: "moojito",
     cooldown: 5,
-    ingredients: getIngredients(["boba", "milk"]),
+    ingredients: getIngredients(["boba_ceres", "milk"]),
   },
   {
     name: "H2 Ouzini ",
     texture: "h2_ouzini",
     cooldown: 5,
-    ingredients: getIngredients(["boba", "topping_veggies", "water"]),
+    ingredients: getIngredients(["boba_earth", "topping_veggies_earth", "water"]),
   },
   {
     name: "Sunrise Spice",
     texture: "sunrise_spice",
     cooldown: 5,
-    ingredients: getIngredients(["topping_veggies", "cherry", "juice"]),
+    ingredients: getIngredients(["topping_veggies_sun", "cherry", "juice_sun"]),
   },
   {
     name: "Lilac Lager",
     texture: "lilac_lager",
     cooldown: 5,
-    ingredients: getIngredients(["juice", "sprinkles", "cream"]),
+    ingredients: getIngredients(["juice_galaxy", "sprinkles_galaxy", "cream"]),
   },
   {
     name: "Battery Acid",
     texture: "battery_acid",
     cooldown: 5,
-    ingredients: getIngredients([
-      "neon_liqUId",
-      "fizz",
-      "sprinkles",
-      "glow_powder",
-    ]),
+    ingredients: getIngredients(["neon_liqUId", "fizz", "sprinkles_universe", "glow_powder_universe"]),
   },
   {
     name: "Final Elixir",
     texture: "final_elixir",
     cooldown: 5,
-    ingredients: getIngredients([
-      "glow_powder",
-      "void",
-      "stars",
-      "rainbow_swirl",
-    ]),
+    ingredients: getIngredients(["glow_powder_multiverse", "void", "stars", "rainbow_swirl"]),
   },
 ];
 
@@ -150,14 +169,7 @@ const ITEMS: Item[] = [
   },
 ];
 
-export const PLANETS = [
-  "ceres",
-  "earth",
-  "sun",
-  "galaxy",
-  "universe",
-  "multiverse",
-] as const;
+export const PLANETS = ["ceres", "earth", "sun", "galaxy", "universe", "multiverse"] as const;
 
 const CLICKABLE_UPGRADES: {
   [key in typeof PLANETS[number]]: Upgrades[];
@@ -166,7 +178,8 @@ const CLICKABLE_UPGRADES: {
     {
       name: "More hands",
       texture: "more_hands",
-      description: "More hands means more drinks! However the surgery pill ain't payin itself and people might look at you weirdly.",
+      description:
+        "More hands means more drinks! However the surgery pill ain't payin itself and people might look at you weirdly.",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
@@ -174,7 +187,8 @@ const CLICKABLE_UPGRADES: {
     {
       name: "More hands",
       texture: "more_hands",
-      description: "More hands means more drinks! However the surgery pill ain't payin itself and people might look at you weirdly.",
+      description:
+        "More hands means more drinks! However the surgery pill ain't payin itself and people might look at you weirdly.",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
@@ -224,9 +238,7 @@ const BAR_UPGRADES: {
 };
 
 // TODO: @tomheaton
-export const MUSIC = [
-  "batter_acid",
-] as const;
+export const MUSIC = ["batter_acid"] as const;
 
 // TODO: @tomheaton
 export const SOUNDS = [
