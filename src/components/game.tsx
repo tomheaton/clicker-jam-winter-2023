@@ -65,7 +65,7 @@ const Game: React.FC = () => {
         </div>
 
         { /* Money counter */}
-        <p className={"bg-black fixed top-0 right-40"}>${gameData.money}</p>
+        <p className={"bg-black text-white fixed top-0 right-40"}>${gameData.money}</p>
 
         {/* Left menu */}
         <SlideMenu fromLeft>

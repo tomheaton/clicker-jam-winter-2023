@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { Drink } from "@utils/types";
+import { DATA } from "../data";
+import { number } from "zod";
 
 const TIME_VALUE: number = 0.25;
 // TODO: add multiplier
@@ -50,15 +52,39 @@ const DrinkButton: React.FC<Props> = ({
   };
 
   const increaseStage = () => {
-    // TODO: @gonk this won't work for when stuff is upgraded
-    setStage((s) => s + gameData!.drinksPerClick);
-    if (stage > ingredients.length - 1) {
-      setStage(0);
+    // This might be working correctly im not sure (gonk)
+    let numberOfIngredientsUpgradedOnce = 0;
+    for (const ingredient of ingredients) {
+      if (gameData.ingredients[ingredient.texture] > 0)
+      {
+        numberOfIngredientsUpgradedOnce += 1;
+      }
+    }
+
+    if (numberOfIngredientsUpgradedOnce == ingredients.length)
+    {
+      setStage(ingredients.length);
       dispatch!({
         type: GameDataActions.INCREASE_MONEY,
-        payload: drinkSellValue * gameData!.drinkPrice,
+        payload: drinkSellValue * gameData.drinkPrice * (gameData.drinksPerClick - numberOfIngredientsUpgradedOnce),
       });
+      return;
     }
+
+    dispatch!({
+      type: GameDataActions.INCREASE_MONEY,
+      payload: drinkSellValue * gameData.drinkPrice,
+    });
+
+    if (numberOfIngredientsUpgradedOnce == 0)
+    {
+      setStage((s) => (s+1) % (ingredients.length+1));
+      return;
+    }
+
+    setStage((s) => (
+      numberOfIngredientsUpgradedOnce + (s + 1 - numberOfIngredientsUpgradedOnce) % (ingredients.length)
+    ));
   };
 
   return (
