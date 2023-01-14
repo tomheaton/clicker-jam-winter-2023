@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Item } from "@utils/types";
+import ShopUpgradeButton from "./shop_upgrade_button";
+import { DATA } from "../data";
 
 type Props = {
   item: Item;
@@ -27,7 +29,11 @@ const Shop: React.FC<Props> = ({
       <div>
         {tab == 0 && (
           <div>
-            <p>Go to Rocket Section</p>
+            <div className={"flex items-center justify-evenly m-4"}>
+              {DATA.barUpgrades.ceres.map((upgrade) => (
+                <ShopUpgradeButton upgrade={upgrade}/>
+              ))}
+            </div>
           </div>
         )}
 
