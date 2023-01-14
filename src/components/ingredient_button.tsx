@@ -63,7 +63,7 @@ const IngredientButton: React.FC<Props> = ({
               imageRendering: "pixelated",
             }}
             className={"w-[300px] h-[300px] absolute -right[200px] -top-[50px] z-[-1]"}
-            src={`assets/UI/ingredient_upgrade_description_bubble.png`}
+            src={`assets/ui/ingredient_upgrade_description_bubble.png`}
             alt={`Description sprite`}
           />
           <p className={"text-black bg-red-500 z-[4]"}>

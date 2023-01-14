@@ -36,7 +36,6 @@ const Game: React.FC = () => {
         style={{ imageRendering: "pixelated" }}
         src={"assets/bar/bar.png"}
         alt={"Bar background image"}
-        a
       />
 
       {/* TOP */}
@@ -53,7 +52,7 @@ const Game: React.FC = () => {
             dispatch!({ type: GameDataActions.ADD_MONEY, value: 10000 });
           }}
         >
-          Increase Maney (10K)
+          Increase Money (10K)
         </button>
       </div>
 
@@ -70,7 +69,6 @@ const Game: React.FC = () => {
         </SlideMenu>
 
         <SlideMenu fromLeft={true}>
-          <p>left</p>
           {DATA.items.map((item) => (
             <Shop item={item} />
           ))}

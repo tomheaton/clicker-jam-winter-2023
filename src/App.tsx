@@ -46,8 +46,13 @@ const App: React.FC = () => {
 
     console.log("parsed data", parsedData);
 
-    if (!parsedData || !parsedData.money || !parsedData.drinkPrice || !parsedData.drinksPerClick ||
-         !parsedData.drinksPerSecond) {
+    if (
+      !parsedData ||
+      !parsedData.money ||
+      !parsedData.drinkPrice ||
+      !parsedData.drinksPerClick ||
+      !parsedData.drinksPerSecond
+    ) {
       alert("don't mess with the local storage!");
       return;
     }
@@ -71,7 +76,6 @@ const App: React.FC = () => {
       type: GameDataActions.SET_DRINKS_PER_SECOND,
       value: parsedData.drinksPerSecond,
     });
-
   }, []);
 
   const handleStart = () => {

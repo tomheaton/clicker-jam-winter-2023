@@ -55,19 +55,17 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         money: oldState.money - action.value,
       };
       break;
-
     case GameDataActions.INCREASE_DRINK_PRICE:
       state = {
         ...oldState,
         drinkPrice: oldState.drinkPrice + action.value,
       };
       break;
-    case GameDataActions.SET_DRINK_PRICE :
+    case GameDataActions.SET_DRINK_PRICE:
       return {
         ...oldState,
         drinkPrice: action.value,
       };
-
     case GameDataActions.INCREASE_DRINKS_PER_CLICK:
       state = {
         ...oldState,
@@ -79,7 +77,6 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         ...oldState,
         drinksPerClick: action.value,
       };
-
     case GameDataActions.INCREASE_DRINKS_PER_SECOND:
       state = {
         ...oldState,
@@ -91,7 +88,6 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         ...oldState,
         drinksPerSecond: action.value,
       };
-
   }
 
   console.log("saving data");
