@@ -28,18 +28,18 @@ const Shop: React.FC<Props> = ({
 
       <div>
         {tab == 0 && (
-          <div>
-            <div className={"flex items-center justify-evenly m-4"}>
-              {DATA.barUpgrades.ceres.map((upgrade) => (
-                <ShopUpgradeButton upgrade={upgrade}/>
-              ))}
-            </div>
+          <div className={"flex items-center justify-evenly m-4"}>
+            {DATA.barUpgrades.ceres.map((upgrade) => (
+              <ShopUpgradeButton upgrade={upgrade}/>
+            ))}
           </div>
         )}
 
         {tab == 1 && (
-          <div>
-            <p>NO</p>
+          <div className={"flex items-center justify-evenly m-4"}>
+            {DATA.clickableUpgrades.ceres.map((upgrade) => (
+              <ShopUpgradeButton upgrade={upgrade}/>
+            ))}
           </div>
         )}
 
