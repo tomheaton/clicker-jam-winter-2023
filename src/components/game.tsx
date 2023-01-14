@@ -22,13 +22,6 @@ const Game: React.FC = () => {
       }}
       className={"pixel bg-no-repeat h-screen flex flex-col items-center justify-center w-full"}
     >
-      {/* Bar foreground image */}
-      <img
-        className={"pixel w-full h-[22%] absolute bottom-0 z-[0]"}
-        src={"assets/bar/bar.png"}
-        alt={"Bar background image"}
-      />
-
       {/* TOP */}
       <div
         className={

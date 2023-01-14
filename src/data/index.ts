@@ -248,7 +248,7 @@ const BAR_UPGRADES: {
     {
       name: "Music",
       texture: "music",
-      description: "I wanna scream and shout! Oh yeah!",
+      description: "I wanna scream and shout! But no one can hear me in space.",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
