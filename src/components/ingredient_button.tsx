@@ -48,7 +48,7 @@ const IngredientButton: React.FC<Props> = ({
   return (
     <div>
       <button
-        className={"border-2 border-white group relative"}
+        className={"group relative"}
         onClick={handleUpgrade}
       >
         {/* Popup description */}

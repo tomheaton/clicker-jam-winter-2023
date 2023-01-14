@@ -32,7 +32,7 @@ const Game: React.FC = () => {
       {/* TOP */}
       <div
         className={
-          "w-full flex flex-col flex-1 items-center justify-center border-2 border-blue-500"
+          "w-full flex flex-col flex-1 items-center justify-center"
         }
       >
         {/*<pre>{JSON.stringify(gameData, null, 2)}</pre>*/}
@@ -83,7 +83,7 @@ const Game: React.FC = () => {
       {/* BOTTOM */}
       <div
         className={
-          "w-full h-2/5 flex justify-evenly border-2 border-red-500 items-center"
+          "w-full h-2/5 flex justify-evenly items-center"
         }
       >
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>

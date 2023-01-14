@@ -89,11 +89,11 @@ const DrinkButton: React.FC<Props> = ({
 
   return (
     <button
-      className={"border-2 border-white h-full w-full"}
+      className={"h-full w-full"}
       onClick={increaseStage}
     >
       <img
-        className={"pixel w-full h-full"}
+        className={"pixel w-full h-full hover:scale-[110%] hover:ease-in-out active:scale-[120%]"}
         src={`assets/drinks/${texture}_${stage + 1}.png`}
         alt={`${name} sprite`}
       />
