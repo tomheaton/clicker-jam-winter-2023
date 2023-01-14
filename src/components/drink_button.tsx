@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { Drink } from "@utils/types";
-import { DATA } from "../data";
-import { number } from "zod";
 
 const TIME_VALUE: number = 0.25;
 // TODO: add multiplier
@@ -55,14 +53,12 @@ const DrinkButton: React.FC<Props> = ({
     // This might be working correctly im not sure (gonk)
     let numberOfIngredientsUpgradedOnce = 0;
     for (const ingredient of ingredients) {
-      if (gameData.ingredients[ingredient.texture] > 0)
-      {
+      if (gameData.ingredients[ingredient.texture] > 0) {
         numberOfIngredientsUpgradedOnce += 1;
       }
     }
 
-    if (numberOfIngredientsUpgradedOnce == ingredients.length)
-    {
+    if (numberOfIngredientsUpgradedOnce == ingredients.length) {
       setStage(ingredients.length);
       dispatch!({
         type: GameDataActions.INCREASE_MONEY,
@@ -76,9 +72,8 @@ const DrinkButton: React.FC<Props> = ({
       payload: drinkSellValue * gameData.drinkPrice,
     });
 
-    if (numberOfIngredientsUpgradedOnce == 0)
-    {
-      setStage((s) => (s+1) % (ingredients.length+1));
+    if (numberOfIngredientsUpgradedOnce == 0) {
+      setStage((s) => (s + 1) % (ingredients.length + 1));
       return;
     }
 
@@ -89,15 +84,14 @@ const DrinkButton: React.FC<Props> = ({
 
   return (
     <button
-      className={"h-full w-full"}
+      className={"h-full w-full hover:scale-110 hover:ease-in-out active:scale-125"}
       onClick={increaseStage}
     >
       <img
-        className={"pixel w-full h-full hover:scale-[110%] hover:ease-in-out active:scale-[120%]"}
+        className={"pixel w-full h-full"}
         src={`assets/drinks/${texture}_${stage + 1}.png`}
         alt={`${name} sprite`}
       />
-      <p>stage: {stage}</p>
     </button>
   );
 };
