@@ -3,7 +3,7 @@ import { DATA } from "../data";
 import {
   GameDataActions,
   GameDataContext,
-  GameDataDispatchContext,
+  GameDataDispatchContext
 } from "../hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
@@ -68,12 +68,14 @@ const Game: React.FC = () => {
           <StatsMenu />
         </SlideMenu>
 
-        <SlideMenu>
+        {/* Left menu */}
+        <SlideMenu fromLeft>
           {DATA.items.map((item) => (
             <Shop item={item} />
           ))}
         </SlideMenu>
 
+        {/* Right menu */}
         <SlideMenu />
 
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>
