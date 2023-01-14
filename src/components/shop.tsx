@@ -51,7 +51,7 @@ const Shop: React.FC<Props> = ({
               alt={`Moojito sprite`}
             />
             <p>Name: {name}</p>
-            <p>Cost: ${itemCost}</p>
+            <p>Cost: ${itemCost.toLocaleString()}</p>
             <p>Description: {itemDescription}</p>
           </div>
         )}

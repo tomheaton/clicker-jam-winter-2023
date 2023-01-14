@@ -48,7 +48,7 @@ const IngredientButton: React.FC<Props> = ({
   return (
     <div>
       <button
-        className={"group relative"}
+        className={"group relative hover:scale-110 hover:ease-in-out active:scale-125"}
         onClick={handleUpgrade}
       >
         {/* Popup description */}
@@ -65,9 +65,9 @@ const IngredientButton: React.FC<Props> = ({
             </p>
             {currentUpgrade < upgradeCosts.length && (
               <p>
-                ${upgradeCosts[currentUpgrade]}
+                ${upgradeCosts[currentUpgrade].toLocaleString()}
               </p>
-              )}
+            )}
             <p>
               {currentUpgrade == 0 ?
                 (

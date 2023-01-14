@@ -58,7 +58,9 @@ const Game: React.FC = () => {
         </div>
 
         { /* Money counter */}
-        <p className={"bg-black text-white fixed top-0 right-40 text-5xl"}>${gameData.money}</p>
+        <p className={"bg-black text-white fixed top-0 right-40 text-5xl"}>
+          ${gameData.money.toLocaleString()}
+        </p>
 
         {/* Left menu */}
         <SlideMenu fromLeft>
