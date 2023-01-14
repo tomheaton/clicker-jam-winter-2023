@@ -10,10 +10,9 @@ import StatsMenu from "./stats_menu";
 const Game: React.FC = () => {
   const { data: gameData, dispatch } = useContext(GameDataContext);
 
-  let currentDrink = DATA.drinks[0];
-  let currentIngredients = currentDrink.ingredients;
-
-  let mp = parseInt((currentIngredients.length / 2).toFixed(0));
+  const currentDrink = DATA.drinks[gameData.level];
+  const currentIngredients = currentDrink.ingredients;
+  const mp = parseInt((currentIngredients.length / 2).toFixed(0));
 
   return (
     <div
@@ -49,6 +48,22 @@ const Game: React.FC = () => {
         >
           Increase Money (10K)
         </button>
+        <br />
+        <div className={"space-x-4"}>
+          {Array.from(Array(DATA.drinks.length).keys()).map((x) => {
+            return (
+              <button
+                key={x}
+                className={"btn-red"}
+                onClick={() => {
+                  dispatch({ type: GameDataActions.SET_LEVEL, payload: x });
+                }}
+              >
+                {x}
+              </button>
+            );
+          })}
+        </div>
 
         { /* Money counter */}
         <p className={"bg-black fixed top-0 right-40"}>${gameData.money}</p>
@@ -56,7 +71,7 @@ const Game: React.FC = () => {
         {/* Left menu */}
         <SlideMenu fromLeft>
           {DATA.items.map((item) => (
-            <Shop item={item} />
+            <Shop key={item.name} item={item} />
           ))}
         </SlideMenu>
 
@@ -74,7 +89,7 @@ const Game: React.FC = () => {
       >
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>
           {currentIngredients.slice(0, mp).map((ingredient) => (
-            <IngredientButton ingredient={ingredient} />
+            <IngredientButton key={ingredient.name} ingredient={ingredient} />
           ))}
         </div>
 
@@ -84,7 +99,7 @@ const Game: React.FC = () => {
 
         <div className={"w-2/5 flex items-center justify-evenly m-4"}>
           {currentIngredients.slice(mp).map((ingredient) => (
-            <IngredientButton ingredient={ingredient} />
+            <IngredientButton key={ingredient.name} ingredient={ingredient} />
           ))}
         </div>
       </div>

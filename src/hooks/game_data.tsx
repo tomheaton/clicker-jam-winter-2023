@@ -6,6 +6,7 @@ type GameDataOld = {
   drinkPrice: number;
   drinksPerClick: number;
   drinksPerSecond: number;
+  level: number;
 };
 
 export const GameDataSchema = z.object({
@@ -13,6 +14,7 @@ export const GameDataSchema = z.object({
   drinkPrice: z.number().min(0),
   drinksPerClick: z.number().min(0),
   drinksPerSecond: z.number().min(0),
+  level: z.number().min(0),
 });
 
 type GameData = z.infer<typeof GameDataSchema>;
@@ -27,6 +29,7 @@ export enum GameDataActions {
   // TODO: @gonk change this drink price to drink price multiplier
   INCREASE_DRINKS_PER_CLICK = "increase_drinks_per_click",
   INCREASE_DRINKS_PER_SECOND = "increase_drinks_per_second",
+  SET_LEVEL = "set_level",
 }
 
 type GameDataAction = {
@@ -42,6 +45,7 @@ export const initialGameData: GameData = {
   drinksPerClick: 1,
   drinkPrice: 20,
   drinksPerSecond: 0,
+  level: 0,
 };
 
 export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
@@ -81,6 +85,12 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
       state = {
         ...oldState,
         drinksPerSecond: oldState.drinksPerSecond + action.payload,
+      };
+      break;
+    case GameDataActions.SET_LEVEL:
+      state = {
+        ...oldState,
+        level: action.payload,
       };
       break;
   }
