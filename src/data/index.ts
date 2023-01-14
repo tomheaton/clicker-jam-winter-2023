@@ -4,6 +4,7 @@ import { Data, Drink, Ingredient, Item } from "../utils/types";
 export const INGREDIENTS: Ingredient[] = [
   {
     name: "Boba",
+    // FIX @tomheaton: change this to boba_ceres, it wasn't really working when i tried idk why
     texture: "boba",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
@@ -33,8 +34,8 @@ export const INGREDIENTS: Ingredient[] = [
     upgradeDescriptions: [],
   },
   {
-    name: "JUIce",
-    texture: "jUIce",
+    name: "Juice",
+    texture: "juice",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
@@ -51,8 +52,8 @@ export const INGREDIENTS: Ingredient[] = [
     upgradeDescriptions: [],
   },
   {
-    name: "Neon LiqUId",
-    texture: "neon_liqUId",
+    name: "Neon Liquid",
+    texture: "neon_liquid",
     upgradeCosts: [1, 5, 10, 15],
     upgradeDescriptions: [],
   },
@@ -106,13 +107,13 @@ export const DRINKS: Drink[] = [
     name: "Sunrise Spice",
     texture: "sunrise_spice",
     cooldown: 5,
-    ingredients: getIngredients(["topping_veggies", "cherry", "jUIce"]),
+    ingredients: getIngredients(["topping_veggies", "cherry", "juice"]),
   },
   {
     name: "Lilac Lager",
     texture: "lilac_lager",
     cooldown: 5,
-    ingredients: getIngredients(["jUIce", "sprinkles", "cream"]),
+    ingredients: getIngredients(["juice", "sprinkles", "cream"]),
   },
   {
     name: "Battery Acid",
