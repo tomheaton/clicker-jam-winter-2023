@@ -28,7 +28,7 @@ const Shop: React.FC<Props> = ({
 
       <div>
         {tab == 0 && (
-          <div className={"flex items-center justify-evenly m-4"}>
+          <div className={"grid grid-cols-4 grid-rows-4"}>
             {DATA.barUpgrades.ceres.map((upgrade) => (
               <ShopUpgradeButton upgrade={upgrade}/>
             ))}
@@ -36,7 +36,7 @@ const Shop: React.FC<Props> = ({
         )}
 
         {tab == 1 && (
-          <div className={"flex items-center justify-evenly m-4"}>
+          <div className={"grid grid-cols-4 grid-rows-4"}>
             {DATA.clickableUpgrades.ceres.map((upgrade) => (
               <ShopUpgradeButton upgrade={upgrade}/>
             ))}
