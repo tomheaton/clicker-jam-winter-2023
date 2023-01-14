@@ -25,7 +25,7 @@ const SlideMenu: React.FC<Props> = ({
       <img
         className={"w-full h-full absolute z-[-9]"}
         style={{ imageRendering: "pixelated" }}
-        src={"assets/ui/slide_menu_background.png"}
+        src={"assets/UI/slide_menu_background.png"}
         alt={"Slide menu background image"}
       />
 
@@ -40,7 +40,7 @@ const SlideMenu: React.FC<Props> = ({
             imageRendering: "pixelated",
           }}
           className={"w-full h-full"}
-          src={`assets/ui/${
+          src={`assets/UI/${
             fromLeft
               ? "slide_menu_arrow_right.png"
               : "slide_menu_arrow_left.png"
@@ -57,7 +57,7 @@ const SlideMenu: React.FC<Props> = ({
         <img
           className={`w-full h-full ${fromLeft ? "" : "-scale-x-100"}`}
           style={{ imageRendering: "pixelated" }}
-          src={`assets/ui/${
+          src={`assets/UI/${
             pinned ? "pin_button_pinned.png" : "pin_button_not_pinned.png"
           }`}
           alt={"Pin button image"}
