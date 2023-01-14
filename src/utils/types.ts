@@ -43,5 +43,5 @@ export type Data = {
   items: Item[];
   music: Music[];
   sounds: Sound[];
-  planets: Planet[];
+  planets: typeof PLANETS;
 };

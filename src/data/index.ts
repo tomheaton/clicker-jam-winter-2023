@@ -1,5 +1,5 @@
 import { getIngredients } from "../utils";
-import { Data, Drink, Ingredient, Item } from "../utils/types";
+import { Data, Drink, Ingredient, Item, Upgrades } from "@utils/types";
 
 // NOTE: when editing the descriptions, put one less description than upgrading costs, as first description is
 // builtin to the component
@@ -150,108 +150,78 @@ const ITEMS: Item[] = [
   },
 ];
 
-const CLICKABLE_UPGRADES: Upgrades[][] = [
-        // Ceres upgrades
-  [
+export const PLANETS = [
+  "ceres",
+  "earth",
+  "sun",
+  "galaxy",
+  "universe",
+  "multiverse",
+] as const;
+
+const CLICKABLE_UPGRADES: {
+  [key in typeof PLANETS[number]]: Upgrades[];
+} = {
+  ceres: [
     {
       name: "More hands",
       texture: "more_hands",
       description: "More hands means more drinks! However the surgery pill ain't payin itself and people might look at you weirdly.",
-      costs: [ 20, 100, 200, 500 ],
+      costs: [20, 100, 200, 500],
       flatIncrease: true,
-      increases: [ 1, 2, 5, 10 ]
+      increases: [1, 2, 5, 10],
     },
     {
-      name: "More cups",
-      texture: "more_cups",
-      description: "So many cups...",
-      costs: [ 20, 100, 200, 500 ],
+      name: "More hands",
+      texture: "more_hands",
+      description: "More hands means more drinks! However the surgery pill ain't payin itself and people might look at you weirdly.",
+      costs: [20, 100, 200, 500],
       flatIncrease: true,
-      increases: [ 1, 2, 5, 10 ]
+      increases: [1, 2, 5, 10],
     },
   ],
+  earth: [],
+  sun: [],
+  galaxy: [],
+  universe: [],
+  multiverse: [],
+};
 
-  // Earth upgrades
-  [
-
-  ],
-
-  // Sun upgrades
-  [
-
-  ],
-
-  // Galaxy upgrades
-  [
-
-  ],
-
-  // Universe upgrades
-  [
-
-  ],
-
-  // Multiverse upgrades
-  [
-
-  ]
-];
-
-
-const BAR_UPGRADES: Upgrades[][] = [
-  // Ceres upgrades
-  [
+const BAR_UPGRADES: {
+  [key in typeof PLANETS[number]]: Upgrades[];
+} = {
+  ceres: [
     {
       name: "More customers",
       texture: "more_customers",
       description: "Is the bar even big enough?",
-      costs: [ 20, 100, 200, 500 ],
+      costs: [20, 100, 200, 500],
       flatIncrease: true,
-      increases: [ 1, 2, 5, 10 ]
+      increases: [1, 2, 5, 10],
     },
     {
       name: "Better drinks",
       texture: "",
       description: "Maybe if our drinks tasted good we'd get more money...",
-      costs: [ 20, 100, 200, 500 ],
+      costs: [20, 100, 200, 500],
       flatIncrease: true,
-      increases: [ 1, 2, 5, 10 ]
+      increases: [1, 2, 5, 10],
     },
     {
       name: "Rocks",
       texture: "",
       description: "Rocks. People from the around here love rocks right?",
-      costs: [ 20, 100, 200, 500 ],
+      costs: [20, 100, 200, 500],
       flatIncrease: true,
-      increases: [ 1, 2, 5, 10 ]
+      increases: [1, 2, 5, 10],
     },
   ],
-
-  // Earth upgrades
-  [
-
-  ],
-
-  // Sun upgrades
-  [
-
-  ],
-
-  // Galaxy upgrades
-  [
-
-  ],
-
-  // Universe upgrades
-  [
-
-  ],
-
-  // Multiverse upgrades
-  [
-
-  ]
-];
+  earth: [],
+  sun: [],
+  galaxy: [],
+  universe: [],
+  multiverse: [],
+};
 
 // TODO: @tomheaton
 export const MUSIC = [
@@ -263,23 +233,14 @@ export const SOUNDS = [
   // "click",
 ] as const;
 
-// TODO: @tomheaton
-export const PLANETS = [
-  "ceres",
-  "earth",
-  "sun",
-  "galaxy",
-  "universe",
-  "multiverse",
-];
-
-export const DATA: Data = {
+// export const DATA: Data = {
+export const DATA = {
   ingredients: INGREDIENTS,
   drinks: DRINKS,
   items: ITEMS,
-  // @ts-ignore
   music: MUSIC,
-  // @ts-ignore
   sounds: SOUNDS,
   planets: PLANETS,
+  barUpgrades: BAR_UPGRADES,
+  clickableUpgrades: CLICKABLE_UPGRADES,
 };
