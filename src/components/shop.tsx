@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Item } from "../utils/types";
+import { Item } from "@utils/types";
 
 type Props = {
   item: Item;

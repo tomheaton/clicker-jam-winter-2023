@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import Game from "./components/game";
-import { GameDataActions, GameDataContext, gameDataReducer, GameDataSchema, initialGameData } from "./hooks/game_data";
+import { GameDataActions, GameDataContext, gameDataReducer, GameDataSchema, initialGameData } from "@hooks/game_data";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);

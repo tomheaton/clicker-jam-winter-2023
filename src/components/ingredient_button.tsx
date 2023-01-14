@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { GameDataActions, GameDataContext } from "../hooks/game_data";
-import { Ingredient } from "../utils/types";
+import { GameDataActions, GameDataContext } from "@hooks/game_data";
+import { Ingredient } from "@utils/types";
 
 const TIME_VALUE: number = 0.25;
 

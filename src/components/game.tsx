@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { DATA } from "../data";
-import { GameDataActions, GameDataContext } from "../hooks/game_data";
+import { GameDataActions, GameDataContext } from "@hooks/game_data";
 import DrinkButton from "./drink_button";
 import IngredientButton from "./ingredient_button";
 import Shop from "./shop";
@@ -24,7 +24,7 @@ const Game: React.FC = () => {
       }}
       className={"h-screen flex flex-col items-center justify-center w-full"}
     >
-      {/* Bar foreground img */}
+      {/* Bar foreground image */}
       <img
         className={"w-full h-[22%] absolute bottom-0 z-[0]"}
         style={{ imageRendering: "pixelated" }}

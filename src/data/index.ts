@@ -1,5 +1,5 @@
 import { getIngredients } from "../utils";
-import { Data, Drink, Ingredient, Item } from "../utils/types";
+import { Data, Drink, Ingredient, Item } from "@utils/types";
 
 // NOTE: when editing the descriptions, put one less description than upgrading costs, as first description is
 // builtin to the component

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { GameDataActions, GameDataContext } from "../hooks/game_data";
-import { Drink } from "../utils/types";
+import { GameDataActions, GameDataContext } from "@hooks/game_data";
+import { Drink } from "@utils/types";
 
 const TIME_VALUE: number = 0.25;
 // TODO: add multiplier
