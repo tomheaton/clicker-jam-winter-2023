@@ -8,36 +8,36 @@ type Props = {
 const Shop: React.FC<Props> = ({
   item: { name, texture, itemCost, itemDescription },
 }) => {
-  const [tab, setTab] = useState<"tab1" | "tab2" | "tab3">("tab1");
+  const [tab, setTab] = useState<number>(0);
 
   return (
     <div className={"p-10"}>
       <div className={"p-2 flex justify-evenly"}>
-        <button className={"btn-blue"} onClick={() => setTab("tab1")}>
+        <button className={"btn-blue"} onClick={() => setTab(0)}>
           Bar Upgrades
         </button>
-        <button className={"btn-blue"} onClick={() => setTab("tab2")}>
+        <button className={"btn-blue"} onClick={() => setTab(1)}>
           Clicker Upgrades
         </button>
-        <button className={"btn-blue"} onClick={() => setTab("tab3")}>
+        <button className={"btn-blue"} onClick={() => setTab(2)}>
           Rocket Upgrades
         </button>
       </div>
 
       <div>
-        {tab == "tab1" && (
+        {tab == 0 && (
           <div>
             <p>Go to Rocket Section</p>
           </div>
         )}
 
-        {tab == "tab2" && (
+        {tab == 1 && (
           <div>
             <p>NO</p>
           </div>
         )}
 
-        {tab == "tab3" && (
+        {tab == 2 && (
           <div>
             <img
               style={{
