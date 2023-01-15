@@ -1,8 +1,11 @@
 import React from "react";
+import { DATA } from "../data";
 import { useGameData } from "@hooks/game_data";
 
 const StatsMenu: React.FC = () => {
   const { gameData } = useGameData();
+
+  const currentPlanet = DATA.planets[gameData.level];
 
   return (
     <div className={"p-10"}>
@@ -12,6 +15,7 @@ const StatsMenu: React.FC = () => {
         <p>Drink selling price: {gameData.drinkPrice}</p>
         <p>Drinks per click: {gameData.drinksPerClick}</p>
         <p>Drinks per second: {gameData.drinksPerSecond}</p>
+        <p>Planet: {currentPlanet.charAt(0).toUpperCase() + currentPlanet.slice(1)}</p>
       </div>
     </div>
   );
