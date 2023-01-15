@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Item } from "@utils/types";
 import ShopUpgradeButton from "./shop_upgrade_button";
+import { useGameData } from "@hooks/game_data";
 import { DATA } from "../data";
+import { gameDataReducer } from "@hooks/game_data";
 
 type Props = {
   item: Item;
@@ -10,6 +12,7 @@ type Props = {
 const Shop: React.FC<Props> = ({
                                  item: { name, texture, itemCost, itemDescription },
                                }) => {
+  const { gameData } = useGameData();
   const [tab, setTab] = useState<number>(0);
 
   return (
@@ -29,20 +32,23 @@ const Shop: React.FC<Props> = ({
       <div>
         {tab == 0 && (
           <div className={"grid grid-cols-4 grid-rows-4"}>
-            {DATA.barUpgrades.ceres.map((upgrade) => (
-              <ShopUpgradeButton upgrade={upgrade}/>
+            {Object.values(DATA.barUpgrades).map((value, index) => (
+              value.map((upgrade) => (
+                <ShopUpgradeButton key={upgrade.name} upgrade={upgrade} locked={index > gameData.level } planetName={DATA.planets[index]} />
+              ))
             ))}
           </div>
         )}
 
         {tab == 1 && (
           <div className={"grid grid-cols-4 grid-rows-4"}>
-            {DATA.clickableUpgrades.ceres.map((upgrade) => (
-              <ShopUpgradeButton upgrade={upgrade}/>
+            {Object.values(DATA.clickableUpgrades).map((value, index) => (
+              value.map((upgrade) => (
+                <ShopUpgradeButton key={upgrade.name} upgrade={upgrade} locked={ index > gameData.level } planetName={DATA.planets[index]}/>
+              ))
             ))}
           </div>
         )}
-
         {tab == 2 && (
           <div>
             <img

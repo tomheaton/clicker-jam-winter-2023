@@ -230,7 +230,7 @@ const BAR_UPGRADES: {
       increases: [1, 2, 5, 10],
     },
     {
-      name: "Nicer Glasses",
+      name: "Nicer glasses",
       texture: "nicer_glasses",
       description: "'Looks nicer must taste nicer'",
       costs: [20, 100, 200, 500],
@@ -256,7 +256,7 @@ const BAR_UPGRADES: {
   ],
   earth: [
     {
-      name: "Global Cooling",
+      name: "Global cooling",
       texture: "global_cooling",
       description: "Everyone should just chill out.",
       costs: [20, 100, 200, 500],
@@ -264,7 +264,7 @@ const BAR_UPGRADES: {
       increases: [1, 2, 5, 10],
     },
     {
-      name: "'No Politics' Sign",
+      name: "'No Politics' sign",
       texture: "no_politics",
       description: "No one likes politics, right?",
       costs: [20, 100, 200, 500],
@@ -279,9 +279,59 @@ const BAR_UPGRADES: {
       flatIncrease: true,
       increases: [1, 2, 5, 10],
     },
+    {
+      name: "Water filter",
+      texture: "water_filter",
+      description: "The water here tastes like ****.",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+    },
   ],
-  sun: [],
-  galaxy: [],
+  sun: [
+    {
+      name: "Sun glasses",
+      texture: "sun_glasses",
+      description: "Ahhh my eyes.",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+    },
+    {
+      name: "Force field",
+      texture: "force_field",
+      description: "This is a big one! Get this one!! THIS ONE IS REALLY GOOD!!! BUY NOW.",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+    },
+    {
+      name: "Solar panels",
+      texture: "solar_panel",
+      description: "I mean, does this one even need explaining. MAXIMUM EFFICIENCY!",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+    },
+    {
+      name: "Magma eater",
+      texture: "magma_eater",
+      description: "With this, we'll be able to add a tiny little bit of magma to our drinks. Why is it spicy?",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+    },
+  ],
+  galaxy: [
+    {
+      name: "Wormhole",
+      texture: "wormhole",
+      description: "Transport ingredients at light speed!",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+    },
+  ],
   universe: [],
   multiverse: [],
 };

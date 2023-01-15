@@ -1,13 +1,20 @@
 import React from "react";
 import { Upgrades } from "@utils/types";
+import { useGameData } from "@hooks/game_data";
+import { DATA } from "../data";
 
 type Props = {
   upgrade: Upgrades;
+  locked: boolean;
+  planetName: string;
 };
 
 const ShopUpgradeButton: React.FC<Props> = ({
-                                             upgrade: { name, texture, description, costs, flatIncrease, increases },
-                                           }) => {
+  upgrade: { name, texture, description, costs, flatIncrease, increases },
+  locked,
+  planetName,
+}) => {
+  const { gameData } = useGameData();
 
   const handleBuy = () => {
 
@@ -21,15 +28,15 @@ const ShopUpgradeButton: React.FC<Props> = ({
     >
       <img
         className={"pixel w-full h-full"}
-        src={`assets/upgrades/test_upgrade_sprite.png`}
+        src={`assets/upgrades/${ locked ? "locked_upgrade" : "test_upgrade_sprite" }.png`}
         alt={`${name} upgrade sprite`}
       />
 
       <div className={"scale-0 bg-red-500 absolute z-[2] group-hover:scale-100"}>
         <p>
-          { name }
+          { locked ? "Upgrade locked": name }
           <br/>
-          { description }
+          { locked ? `Get to planet ${ planetName.charAt(0).toUpperCase() + planetName.slice(1) }` : description }
         </p>
       </div>
     </button>
