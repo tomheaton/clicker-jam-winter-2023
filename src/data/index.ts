@@ -210,9 +210,10 @@ const CLICKABLE_UPGRADES: {
       upgradeType: "clickableUpgrades",
     },
     {
-      name: "Tentacles",
-      texture: "tentacles",
-      description: "So many limbs, so little brain cells.",
+      name: "More hands2",
+      texture: "more_hands2",
+      description:
+        "More hands2 means more drinks! However the surgery bill ain't payin itself and people might look at you weirdly.",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
@@ -372,17 +373,7 @@ const BAR_UPGRADES: {
       upgradeType: "barUpgrades",
     },
   ],
-  universe: [
-    {
-      name: "Grandma",
-      texture: "grandma",
-      description: "The ultimate machine! This isn't a rip off I swear.",
-      costs: [20, 100, 200, 500],
-      flatIncrease: true,
-      increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
-    },
-  ],
+  universe: [],
   multiverse: [],
 };
 

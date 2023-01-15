@@ -33,10 +33,10 @@ const App: React.FC = () => {
       await audio.play();
     });
 
-    return () => {
-      window.removeEventListener("click", () => {
-      });
-    };
+    return window.removeEventListener("click", async () => {
+      const audio = new Audio(`/assets/sounds/click.mp3`);
+      await audio.play();
+    });
   }, []);
 
   useEffect(() => {
@@ -60,6 +60,7 @@ const App: React.FC = () => {
 
     if (!result.success) {
       console.log("resetting local storage");
+      console.log(result.error);
       // alert("don't mess with the local storage!");
       return;
     }
@@ -72,7 +73,6 @@ const App: React.FC = () => {
 
   const handleStart = async () => {
     setStart(true);
-    // let audio = new Audio("/assets/music/walking_in_the_highlands_1.mp3");
     let audio = new Audio("/assets/music/battery_acid.mp3");
     audio.loop = true;
     await audio.play();
@@ -116,10 +116,14 @@ const App: React.FC = () => {
       <button onClick={handleStart} className={"btn-blue"}>
         start game
       </button>
-      <br />
-      <button onClick={handleReset} className={"btn-red"}>
-        reset
-      </button>
+      {import.meta.env.DEV && (
+        <>
+          <br />
+          <button onClick={handleReset} className={"btn-red"}>
+            reset
+          </button>
+        </>
+      )}
     </div>
   );
 };

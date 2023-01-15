@@ -2,16 +2,6 @@ import React, { createContext, useContext } from "react";
 import { z } from "zod";
 import { DATA } from "@data/index";
 
-type GameDataOld = {
-  money: number;
-  drinkPrice: number;
-  drinksPerClick: number;
-  drinksPerSecond: number;
-  level: number;
-  ingredients: { [key: string]: number; };
-  // ingredients: { name: string, level: number }[];
-};
-
 export const GameDataSchema = z.object({
   money: z.number().min(0),
   drinkPrice: z.number().min(0),
@@ -19,15 +9,12 @@ export const GameDataSchema = z.object({
   drinksPerSecond: z.number().min(0),
   level: z.number().min(0),
   ingredients: z.record(z.number().min(0)),
-  // ingredients: z.array(z.object({})),
   clickableUpgrades: z.record(z.number().min(0)),
   barUpgrades: z.record(z.number().min(0)),
   rocketUpgrades: z.record(z.number().min(0)),
 });
 
 type GameData = z.infer<typeof GameDataSchema>;
-
-// type GameData = GameDataOld;
 
 export enum GameDataActions {
   LOAD = "load",

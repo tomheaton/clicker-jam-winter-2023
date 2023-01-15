@@ -31,6 +31,7 @@ const Shop: React.FC = () => {
                   upgrade={upgrade}
                   locked={index > gameData.level}
                   planetName={DATA.planets[index]}
+                  initialLevel={gameData.barUpgrades[upgrade.texture]}
                 />
               ))
             ))}
@@ -46,6 +47,7 @@ const Shop: React.FC = () => {
                   upgrade={upgrade}
                   locked={index > gameData.level}
                   planetName={DATA.planets[index]}
+                  initialLevel={gameData.clickableUpgrades[upgrade.texture]}
                 />
               ))
             ))}
@@ -56,7 +58,6 @@ const Shop: React.FC = () => {
           <div>
             {DATA.items.map((item) => (
               <button key={item.texture} className={"flex my-2 space-x-8"} onClick={() => {
-                // @gonkiedev
                 dispatch({
                   type: GameDataActions.INCREASE_UPGRADE,
                   payload: {
@@ -76,6 +77,7 @@ const Shop: React.FC = () => {
                   <p>Name: {item.name}</p>
                   <p>Cost: ${item.itemCost.toLocaleString()}</p>
                   <p>Description: {item.itemDescription}</p>
+                  <p>Level: {gameData.rocketUpgrades[item.texture]}</p>
                 </div>
               </button>
             ))}
