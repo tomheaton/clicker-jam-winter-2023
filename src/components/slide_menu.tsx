@@ -39,8 +39,8 @@ const SlideMenu: React.FC<Props> = ({
           className={"pixel w-full h-full"}
           src={`assets/ui/${
             fromLeft
-              ? "slide_menu_arrow_right.png"
-              : "slide_menu_arrow_left.png"
+              ? "shop_tab.png"
+              : "stats_tab.png"
           }`}
           alt={`Slide menu arrow right sprite`}
         />
