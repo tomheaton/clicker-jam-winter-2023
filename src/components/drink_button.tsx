@@ -99,7 +99,7 @@ const DrinkButton: React.FC<Props> = ({
       {/*<p>markers: {markers.length}</p>*/}
       {markers.length > 0 && markers.map((money, i) => <ClickMarker key={i} money={money} />)}
       <img
-        className={"pixel w-full h-full"}
+        className={"pixel png-shadow w-full h-full"}
         src={`assets/drinks/${texture}_${stage}.png`}
         alt={`${name} sprite`}
       />

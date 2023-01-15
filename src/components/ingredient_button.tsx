@@ -81,7 +81,7 @@ const IngredientButton: React.FC<Props> = ({
 
       {/* Ingredient sprite */}
       <img
-        className={"pixel w-full h-full"}
+        className={"pixel png-shadow w-full h-full"}
         src={`assets/ingredients/${texture}.png`}
         alt={`${name} sprite`}
       />
