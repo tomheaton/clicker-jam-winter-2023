@@ -210,10 +210,10 @@ const CLICKABLE_UPGRADES: {
       upgradeType: "clickableUpgrades"
     },
     {
-      name: "More hands",
-      texture: "more_hands",
+      name: "More hands2",
+      texture: "more_hands2",
       description:
-        "More hands means more drinks! However the surgery bill ain't payin itself and people might look at you weirdly.",
+        "More hands2 means more drinks! However the surgery bill ain't payin itself and people might look at you weirdly.",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Upgrades } from "@utils/types";
 import { GameDataActions, useGameData } from "@hooks/game_data";
-import { DATA } from "../data";
+import { DATA, INGREDIENTS } from "../data";
+import IngredientButton from "./ingredient_button";
 
 type Props = {
   upgrade: Upgrades;
@@ -24,7 +25,19 @@ const ShopUpgradeButton: React.FC<Props> = ({
     "rocketUpgrades": GameDataActions.INCREASE_DRINKS_PER_CLICK, 
   };
 
-  const disabled = locked || gameData.money < costs[stage] || stage >= costs.length;
+  let disabled = locked || gameData.money < costs[stage] || stage >= costs.length;
+  if (upgradeType === "clickableUpgrades")
+  {
+    const currentIngredients = DATA.drinks[gameData.level].ingredients;
+    let numberOfIngredientsUpgradedOnce = 0;
+    currentIngredients.forEach((ingredient) => {
+      if (gameData.ingredients[ingredient.texture] > 0) {
+        numberOfIngredientsUpgradedOnce += 1;
+      }
+    });
+    
+    if (numberOfIngredientsUpgradedOnce < currentIngredients.length) disabled = true;
+  }
 
   const handleBuy = () => {
     if (disabled) return;
