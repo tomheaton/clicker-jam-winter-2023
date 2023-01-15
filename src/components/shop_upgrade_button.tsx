@@ -55,10 +55,11 @@ const ShopUpgradeButton: React.FC<Props> = ({
           <br/>
           { locked ? `Get to planet ${ planetName.charAt(0).toUpperCase() + planetName.slice(1) }` : description }
           <br />
+          +{ `${(flatIncrease || stage == 0) ? increases[stage] : increases[stage]*100 }` + `${(flatIncrease || stage == 0) ? "" : "%" }` } drinks/s
+          <br />
           Cost: ${costs[stage]}
           <br />
           Level: {stage}
-          <br />
         </p>
       </div>
     </button>

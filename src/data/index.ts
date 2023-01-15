@@ -234,7 +234,7 @@ const BAR_UPGRADES: {
       texture: "more_customers",
       description: "Is the bar even big enough?",
       costs: [20_000, 100, 200, 500],
-      flatIncrease: true,
+      flatIncrease: false,
       increases: [1, 2, 5, 10],
     },
     {
