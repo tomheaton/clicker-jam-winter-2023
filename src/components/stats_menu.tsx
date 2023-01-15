@@ -15,7 +15,7 @@ const StatsMenu: React.FC = () => {
         <p>Drink selling price: {gameData.drinkPrice}</p>
         <p>Drinks per click: {gameData.drinksPerClick}</p>
         <p>Drinks per second: {gameData.drinksPerSecond}</p>
-        <p>Planet: {currentPlanet.charAt(0).toUpperCase() + currentPlanet.slice(1)}</p>
+        <p>Location: {currentPlanet.charAt(0).toUpperCase() + currentPlanet.slice(1)}</p>
       </div>
     </div>
   );
