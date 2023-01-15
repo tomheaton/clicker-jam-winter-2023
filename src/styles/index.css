@@ -12,6 +12,11 @@ body {
   scrollbar-width: none;
   -ms-overflow-style: none;
   overflow: hidden;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
 body::-webkit-scrollbar {
@@ -46,4 +51,8 @@ button[disabled] {
 .png-shadow {
   -webkit-filter: drop-shadow(5px 5px 5px #222);
   filter: drop-shadow(5px 5px 5px #222);
+}
+
+:focus {
+  outline: none;
 }
