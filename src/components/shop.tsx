@@ -55,18 +55,18 @@ const Shop: React.FC = () => {
         {tab == 2 && (
           <div>
             {DATA.items.map((item) => (
-              <div className={"flex my-2 space-x-8"}>
+              <button className={"flex my-2 space-x-8"}>
                 <img
-                  className={"pixel w-20 h-20x"}
+                  className={"pixel w-[64px] h-[64px]"}
                   src={`assets/items/${item.texture}_1.png`}
                   alt={`${item.name} sprite`}
                 />
-                <div>
+                <div className={"text-left"}>
                   <p>Name: {item.name}</p>
                   <p>Cost: ${item.itemCost.toLocaleString()}</p>
                   <p>Description: {item.itemDescription}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         )}
