@@ -22,16 +22,19 @@ const DrinkButton: React.FC<Props> = ({
   // NOTE(gonk): i left it for now so we can copy it to the drinks per second logic
   const [onCooldown, setOnCooldown] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(0);
-  const [stage, setStage] = useState<number>(0);
+  const [stage, setStage] = useState<number>(1);
   const [markers, setMarkers] = useState<number[]>([]);
 
   useEffect(() => {
-    const markerTimer = setInterval(() => {
+    return;
+    // const markerRemover = setTimeout(() => {
+    const markerRemover = setInterval(() => {
       setMarkers((markers) => markers.slice(1));
     }, 2_000);
 
     return () => {
-      clearInterval(markerTimer);
+      // clearTimeout(markerRemover);
+      clearInterval(markerRemover);
     };
   }, markers);
 
@@ -69,73 +72,25 @@ const DrinkButton: React.FC<Props> = ({
       }
     });
 
-    setStage(s => s + 1)
+    setStage(s => s + 1);
 
-    // setStage(s => {
-    //   console.log((s + 1) % ingredients.length + 1);
-    //   return (s + 1) % ingredients.length + 1;
-    // });
-
-    // setStage(1);
-
-    // setStage(s => (s + gameData.drinksPerClick) % ingredients.length + 1);
-    // setStage(s => (s + gameData.drinksPerClick) % ingredients.length + 1);
-
-    // if (numberOfIngredientsUpgradedOnce === 1) {
-    //   setStage(s => s + 1);
-    // }
-
-    // setStage(s => s + 1);
-
-    if (stage !== ingredients.length) {
+    if (stage < (ingredients.length + 1)) {
       return;
     }
 
     setStage(gameData.drinksPerClick);
 
-    let m = drinkSellValue * gameData.drinkPrice;
+    const m = drinkSellValue * gameData.drinkPrice;
     dispatch({
       type: GameDataActions.INCREASE_MONEY,
       payload: m,
     });
 
     setMarkers([...markers, m]);
-  };
 
-  const increaseStage = () => {
-    // TODO: check this (This might be working correctly im not sure (gonk))
-    let numberOfIngredientsUpgradedOnce = 0;
-    for (const ingredient of ingredients) {
-      if (gameData.ingredients[ingredient.texture] > 0) {
-        numberOfIngredientsUpgradedOnce += 1;
-      }
-    }
-
-    if (numberOfIngredientsUpgradedOnce === ingredients.length) {
-      setStage(ingredients.length);
-      dispatch({
-        type: GameDataActions.INCREASE_MONEY,
-        payload: drinkSellValue * gameData.drinkPrice * (gameData.drinksPerClick - numberOfIngredientsUpgradedOnce),
-      });
-      setMarkers([...markers, drinkSellValue * gameData.drinkPrice * (gameData.drinksPerClick - numberOfIngredientsUpgradedOnce)]);
-      return;
-    }
-
-    dispatch({
-      type: GameDataActions.INCREASE_MONEY,
-      payload: drinkSellValue * gameData.drinkPrice,
-    });
-    // setMarkers([...markers, drinkSellValue * gameData.drinkPrice]);
-    setMarkers([...markers, 69]);
-
-    if (numberOfIngredientsUpgradedOnce == 0) {
-      setStage((s) => (s + 1) % (ingredients.length + 1));
-      return;
-    }
-
-    setStage((s) => (
-      numberOfIngredientsUpgradedOnce + (s + 1 - numberOfIngredientsUpgradedOnce) % (ingredients.length)
-    ));
+    /*setTimeout(() => {
+      setMarkers((markers) => markers.slice(1));
+    }, 2_000);*/
   };
 
   return (
@@ -146,10 +101,10 @@ const DrinkButton: React.FC<Props> = ({
       <p>
         markers: {markers.length}, state: {stage}
       </p>
-      {markers.length && markers.map((money, i) => <ClickMarker key={i} money={money} />)}
+      {markers.length > 0 && markers.map((money, i) => <ClickMarker key={i} money={money} />)}
       <img
         className={"pixel w-full h-full"}
-        src={`assets/drinks/${texture}_${stage + 1}.png`}
+        src={`assets/drinks/${texture}_${stage}.png`}
         alt={`${name} sprite`}
       />
     </button>
