@@ -43,6 +43,11 @@ const ShopUpgradeButton: React.FC<Props> = ({
     if (disabled) return;
 
     dispatch({
+      type: GameDataActions.DECREASE_MONEY,
+      payload: costs[stage],
+    });
+
+    dispatch({
       type: dispatchTypes[upgradeType],
       payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * gameData.drinksPerSecond,
     });
