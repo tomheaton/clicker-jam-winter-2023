@@ -28,6 +28,18 @@ const App: React.FC = () => {
   }, []);*/
 
   useEffect(() => {
+    window.addEventListener("click", async () => {
+      const audio = new Audio(`/assets/sounds/click.mp3`);
+      await audio.play();
+    });
+
+    return () => {
+      window.removeEventListener("click", () => {
+      });
+    };
+  }, []);
+
+  useEffect(() => {
     console.log("loading saved data");
     const savedData = localStorage.getItem("gameData");
 

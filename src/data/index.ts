@@ -207,7 +207,7 @@ const CLICKABLE_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "clickableUpgrades"
+      upgradeType: "clickableUpgrades",
     },
     {
       name: "More hands2",
@@ -217,7 +217,7 @@ const CLICKABLE_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "clickableUpgrades"
+      upgradeType: "clickableUpgrades",
     },
   ],
   earth: [],
@@ -238,7 +238,7 @@ const BAR_UPGRADES: {
       costs: [20_000, 100, 200, 500],
       flatIncrease: false,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Better drinks",
@@ -247,7 +247,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Rocks",
@@ -256,7 +256,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Nicer glasses",
@@ -265,7 +265,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Atmosphere",
@@ -274,7 +274,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Music",
@@ -283,7 +283,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
   ],
   earth: [
@@ -294,7 +294,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "'No Politics' sign",
@@ -303,7 +303,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Humans allowed",
@@ -312,7 +312,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Water filter",
@@ -321,7 +321,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
   ],
   sun: [
@@ -332,7 +332,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Force field",
@@ -341,7 +341,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Solar panels",
@@ -350,7 +350,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
     {
       name: "Magma eater",
@@ -359,7 +359,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
   ],
   galaxy: [
@@ -370,19 +370,19 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades"
+      upgradeType: "barUpgrades",
     },
   ],
   universe: [],
   multiverse: [],
 };
 
-// TODO: @tomheaton
-export const MUSIC = ["batter_acid"] as const;
+export const MUSIC = [
+  "battery_acid",
+] as const;
 
-// TODO: @tomheaton
 export const SOUNDS = [
-  // "click",
+  "click",
 ] as const;
 
 // export const DATA: Data = {
