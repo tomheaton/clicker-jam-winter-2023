@@ -29,16 +29,20 @@ const Shop: React.FC<Props> = ({
       <div>
         {tab == 0 && (
           <div className={"grid grid-cols-4 grid-rows-4"}>
-            {DATA.barUpgrades.ceres.map((upgrade) => (
-              <ShopUpgradeButton upgrade={upgrade}/>
+            {Object.values(DATA.barUpgrades).map((value) => (
+              value.map((upgrade) => (
+                <ShopUpgradeButton upgrade={upgrade} />
+              ))
             ))}
           </div>
         )}
 
         {tab == 1 && (
           <div className={"grid grid-cols-4 grid-rows-4"}>
-            {DATA.clickableUpgrades.ceres.map((upgrade) => (
-              <ShopUpgradeButton upgrade={upgrade}/>
+            {Object.values(DATA.clickableUpgrades).map((value) => (
+              value.map((upgrade) => (
+                <ShopUpgradeButton upgrade={upgrade} />
+              ))
             ))}
           </div>
         )}
