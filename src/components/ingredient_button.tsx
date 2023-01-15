@@ -56,7 +56,7 @@ const IngredientButton: React.FC<Props> = ({
           backgroundSize: "100%",
           backgroundImage: "url('./assets/ui/ingredient_upgrade_description_bubble.png')",
         }}
-        className={"pixel bg-no-repeat w-[300px] h-[300px] scale-0 absolute -right-[30px] -top-[200px] group-hover:scale-100 z-[2] flex items-center justify-center"}
+        className={"z-[20] pixel bg-no-repeat w-[300px] h-[300px] scale-0 absolute -right-[30px] -top-[200px] group-hover:scale-100 flex items-center justify-center"}
       >
         <div className={"text-black z-[4] ml-6 -mt-16 w-4/5 text-sm text-center"}>
           <p className={"text-lg font-semibold"}>
