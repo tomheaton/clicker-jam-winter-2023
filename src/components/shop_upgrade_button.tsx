@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Upgrades } from "@utils/types";
-import { useGameData } from "@hooks/game_data";
+import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA } from "../data";
 
 type Props = {
@@ -14,17 +14,32 @@ const ShopUpgradeButton: React.FC<Props> = ({
   locked,
   planetName,
 }) => {
-  const { gameData } = useGameData();
+  const { gameData, dispatch } = useGameData();
   const [stage, setStage] = useState<number>(0);
 
   const handleBuy = () => {
-    if (locked) return;
+    if (locked || gameData.money < costs[stage] || stage >= costs.length) return;
+
+    dispatch({
+      type: GameDataActions.INCREASE_DRINKS_PER_SECOND,
+      payload: (flatIncrease || stage) == 0 ? increases[stage] : (1 + increases[stage]) * gameData.drinksPerSecond,
+    });
+    
+    dispatch({
+      type: GameDataActions.INCREASE_UPGRADE,
+      payload: {
+        group: "barUpgrades",
+        name: texture,
+      },
+    });
+
+    setStage((s) => s+1);
   }
 
   // TODO: @gonk pass in sprite texture once we have upgrade textures
   return (
     <button
-      disabled={ locked || gameData.money < costs[stage] }
+      disabled={ locked || gameData.money < costs[stage] || stage >= costs.length }
       className={"w-[64px] h-[64px] group m-4 opacity-100 disabled:cursor-auto"}
       onClick={handleBuy}
     >
@@ -39,6 +54,11 @@ const ShopUpgradeButton: React.FC<Props> = ({
           { locked ? "Upgrade locked": name }
           <br/>
           { locked ? `Get to planet ${ planetName.charAt(0).toUpperCase() + planetName.slice(1) }` : description }
+          <br />
+          Cost: ${costs[stage]}
+          <br />
+          Level: {stage}
+          <br />
         </p>
       </div>
     </button>
