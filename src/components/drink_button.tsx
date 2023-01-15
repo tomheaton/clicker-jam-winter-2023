@@ -84,7 +84,7 @@ const DrinkButton: React.FC<Props> = ({
       payload: DRINK_SELL_VALUE * gameData.drinkPrice,
     });
 
-    setMarkers([...markers, DRINK_SELL_VALUE * gameData.drinkPrice]);
+    setMarkers([...markers, DRINK_SELL_VALUE * gameData.drinkPrice * (gameData.drinksPerClick - numberOfIngredientsUpgradedOnce)]);
 
     /*setTimeout(() => {
       setMarkers((markers) => markers.slice(1));

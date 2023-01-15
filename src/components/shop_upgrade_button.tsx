@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Upgrades } from "@utils/types";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA, INGREDIENTS } from "../data";
-import IngredientButton from "./ingredient_button";
 
 type Props = {
   upgrade: Upgrades;
