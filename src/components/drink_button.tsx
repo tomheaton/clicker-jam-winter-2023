@@ -78,7 +78,7 @@ const DrinkButton: React.FC<Props> = ({
       return;
     }
 
-    setStage(gameData.drinksPerClick);
+    setStage(numberOfIngredientsUpgradedOnce + 1);
 
     const m = drinkSellValue * gameData.drinkPrice;
     dispatch({
