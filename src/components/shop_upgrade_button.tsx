@@ -25,6 +25,8 @@ const ShopUpgradeButton: React.FC<Props> = ({
       payload: (flatIncrease || stage) == 0 ? increases[stage] : (1 + increases[stage]) * gameData.drinksPerSecond,
     });
     
+    console.log(gameData.drinksPerSecond);
+    
     dispatch({
       type: GameDataActions.INCREASE_UPGRADE,
       payload: {
@@ -55,11 +57,15 @@ const ShopUpgradeButton: React.FC<Props> = ({
           <br/>
           { locked ? `Get to planet ${ planetName.charAt(0).toUpperCase() + planetName.slice(1) }` : description }
           <br />
-          +{ `${(flatIncrease || stage == 0) ? increases[stage] : increases[stage]*100 }` + `${(flatIncrease || stage == 0) ? "" : "%" }` } drinks/s
-          <br />
-          Cost: ${costs[stage]}
-          <br />
-          Level: {stage}
+          { stage < costs.length && (
+            <div>
+              +{ `${(flatIncrease || stage == 0) ? increases[stage] : increases[stage]*100 }` + `${(flatIncrease || stage == 0) ? "" : "%" }` } drinks/s
+              <br />
+              Cost: ${costs[stage]}
+              <br />
+            </div>
+          )}
+          Level: {stage < costs.length ? stage : "Max" }
         </p>
       </div>
     </button>
