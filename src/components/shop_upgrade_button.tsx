@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Upgrades } from "@utils/types";
 import { useGameData } from "@hooks/game_data";
 import { DATA } from "../data";
@@ -15,24 +15,26 @@ const ShopUpgradeButton: React.FC<Props> = ({
   planetName,
 }) => {
   const { gameData } = useGameData();
+  const [stage, setStage] = useState<number>(0);
 
   const handleBuy = () => {
-
+    if (locked) return;
   }
 
   // TODO: @gonk pass in sprite texture once we have upgrade textures
   return (
     <button
-      className={"w-[64px] h-[64px] group m-4"}
+      disabled={ locked || gameData.money < costs[stage] }
+      className={"w-[64px] h-[64px] group m-4 opacity-100 disabled:cursor-auto"}
       onClick={handleBuy}
     >
       <img
-        className={"pixel w-full h-full"}
+        className={"pixel w-full h-full disabled:opacity-20"}
         src={`assets/upgrades/${ locked ? "locked_upgrade" : "test_upgrade_sprite" }.png`}
         alt={`${name} upgrade sprite`}
       />
 
-      <div className={"scale-0 bg-red-500 absolute z-[2] group-hover:scale-100"}>
+      <div className={"scale-0 bg-red-500 absolute z-[2] group-hover:scale-100 opacity-100 disabled:opacity-100"}>
         <p>
           { locked ? "Upgrade locked": name }
           <br/>

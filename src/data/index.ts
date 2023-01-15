@@ -233,7 +233,7 @@ const BAR_UPGRADES: {
       name: "More customers",
       texture: "more_customers",
       description: "Is the bar even big enough?",
-      costs: [20, 100, 200, 500],
+      costs: [20_000, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
     },
