@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DATA } from "../data";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import DrinkButton from "./drink_button";
@@ -7,12 +7,28 @@ import Shop from "./shop";
 import SlideMenu from "./slide_menu";
 import StatsMenu from "./stats_menu";
 
+const DRINK_SELL_VALUE: number = 5;
+
 const Game: React.FC = () => {
   const { gameData, dispatch } = useGameData();
 
   const currentDrink = DATA.drinks[gameData.level];
   const currentIngredients = currentDrink.ingredients;
   const mp = parseInt((currentIngredients.length / 2).toFixed(0));
+
+  useEffect(() => {
+    const timerTick = setInterval(() => {
+      dispatch({
+        type: GameDataActions.INCREASE_MONEY,
+        // TODO: change this to current drink sell value from DATA
+        payload: DRINK_SELL_VALUE * gameData.drinksPerSecond * gameData.drinkPrice,
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(timerTick);
+    };
+  });
 
   return (
     // Carpet
