@@ -22,10 +22,11 @@ const ShopUpgradeButton: React.FC<Props> = ({
 
     dispatch({
       type: GameDataActions.INCREASE_DRINKS_PER_SECOND,
-      payload: (flatIncrease || stage) == 0 ? increases[stage] : (1 + increases[stage]) * gameData.drinksPerSecond,
+      payload: (flatIncrease || stage == 0) ? increases[stage] : (1 + increases[stage]) * gameData.drinksPerSecond,
     });
     
     console.log(gameData.drinksPerSecond);
+    console.log(costs[stage]);
     
     dispatch({
       type: GameDataActions.INCREASE_UPGRADE,
