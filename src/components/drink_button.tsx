@@ -23,6 +23,10 @@ const DrinkButton: React.FC<Props> = ({
   const [markers, setMarkers] = useState<number[]>([]);
 
   useEffect(() => {
+    setStage(1);
+  }, [gameData.level]);
+
+  useEffect(() => {
     return;
     // const markerRemover = setTimeout(() => {
     const markerRemover = setInterval(() => {
