@@ -7,25 +7,25 @@ const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
   const [gameData, dispatch] = useReducer(gameDataReducer, initialGameData);
 
-  // useEffect(() => {
-  //   console.log("here");
+  /*useEffect(() => {
+    console.log("here");
 
-  //   const onUnload = (e: BeforeUnloadEvent) => {
-  //     e.preventDefault();
-  //     console.log("DON'T LEAVE ME!");
-  //     alert("DON'T LEAVE ME!");
+    const onUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      console.log("DON'T LEAVE ME!");
+      alert("DON'T LEAVE ME!");
 
-  //     const confirmationMessage = "Some message";
-  //     e.returnValue = confirmationMessage;
-  //     return confirmationMessage;
-  //   };
+      const confirmationMessage = "Some message";
+      e.returnValue = confirmationMessage;
+      return confirmationMessage;
+    };
 
-  //   window.addEventListener("beforeunload", onUnload);
+    window.addEventListener("beforeunload", onUnload);
 
-  //   return () => {
-  //     window.removeEventListener("beforeunload", onUnload);
-  //   };
-  // }, []);
+    return () => {
+      window.removeEventListener("beforeunload", onUnload);
+    };
+  }, []);*/
 
   useEffect(() => {
     console.log("loading saved data");
@@ -85,7 +85,9 @@ const App: React.FC = () => {
 
   return (
     <div className={"bg-black-500 h-screen flex flex-col items-center justify-center"}>
-      <h1 className={"mt-2 font-bold text-5xl"}>clicker-jam-2023</h1>
+      <h1 className={"mt-2 font-bold text-5xl"}>
+        clicker-jam-2023
+      </h1>
       <br />
       <img
         className={"pixel w-[200px] h-[200px]"}

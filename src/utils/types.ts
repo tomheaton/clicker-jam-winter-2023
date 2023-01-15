@@ -10,8 +10,8 @@ export type Ingredient = {
 export type Drink = {
   name: string;
   texture: string;
-  cooldown: number;
   ingredients: Ingredient[];
+  cooldown: number;
 };
 
 // TODO: change this to rocket upgrades type

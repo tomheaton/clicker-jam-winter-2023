@@ -162,10 +162,34 @@ export const DRINKS: Drink[] = [
 
 const ITEMS: Item[] = [
   {
-    name: "A WHOLE MASSIVE ROCKET",
-    texture: "moojito",
-    itemCost: 2000000,
-    itemDescription: "ZOOOOOOOOOOOOOOOOM",
+    name: "Earth Rocket",
+    texture: "h2_ouzini",
+    itemCost: 1_000_000,
+    itemDescription: "Unlock Earth",
+  },
+  {
+    name: "Sun Rocket",
+    texture: "sunrise_spice",
+    itemCost: 2_000_000,
+    itemDescription: "Unlock Sun",
+  },
+  {
+    name: "Galaxy Rocket",
+    texture: "lilac_lager",
+    itemCost: 4_000_000,
+    itemDescription: "Unlock Galaxy",
+  },
+  {
+    name: "Universe Rocket",
+    texture: "battery_acid",
+    itemCost: 8_000_000,
+    itemDescription: "Unlock Universe",
+  },
+  {
+    name: "Multiverse Rocket",
+    texture: "final_elixir",
+    itemCost: 16_000_000,
+    itemDescription: "Unlock Multiverse",
   },
 ];
 

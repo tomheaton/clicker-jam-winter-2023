@@ -22,20 +22,18 @@ const Game: React.FC = () => {
       }}
       className={"pixel bg-no-repeat h-screen flex flex-col items-center justify-center w-full"}
     >
-      {/* TOP */}
-      <div
-        className={
-          "w-full flex flex-col flex-1 items-center justify-center"
-        }
-      >
+      {/* Window */}
+      <div className={"w-full flex flex-col flex-1 items-center justify-center"}>
         {/*<pre>{JSON.stringify(gameData, null, 2)}</pre>*/}
         {/*<pre>{JSON.stringify(gameData.ingredients, null, 2)}</pre>*/}
-        {DATA.planets[gameData.level]}
+        <p>
+          {DATA.planets[gameData.level]}
+        </p>
         <br />
         <button
           className={"btn-blue"}
           onClick={() => {
-            dispatch({ type: GameDataActions.INCREASE_MONEY, payload: 10000 });
+            dispatch({ type: GameDataActions.INCREASE_MONEY, payload: 10_000 });
           }}
         >
           Increase Money (10K)
@@ -57,25 +55,23 @@ const Game: React.FC = () => {
           })}
         </div>
 
-        { /* Money counter */}
+        {/* Money Counter */}
         <p className={"bg-black text-white fixed top-0 right-40 text-5xl"}>
           ${gameData.money.toLocaleString()}
         </p>
 
-        {/* Left menu */}
+        {/* Left Menu */}
         <SlideMenu fromLeft>
-          {DATA.items.map((item) => (
-            <Shop key={item.name} item={item} />
-          ))}
+          <Shop/>
         </SlideMenu>
 
-        {/* Right menu */}
+        {/* Right Menu */}
         <SlideMenu>
           <StatsMenu />
         </SlideMenu>
       </div>
 
-      {/* BOTTOM */}
+      {/* Bar */}
       <div
         className={
           "w-full h-2/5 flex justify-evenly items-center"

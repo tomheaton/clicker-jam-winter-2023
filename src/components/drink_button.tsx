@@ -4,17 +4,14 @@ import { Drink } from "@utils/types";
 import ClickMarker from "@components/click_marker";
 
 const TIME_VALUE: number = 0.25;
-// TODO: add multiplier
-const multiplier = 1.0;
-// random sell value for now
-const drinkSellValue = 5;
+const DRINK_SELL_VALUE: number = 5;
 
 type Props = {
   drink: Drink;
 };
 
 const DrinkButton: React.FC<Props> = ({
-                                        drink: { name, texture, cooldown, ingredients },
+                                        drink: { name, texture, ingredients, cooldown },
                                       }) => {
   const { gameData, dispatch } = useGameData();
 
@@ -61,7 +58,7 @@ const DrinkButton: React.FC<Props> = ({
 
   const handleCooldown = () => {
     setOnCooldown(true);
-    dispatch({ type: GameDataActions.INCREASE_MONEY, payload: drinkSellValue });
+    dispatch({ type: GameDataActions.INCREASE_MONEY, payload: DRINK_SELL_VALUE });
   };
 
   const handleClick = () => {
@@ -74,23 +71,20 @@ const DrinkButton: React.FC<Props> = ({
 
     setStage(s => s + 1);
 
-    if (stage < (ingredients.length + 1)) {
-      return;
-    }
+    if (stage < (ingredients.length + 1)) return;
 
     setStage(numberOfIngredientsUpgradedOnce + 1);
 
-    const m = drinkSellValue * gameData.drinkPrice;
     dispatch({
       type: GameDataActions.INCREASE_MONEY,
-      payload: m,
+      payload: DRINK_SELL_VALUE * gameData.drinkPrice,
     });
 
-    setMarkers([...markers, m]);
+    setMarkers([...markers, DRINK_SELL_VALUE * gameData.drinkPrice]);
 
     /*setTimeout(() => {
       setMarkers((markers) => markers.slice(1));
-    }, 2_000);*/
+    }, 4_000);*/
   };
 
   return (
@@ -98,9 +92,7 @@ const DrinkButton: React.FC<Props> = ({
       className={"h-full w-full hover:scale-110 hover:ease-in-out active:scale-125 relative"}
       onClick={handleClick}
     >
-      <p>
-        markers: {markers.length}, state: {stage}
-      </p>
+      {/*<p>markers: {markers.length}</p>*/}
       {markers.length > 0 && markers.map((money, i) => <ClickMarker key={i} money={money} />)}
       <img
         className={"pixel w-full h-full"}
