@@ -7,8 +7,6 @@ const Shop: React.FC = () => {
   const { gameData, dispatch } = useGameData();
   const [tab, setTab] = useState<number>(0);
 
-  console.log(gameData);
-
   return (
     <div className={"p-10"}>
       <div className={"p-2 flex justify-evenly space-x-4"}>

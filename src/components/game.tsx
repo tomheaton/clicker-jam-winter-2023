@@ -23,12 +23,10 @@ const Game: React.FC = () => {
       className={"pixel bg-no-repeat h-screen flex flex-col items-center justify-center w-full"}
     >
       {/* Window */}
-      <div className={"w-full flex flex-col flex-1 items-center justify-center"}>
-        {/*<pre>{JSON.stringify(gameData, null, 2)}</pre>*/}
-        {/*<pre>{JSON.stringify(gameData.ingredients, null, 2)}</pre>*/}
-        <p>
-          {DATA.planets[gameData.level]}
-        </p>
+      <div className={"w-full flex flex-col flex-1 items-center mt-20"}>
+        <h1 className={"font-bold text-5xl text-white"}>
+          {DATA.planets[gameData.level]} ${gameData.money.toLocaleString()}
+        </h1>
         <br />
         <button
           className={"btn-blue"}
@@ -54,11 +52,6 @@ const Game: React.FC = () => {
             );
           })}
         </div>
-
-        {/* Money Counter */}
-        <p className={"bg-black text-white fixed top-0 right-40 text-5xl"}>
-          ${gameData.money.toLocaleString()}
-        </p>
 
         {/* Left Menu */}
         <SlideMenu fromLeft>
