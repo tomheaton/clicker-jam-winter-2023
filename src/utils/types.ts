@@ -20,6 +20,7 @@ export type Item = {
   texture: string;
   itemCost: number;
   itemDescription: string;
+
 };
 
 export type Upgrades = {
@@ -29,6 +30,7 @@ export type Upgrades = {
   costs: number[];
   flatIncrease: boolean; // 1: the upgrade increases the drinks/click at a flat rate, 0: it's a multiplier
   increases: number[];
+  upgradeType: "clickableUpgrades" | "barUpgrades" | "rocketUpgrades";
 };
 
 export type Planet = typeof PLANETS[number];

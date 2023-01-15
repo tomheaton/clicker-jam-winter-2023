@@ -10,23 +10,29 @@ type Props = {
 };
 
 const ShopUpgradeButton: React.FC<Props> = ({
-  upgrade: { name, texture, description, costs, flatIncrease, increases },
+  upgrade: { name, texture, description, costs, flatIncrease, increases, upgradeType },
   locked,
   planetName,
 }) => {
   const { gameData, dispatch } = useGameData();
   const [stage, setStage] = useState<number>(0);
 
+  // TODO: add rocket upgrades
+  const dispatchTypes = {
+    "clickableUpgrades": GameDataActions.INCREASE_DRINKS_PER_CLICK,
+    "barUpgrades": GameDataActions.INCREASE_DRINKS_PER_SECOND,
+    "rocketUpgrades": GameDataActions.INCREASE_DRINKS_PER_CLICK, 
+  };
+
+  const disabled = locked || gameData.money < costs[stage] || stage >= costs.length;
+
   const handleBuy = () => {
-    if (locked || gameData.money < costs[stage] || stage >= costs.length) return;
+    if (disabled) return;
 
     dispatch({
-      type: GameDataActions.INCREASE_DRINKS_PER_SECOND,
+      type: dispatchTypes[upgradeType],
       payload: (flatIncrease || stage == 0) ? increases[stage] : (1 + increases[stage]) * gameData.drinksPerSecond,
     });
-    
-    console.log(gameData.drinksPerSecond);
-    console.log(costs[stage]);
     
     dispatch({
       type: GameDataActions.INCREASE_UPGRADE,
@@ -42,7 +48,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
   // TODO: @gonk pass in sprite texture once we have upgrade textures
   return (
     <button
-      disabled={ locked || gameData.money < costs[stage] || stage >= costs.length }
+      disabled={ disabled }
       className={"w-[64px] h-[64px] group m-4 opacity-100 disabled:cursor-auto"}
       onClick={handleBuy}
     >

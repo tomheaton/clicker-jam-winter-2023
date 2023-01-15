@@ -207,6 +207,7 @@ const CLICKABLE_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "clickableUpgrades"
     },
     {
       name: "More hands",
@@ -216,6 +217,7 @@ const CLICKABLE_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "clickableUpgrades"
     },
   ],
   earth: [],
@@ -236,6 +238,7 @@ const BAR_UPGRADES: {
       costs: [20_000, 100, 200, 500],
       flatIncrease: false,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Better drinks",
@@ -244,6 +247,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Rocks",
@@ -252,6 +256,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Nicer glasses",
@@ -260,6 +265,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Atmosphere",
@@ -268,6 +274,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Music",
@@ -276,6 +283,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
   ],
   earth: [
@@ -286,6 +294,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "'No Politics' sign",
@@ -294,6 +303,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Humans allowed",
@@ -302,6 +312,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Water filter",
@@ -310,6 +321,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
   ],
   sun: [
@@ -320,6 +332,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Force field",
@@ -328,6 +341,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Solar panels",
@@ -336,6 +350,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
     {
       name: "Magma eater",
@@ -344,6 +359,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
   ],
   galaxy: [
@@ -354,6 +370,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades"
     },
   ],
   universe: [],
