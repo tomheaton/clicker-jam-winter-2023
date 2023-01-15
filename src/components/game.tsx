@@ -57,16 +57,16 @@ const Game: React.FC = () => {
           </button>
           <br />
           <div className={"space-x-4"}>
-            {Array.from(Array(DATA.drinks.length).keys()).map((x) => {
+            {DATA.planets.map((planet, index) => {
               return (
                 <button
-                  key={x}
+                  key={planet}
                   className={"btn-red"}
                   onClick={() => {
-                    dispatch({ type: GameDataActions.SET_LEVEL, payload: x });
+                    dispatch({ type: GameDataActions.SET_LEVEL, payload: index });
                   }}
                 >
-                  {x}
+                  {planet}
                 </button>
               );
             })}
