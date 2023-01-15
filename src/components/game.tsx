@@ -21,7 +21,7 @@ const Game: React.FC = () => {
       dispatch({
         type: GameDataActions.INCREASE_MONEY,
         // TODO: change this to current drink sell value from DATA
-        payload: DRINK_SELL_VALUE * gameData.drinksPerSecond,
+        payload: DRINK_SELL_VALUE * gameData.drinksPerSecond * gameData.drinkPrice,
       });
     }, 1000);
 
