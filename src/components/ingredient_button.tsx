@@ -25,7 +25,7 @@ const IngredientButton: React.FC<Props> = ({
     if (gameData.money < upgradeCosts[currentUpgrade]) return;
     if (currentUpgrade >= upgradeCount) return;
 
-    if (currentUpgrade == 0) {
+    if (currentUpgrade === 0) {
       dispatch({
         type: GameDataActions.INCREASE_DRINKS_PER_CLICK,
         payload: 1,
@@ -68,7 +68,7 @@ const IngredientButton: React.FC<Props> = ({
             </p>
           )}
           <p>
-            {currentUpgrade == 0 ?
+            {currentUpgrade === 0 ?
               (
                 "Decreases the clicks required to make a drink by 1!"
               ) : (

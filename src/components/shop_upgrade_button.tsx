@@ -21,7 +21,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
   const dispatchTypes = {
     "clickableUpgrades": GameDataActions.INCREASE_DRINKS_PER_CLICK,
     "barUpgrades": GameDataActions.INCREASE_DRINKS_PER_SECOND,
-    "rocketUpgrades": GameDataActions.INCREASE_DRINKS_PER_CLICK, 
+    "rocketUpgrades": GameDataActions.INCREASE_DRINKS_PER_CLICK,
   };
 
   const disabled = locked || gameData.money < costs[stage] || stage >= costs.length;
@@ -31,9 +31,9 @@ const ShopUpgradeButton: React.FC<Props> = ({
 
     dispatch({
       type: dispatchTypes[upgradeType],
-      payload: (flatIncrease || stage == 0) ? increases[stage] : (1 + increases[stage]) * gameData.drinksPerSecond,
+      payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * gameData.drinksPerSecond,
     });
-    
+
     dispatch({
       type: GameDataActions.INCREASE_UPGRADE,
       payload: {
@@ -66,7 +66,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
           <br />
           { stage < costs.length && (
             <div>
-              +{ `${(flatIncrease || stage == 0) ? increases[stage] : increases[stage]*100 }` + `${(flatIncrease || stage == 0) ? "" : "%" }` } drinks/s
+              +{ `${(flatIncrease || stage === 0) ? increases[stage] : increases[stage]*100 }` + `${(flatIncrease || stage === 0) ? "" : "%" }` } drinks/s
               <br />
               Cost: ${costs[stage]}
               <br />

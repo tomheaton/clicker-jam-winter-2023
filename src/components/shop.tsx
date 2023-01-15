@@ -22,7 +22,7 @@ const Shop: React.FC = () => {
       </div>
 
       <div>
-        {tab == 0 && (
+        {tab === 0 && (
           <div className={"grid grid-cols-4 col"}>
             {Object.values(DATA.barUpgrades).map((value, index) => (
               value.map((upgrade) => (
@@ -37,7 +37,7 @@ const Shop: React.FC = () => {
           </div>
         )}
 
-        {tab == 1 && (
+        {tab === 1 && (
           <div className={"grid grid-cols-4"}>
             {Object.values(DATA.clickableUpgrades).map((value, index) => (
               value.map((upgrade) => (
@@ -52,7 +52,7 @@ const Shop: React.FC = () => {
           </div>
         )}
 
-        {tab == 2 && (
+        {tab === 2 && (
           <div>
             {DATA.items.map((item) => (
               <button key={item.texture} className={"flex my-2 space-x-8"} onClick={() => {
