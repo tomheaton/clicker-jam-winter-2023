@@ -25,9 +25,7 @@ const Game: React.FC = () => {
       });
     }, 1000);
 
-    return () => {
-      clearInterval(timerTick);
-    };
+    return () => clearInterval(timerTick);
   }, []);
 
   return (
