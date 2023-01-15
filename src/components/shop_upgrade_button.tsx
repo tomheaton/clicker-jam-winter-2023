@@ -77,7 +77,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
   // TODO: @gonk pass in sprite texture once we have upgrade textures
   return (
     <button
-      className={"w-[64px] h-[64px] group m-4 opacity-100 disabled:cursor-auto"}
+      className={"w-[64px] h-[64px] group m-3 opacity-100 disabled:cursor-auto"}
       onClick={handleBuy}
       disabled={disabled}
     >

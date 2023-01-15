@@ -390,6 +390,15 @@ const BAR_UPGRADES: {
       increases: [1, 2, 5, 10],
       upgradeType: "barUpgrades",
     },
+    {
+      name: "Neutron star",
+      texture: "neutron_star",
+      description: "A neutron star is the collapsed core of a massive supergiant st- no one really cares do they?",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades",
+    },
   ],
   universe: [
     {
@@ -404,7 +413,16 @@ const BAR_UPGRADES: {
     {
       name: "Dark matter",
       texture: "dark_matter",
-      description: "Don't mess with this stuff.",
+      description: "Don't mess with this stuff...",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+      upgradeType: "barUpgrades",
+    },
+    {
+      name: "Black hole",
+      texture: "black_hole",
+      description: "Nothing can escape this one... catch all light into your drinks",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
