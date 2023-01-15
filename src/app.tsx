@@ -84,8 +84,14 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className={"bg-black-500 h-screen flex flex-col items-center justify-center"}>
-      <h1 className={"mt-2 font-bold text-5xl"}>
+    <div
+      style={{
+        backgroundSize: "100%",
+        backgroundImage: `url('./assets/ui/carpet_ceres.png')`,
+      }}
+      className={"pixel h-screen flex flex-col items-center justify-center bg-repeat-y"}
+    >
+      <h1 className={"mt-2 font-bold text-5xl text-white"}>
         clicker-jam-2023
       </h1>
       <br />
