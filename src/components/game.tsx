@@ -28,7 +28,7 @@ const Game: React.FC = () => {
     return () => {
       clearInterval(timerTick);
     };
-  });
+  }, []);
 
   return (
     // Carpet
