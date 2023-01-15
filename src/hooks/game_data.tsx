@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from "react";
 import { z } from "zod";
-import { INGREDIENTS } from "@data/index";
+import { DATA } from "@data/index";
 
 type GameDataOld = {
   money: number;
@@ -20,6 +20,9 @@ export const GameDataSchema = z.object({
   level: z.number().min(0),
   ingredients: z.record(z.number().min(0)),
   // ingredients: z.array(z.object({})),
+  clickableUpgrades: z.record(z.number().min(0)),
+  barUpgrades: z.record(z.number().min(0)),
+  rocketUpgrades: z.record(z.number().min(0)),
 });
 
 type GameData = z.infer<typeof GameDataSchema>;
@@ -38,10 +41,18 @@ export enum GameDataActions {
   INCREASE_DRINKS_PER_SECOND = "increase_drinks_per_second",
   SET_LEVEL = "set_level",
   UPGRADE_INGREDIENT = "upgrade_ingredient",
+  UPGRADE_BAR = "upgrade_bar",
+  UPGRADE_CLICKABLE = "upgrade_clickable",
+  UPGRADE_ROCKET = "upgrade_rocket",
+  INCREASE_UPGRADE = "increase_upgrade",
 }
 
 type GameDataAction = {
-  type: Exclude<GameDataActions, [GameDataActions.LOAD, GameDataActions.UPGRADE_INGREDIENT]>;
+  type: Exclude<GameDataActions, [
+    GameDataActions.LOAD,
+    GameDataActions.UPGRADE_INGREDIENT,
+    GameDataActions.INCREASE_UPGRADE
+  ]>;
   payload: number;
 } | {
   type: GameDataActions.LOAD;
@@ -49,6 +60,12 @@ type GameDataAction = {
 } | {
   type: GameDataActions.UPGRADE_INGREDIENT;
   payload: string;
+} | {
+  type: GameDataActions.INCREASE_UPGRADE;
+  payload: {
+    group: "barUpgrades" | "clickableUpgrades" | "rocketUpgrades";
+    name: keyof GameData["clickableUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
+  };
 };
 
 export const initialGameData: GameData = {
@@ -60,11 +77,42 @@ export const initialGameData: GameData = {
   ingredients: (() => {
     const ingredients: Record<string, number> = {};
 
-    INGREDIENTS.forEach((ingredient) => {
+    DATA.ingredients.forEach((ingredient) => {
       ingredients[ingredient.texture] = 0;
     });
 
     return ingredients;
+  })(),
+  clickableUpgrades: (() => {
+    const upgrades: Record<string, number> = {};
+
+    Object.values(DATA.clickableUpgrades).forEach((value) => {
+      value.map((upgrade) => {
+        upgrades[upgrade.texture] = 0;
+      });
+    });
+
+    return upgrades;
+  })(),
+  barUpgrades: (() => {
+    const upgrades: Record<string, number> = {};
+
+    Object.values(DATA.barUpgrades).forEach((value) => {
+      value.map((upgrade) => {
+        upgrades[upgrade.texture] = 0;
+      });
+    });
+
+    return upgrades;
+  })(),
+  rocketUpgrades: (() => {
+    const upgrades: Record<string, number> = {};
+
+    DATA.items.forEach((upgrade) => {
+      upgrades[upgrade.texture] = 0;
+    });
+
+    return upgrades;
   })(),
 };
 
@@ -119,6 +167,48 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         ingredients: {
           ...oldState.ingredients,
           [action.payload]: oldState.ingredients[action.payload] + 1,
+        },
+      };
+      break;
+    case GameDataActions.UPGRADE_BAR:
+      state = {
+        ...oldState,
+        barUpgrades: {
+          ...oldState.barUpgrades,
+          [action.payload]: oldState.barUpgrades[action.payload] + 1,
+        },
+      };
+      break;
+    case GameDataActions.UPGRADE_CLICKABLE:
+      state = {
+        ...oldState,
+        clickableUpgrades: {
+          ...oldState.clickableUpgrades,
+          [action.payload]: oldState.clickableUpgrades[action.payload] + 1,
+        },
+      };
+      break;
+    case GameDataActions.UPGRADE_ROCKET:
+      state = {
+        ...oldState,
+        rocketUpgrades: {
+          ...oldState.rocketUpgrades,
+          [action.payload]: oldState.rocketUpgrades[action.payload] + 1,
+        },
+      };
+      break;
+    // TODO: @tomheaton fix this
+    case GameDataActions.INCREASE_UPGRADE:
+      let payload = action.payload as {
+        group: "barUpgrades" | "clickableUpgrades" | "rocketUpgrades";
+        name: keyof GameData["clickableUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
+      };
+
+      state = {
+        ...oldState,
+        [payload.group]: {
+          ...oldState[payload.group],
+          [payload.name]: oldState[payload.group][payload.name] + 1,
         },
       };
       break;
