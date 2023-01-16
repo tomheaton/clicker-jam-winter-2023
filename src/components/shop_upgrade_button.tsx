@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Upgrades } from "@utils/types";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA } from "../data";
+import { CurrencyText } from "@components/currency";
 
 type Props = {
   upgrade: Upgrades;
@@ -95,12 +96,12 @@ const ShopUpgradeButton: React.FC<Props> = ({
           {locked ? `Get to location ${planetName.charAt(0).toUpperCase() + planetName.slice(1)}` : description}
         </p>
         {stage < costs.length && !locked && (
-          <p>
-            +{`${(flatIncrease || stage === 0) ? increases[stage] : increases[stage] * 100}` + `${(flatIncrease || stage === 0) ? "" : "%"}`} drinks/s
-            <br />
-            Cost: ${costs[stage]}
-            <br />
-          </p>
+          <div className={"flex flex-col items-center"}>
+            <p>
+              +{`${(flatIncrease || stage === 0) ? increases[stage] : increases[stage] * 100}` + `${(flatIncrease || stage === 0) ? "" : "%"}`} drinks/s
+            </p>
+            <CurrencyText preText={"Cost:"} text={costs[stage].toLocaleString()} />
+          </div>
         )}
         <p>
           Level: {stage < costs.length ? stage : "Max"}

@@ -56,3 +56,22 @@ button[disabled] {
 :focus {
   outline: none;
 }
+
+.dust {
+  image-rendering: pixelated;
+  animation: dust-animation 1s infinite alternate;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+@keyframes dust-animation {
+  0% {
+    background-image: url("./assets/ui/dust1.png");
+  }
+  50% {
+    background-image: url("./assets/ui/dust2.png");
+  }
+  100% {
+    background-image: url("./assets/ui/dust3.png");
+  }
+}

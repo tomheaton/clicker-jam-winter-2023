@@ -6,6 +6,7 @@ import IngredientButton from "./ingredient_button";
 import Shop from "./shop";
 import SlideMenu from "./slide_menu";
 import StatsMenu from "./stats_menu";
+import { CurrencyText } from "@components/currency";
 
 const DRINK_SELL_VALUE: number = 5;
 
@@ -57,9 +58,11 @@ const Game: React.FC = () => {
       >
         {/* Window */}
         <div className={"w-full flex flex-col flex-1 items-center mt-20"}>
-          <h1 className={"font-bold text-5xl text-white"}>
-            {DATA.planets[gameData.level]} ${gameData.money.toLocaleString()}
-          </h1>
+          <CurrencyText
+            preText={DATA.planets[gameData.level]}
+            text={gameData.money.toLocaleString()}
+            className={"font-bold text-5xl text-white"}
+          />
           <br />
           <button
             className={"btn-blue"}

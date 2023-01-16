@@ -210,7 +210,7 @@ const CLICKABLE_UPGRADES: {
       upgradeType: "clickableUpgrades",
     },
     {
-      name: "More hands2",
+      name: "More hands 2",
       texture: "more_hands2",
       description:
         "More hands2 means more drinks! However the surgery bill ain't payin itself and people might look at you weirdly.",
