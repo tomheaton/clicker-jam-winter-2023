@@ -212,12 +212,17 @@ type GameDataContextType = {
   dispatch: React.Dispatch<GameDataAction>;
 };
 
-export const GameDataContext = createContext<GameDataContextType>({} as GameDataContextType);
+export const GameDataContext = createContext<GameDataContextType | null>(null);
 
 export const useGameData = () => {
-  const { data: gameData, dispatch } = useContext(GameDataContext);
+  const context = useContext(GameDataContext);
+
+  if (context === null) {
+    throw new Error("useGameData must be used within a GameDataProvider");
+  }
+
   return {
-    gameData,
-    dispatch,
+    gameData: context.data,
+    dispatch: context.dispatch,
   };
 };
