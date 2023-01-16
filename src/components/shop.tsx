@@ -4,7 +4,7 @@ import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA } from "../data";
 
 const Shop: React.FC = () => {
-  const { gameData, dispatch } = useGameData();
+  const { data, dispatch } = useGameData();
   const [tab, setTab] = useState<number>(0);
 
   return (
@@ -29,9 +29,9 @@ const Shop: React.FC = () => {
                 <ShopUpgradeButton
                   key={upgrade.name}
                   upgrade={upgrade}
-                  locked={index > gameData.level}
+                  locked={index > data.level}
                   planetName={DATA.planets[index]}
-                  initialLevel={gameData.barUpgrades[upgrade.texture]}
+                  initialLevel={data.barUpgrades[upgrade.texture]}
                 />
               ))
             ))}
@@ -45,9 +45,9 @@ const Shop: React.FC = () => {
                 <ShopUpgradeButton
                   key={upgrade.name}
                   upgrade={upgrade}
-                  locked={index > gameData.level}
+                  locked={index > data.level}
                   planetName={DATA.planets[index]}
-                  initialLevel={gameData.clickableUpgrades[upgrade.texture]}
+                  initialLevel={data.clickableUpgrades[upgrade.texture]}
                 />
               ))
             ))}
@@ -65,7 +65,7 @@ const Shop: React.FC = () => {
                     name: item.texture,
                   },
                 });
-                console.log(gameData.rocketUpgrades);
+                console.log(data.rocketUpgrades);
               }}
               >
                 <img
@@ -77,7 +77,7 @@ const Shop: React.FC = () => {
                   <p>Name: {item.name}</p>
                   <p>Cost: ${item.itemCost.toLocaleString()}</p>
                   <p>Description: {item.itemDescription}</p>
-                  <p>Level: {gameData.rocketUpgrades[item.texture]}</p>
+                  <p>Level: {data.rocketUpgrades[item.texture]}</p>
                 </div>
               </button>
             ))}

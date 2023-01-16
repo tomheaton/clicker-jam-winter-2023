@@ -222,7 +222,6 @@ export const useGameData = () => {
   }
 
   return {
-    gameData: context.data,
-    dispatch: context.dispatch,
+    ...context,
   };
 };

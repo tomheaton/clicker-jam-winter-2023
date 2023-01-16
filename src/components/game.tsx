@@ -11,9 +11,9 @@ import { CurrencyText } from "@components/currency";
 const DRINK_SELL_VALUE: number = 5;
 
 const Game: React.FC = () => {
-  const { gameData, dispatch } = useGameData();
+  const { data, dispatch } = useGameData();
 
-  const currentDrink = DATA.drinks[gameData.level];
+  const currentDrink = DATA.drinks[data.level];
   const currentIngredients = currentDrink.ingredients;
   const mp = parseInt((currentIngredients.length / 2).toFixed(0));
 
@@ -22,7 +22,7 @@ const Game: React.FC = () => {
       dispatch({
         type: GameDataActions.INCREASE_MONEY,
         // TODO: change this to current drink sell value from DATA
-        payload: DRINK_SELL_VALUE * gameData.drinksPerSecond * gameData.drinkPrice,
+        payload: DRINK_SELL_VALUE * data.drinksPerSecond * data.drinkPrice,
       });
     }, 1000);
 
@@ -34,7 +34,7 @@ const Game: React.FC = () => {
     <div
       style={{
         backgroundSize: "100%",
-        backgroundImage: `url('./assets/ui/carpet_${DATA.planets[gameData.level]}.png')`,
+        backgroundImage: `url('./assets/ui/carpet_${DATA.planets[data.level]}.png')`,
       }}
       className={"pixel bg-repeat-y h-screen flex flex-col items-center justify-center w-full"}
     >
@@ -52,15 +52,15 @@ const Game: React.FC = () => {
       <div
         style={{
           backgroundSize: "100%",
-          backgroundImage: `url('./assets/ui/bg_${DATA.planets[gameData.level]}.png')`,
+          backgroundImage: `url('./assets/ui/bg_${DATA.planets[data.level]}.png')`,
         }}
         className={"pixel bg-no-repeat h-screen flex flex-col items-center justify-center w-full"}
       >
         {/* Window */}
         <div className={"w-full flex flex-col flex-1 items-center mt-20"}>
           <CurrencyText
-            preText={DATA.planets[gameData.level]}
-            text={gameData.money.toLocaleString()}
+            preText={DATA.planets[data.level]}
+            text={data.money.toLocaleString()}
             className={"font-bold text-5xl text-white"}
           />
           <br />
@@ -94,7 +94,7 @@ const Game: React.FC = () => {
         <div
           style={{
             backgroundSize: "100% 60%",
-            backgroundImage: `url('./assets/ui/bar_${DATA.planets[gameData.level]}.png')`,
+            backgroundImage: `url('./assets/ui/bar_${DATA.planets[data.level]}.png')`,
           }}
           className={"w-full h-2/5 flex justify-evenly items-center mt-[200px] bg-no-repeat bg-bottom"}
         >
@@ -103,7 +103,7 @@ const Game: React.FC = () => {
               <IngredientButton
                 key={ingredient.name}
                 ingredient={ingredient}
-                initialLevel={gameData.ingredients[ingredient.texture]}
+                initialLevel={data.ingredients[ingredient.texture]}
               />
             ))}
           </div>
@@ -117,7 +117,7 @@ const Game: React.FC = () => {
               <IngredientButton
                 key={ingredient.name}
                 ingredient={ingredient}
-                initialLevel={gameData.ingredients[ingredient.texture]}
+                initialLevel={data.ingredients[ingredient.texture]}
               />
             ))}
           </div>

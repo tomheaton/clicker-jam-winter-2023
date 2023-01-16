@@ -13,7 +13,7 @@ type Props = {
 const DrinkButton: React.FC<Props> = ({
                                         drink: { name, texture, ingredients, cooldown },
                                       }) => {
-  const { gameData, dispatch } = useGameData();
+  const { data, dispatch } = useGameData();
 
   // TODO: remove cooldown
   // NOTE(gonk): i left it for now so we can copy it to the drinks per second logic
@@ -24,7 +24,7 @@ const DrinkButton: React.FC<Props> = ({
 
   useEffect(() => {
     setStage(1);
-  }, [gameData.level]);
+  }, [data.level]);
 
   useEffect(() => {
     return;
@@ -68,7 +68,7 @@ const DrinkButton: React.FC<Props> = ({
   const handleClick = () => {
     let numberOfIngredientsUpgradedOnce = 0;
     ingredients.forEach((ingredient) => {
-      if (gameData.ingredients[ingredient.texture] > 0) {
+      if (data.ingredients[ingredient.texture] > 0) {
         numberOfIngredientsUpgradedOnce += 1;
       }
     });
@@ -81,10 +81,10 @@ const DrinkButton: React.FC<Props> = ({
 
     dispatch({
       type: GameDataActions.INCREASE_MONEY,
-      payload: DRINK_SELL_VALUE * gameData.drinkPrice,
+      payload: DRINK_SELL_VALUE * data.drinkPrice,
     });
 
-    setMarkers([...markers, DRINK_SELL_VALUE * gameData.drinkPrice * (gameData.drinksPerClick - numberOfIngredientsUpgradedOnce)]);
+    setMarkers([...markers, DRINK_SELL_VALUE * data.drinkPrice * (data.drinksPerClick - numberOfIngredientsUpgradedOnce)]);
 
     /*setTimeout(() => {
       setMarkers((markers) => markers.slice(1));

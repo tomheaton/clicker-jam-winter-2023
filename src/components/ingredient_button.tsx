@@ -15,14 +15,14 @@ const IngredientButton: React.FC<Props> = ({
                                              ingredient: { name, texture, upgradeCosts, upgradeDescriptions },
                                              initialLevel,
                                            }) => {
-  const { gameData, dispatch } = useGameData();
+  const { data, dispatch } = useGameData();
 
   const [currentUpgrade, setCurrentUpgrade] = useState<number>(initialLevel);
 
   const upgradeCount = upgradeCosts.length;
 
   const handleUpgrade = () => {
-    if (gameData.money < upgradeCosts[currentUpgrade]) return;
+    if (data.money < upgradeCosts[currentUpgrade]) return;
     if (currentUpgrade >= upgradeCount) return;
 
     if (currentUpgrade === 0) {

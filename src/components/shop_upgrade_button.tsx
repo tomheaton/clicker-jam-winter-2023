@@ -25,7 +25,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
                                               planetName,
                                               initialLevel,
                                             }) => {
-  const { gameData, dispatch } = useGameData();
+  const { data, dispatch } = useGameData();
   const [stage, setStage] = useState<number>(initialLevel);
 
   const dispatchTypes = {
@@ -35,13 +35,13 @@ const ShopUpgradeButton: React.FC<Props> = ({
     "rocketUpgrades": GameDataActions.INCREASE_DRINKS_PER_CLICK,
   };
 
-  let disabled = locked || gameData.money < costs[stage] || stage >= costs.length;
+  let disabled = locked || data.money < costs[stage] || stage >= costs.length;
 
   if (upgradeType === "clickableUpgrades") {
-    const currentIngredients = DATA.drinks[gameData.level].ingredients;
+    const currentIngredients = DATA.drinks[data.level].ingredients;
     let numberOfIngredientsUpgradedOnce = 0;
     currentIngredients.forEach((ingredient) => {
-      if (gameData.ingredients[ingredient.texture] > 0) {
+      if (data.ingredients[ingredient.texture] > 0) {
         numberOfIngredientsUpgradedOnce += 1;
       }
     });
@@ -61,7 +61,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
 
     dispatch({
       type: dispatchTypes[upgradeType],
-      payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * gameData.drinksPerSecond,
+      payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * data.drinksPerSecond,
     });
 
     dispatch({

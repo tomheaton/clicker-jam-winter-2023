@@ -4,19 +4,19 @@ import { useGameData } from "@hooks/game_data";
 import { CurrencyText } from "@components/currency";
 
 const StatsMenu: React.FC = () => {
-  const { gameData } = useGameData();
+  const { data } = useGameData();
 
-  const currentPlanet = DATA.planets[gameData.level];
+  const currentPlanet = DATA.planets[data.level];
 
   return (
     <div className={"p-10"}>
       <h1 className={"text-center text-xl font-bold"}>Stats</h1>
       <div className={"mt-4"}>
-        <CurrencyText preText={"Money:"} text={gameData.money.toLocaleString()} />
+        <CurrencyText preText={"Money:"} text={data.money.toLocaleString()} />
         {/*<p>Money: ${gameData.money.toLocaleString()}</p>*/}
-        <p>Drink selling price: {gameData.drinkPrice}</p>
-        <p>Drinks per click: {gameData.drinksPerClick}</p>
-        <p>Drinks per second: {gameData.drinksPerSecond}</p>
+        <p>Drink selling price: {data.drinkPrice}</p>
+        <p>Drinks per click: {data.drinksPerClick}</p>
+        <p>Drinks per second: {data.drinksPerSecond}</p>
         <p>Location: {currentPlanet.charAt(0).toUpperCase() + currentPlanet.slice(1)}</p>
       </div>
     </div>
