@@ -20,7 +20,6 @@ export enum GameDataActions {
   LOAD = "load",
   INCREASE_MONEY = "increase_money",
   DECREASE_MONEY = "decrease_money",
-
   // TODO: @gonk increase by percentage too (instead of just flat rate)
   INCREASE_DRINK_PRICE = "increase_drink_price",
   // TODO: @gonk change this drink price to drink price multiplier
