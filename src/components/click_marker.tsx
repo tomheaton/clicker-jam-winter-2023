@@ -1,14 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Marker } from "@utils/types";
 
 type Props = {
-  money: number;
+  marker: Marker;
 };
 
-const ClickMarker: React.FC<Props> = ({ money }) => {
-
-  const pos = ["text-left", "text-center", "text-right"][Math.floor(Math.random() * 3)];
-
+const ClickMarker: React.FC<Props> = ({ marker: { money, location } }) => {
   return (
     <motion.div
       className={"absolute w-full"}
@@ -23,7 +21,7 @@ const ClickMarker: React.FC<Props> = ({ money }) => {
       }}
       initial={"hide"}
     >
-      <p className={`text-white font-bold text-5xl ${pos}`}>
+      <p className={`text-white font-bold text-5xl ${location}`}>
         ${money.toLocaleString()}
       </p>
     </motion.div>

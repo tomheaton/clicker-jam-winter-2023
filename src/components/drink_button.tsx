@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
-import { Drink } from "@utils/types";
+import { Drink, Marker } from "@utils/types";
 import ClickMarker from "@components/click_marker";
 
 const TIME_VALUE: number = 0.25;
@@ -20,7 +20,7 @@ const DrinkButton: React.FC<Props> = ({
   const [onCooldown, setOnCooldown] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(0);
   const [stage, setStage] = useState<number>(1);
-  const [markers, setMarkers] = useState<number[]>([]);
+  const [markers, setMarkers] = useState<Marker[]>([]);
 
   useEffect(() => {
     setStage(1);
@@ -31,13 +31,13 @@ const DrinkButton: React.FC<Props> = ({
     // const markerRemover = setTimeout(() => {
     const markerRemover = setInterval(() => {
       setMarkers((markers) => markers.slice(1));
-    }, 2_000);
+    }, 1_000);
 
     return () => {
       // clearTimeout(markerRemover);
       clearInterval(markerRemover);
     };
-  }, markers);
+  }, [markers]);
 
   useEffect(() => {
     const timerTick = setInterval(() => {
@@ -67,6 +67,7 @@ const DrinkButton: React.FC<Props> = ({
 
   const handleClick = () => {
     let numberOfIngredientsUpgradedOnce = 0;
+
     ingredients.forEach((ingredient) => {
       if (data.ingredients[ingredient.texture] > 0) {
         numberOfIngredientsUpgradedOnce += 1;
@@ -84,7 +85,10 @@ const DrinkButton: React.FC<Props> = ({
       payload: DRINK_SELL_VALUE * data.drinkPrice,
     });
 
-    setMarkers([...markers, DRINK_SELL_VALUE * data.drinkPrice * (data.drinksPerClick - numberOfIngredientsUpgradedOnce)]);
+    setMarkers([...markers, {
+      money: DRINK_SELL_VALUE * data.drinkPrice * (data.drinksPerClick - numberOfIngredientsUpgradedOnce),
+      location: ["text-left", "text-center", "text-right"][Math.floor(Math.random() * 3)],
+    }]);
 
     /*setTimeout(() => {
       setMarkers((markers) => markers.slice(1));
@@ -93,13 +97,14 @@ const DrinkButton: React.FC<Props> = ({
 
   return (
     <button
-      className={"h-full w-full hover:scale-110 hover:ease-in-out active:scale-125 relative"}
+      className={"h-full w-full relative"}
       onClick={handleClick}
     >
-      {/*<p>markers: {markers.length}</p>*/}
-      {markers.length > 0 && markers.map((money, i) => <ClickMarker key={i} money={money} />)}
+      {markers.length > 0 && markers.reverse().map((marker, i) => (
+        <ClickMarker key={i} marker={marker} />
+      ))}
       <img
-        className={"pixel png-shadow w-full h-full"}
+        className={"pixel png-shadow w-full h-full hover:scale-110 hover:ease-in-out active:scale-125 "}
         src={`assets/drinks/${texture}_${stage}.png`}
         alt={`${name} sprite`}
       />
