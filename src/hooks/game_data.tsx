@@ -34,12 +34,13 @@ export enum GameDataActions {
   INCREASE_UPGRADE = "increase_upgrade",
 }
 
-type GameDataAction = {
-  type: Exclude<GameDataActions, [
-    GameDataActions.LOAD,
-    GameDataActions.UPGRADE_INGREDIENT,
-    GameDataActions.INCREASE_UPGRADE
-  ]>;
+type GameDataAction =
+  | {
+  type: Exclude<GameDataActions,
+    | GameDataActions.LOAD
+    | GameDataActions.UPGRADE_INGREDIENT
+    | GameDataActions.INCREASE_UPGRADE
+  >;
   payload: number;
 } | {
   type: GameDataActions.LOAD;
