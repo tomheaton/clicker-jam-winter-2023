@@ -77,7 +77,7 @@ const Shop: React.FC = () => {
                 >
                   <img
                     className={"pixel w-[64px] h-[64px]"}
-                    src={`assets/items/${item.texture}_1.png`}
+                    src={`assets/ui/${item.texture}_sprite.png`}
                     alt={`${item.name} sprite`}
                   />
                   <div className={"text-left"}>
