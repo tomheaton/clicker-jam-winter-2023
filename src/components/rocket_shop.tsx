@@ -81,6 +81,7 @@ const RocketShop: React.FC = ({
         <RocketUpgrade part={0} />
         <RocketUpgrade part={1} />
         <RocketUpgrade part={2} />
+        <RocketUpgrade part={3} />
       </div>
       
       { /* Roket menu to go to other planets */ }
