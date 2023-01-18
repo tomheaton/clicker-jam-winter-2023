@@ -53,7 +53,7 @@ const PlanetTeleportButton: React.FC<PlanetTeleportButtonProps> = ({
     <div>
       <button onClick={changePlanet}>
         <img
-          className={"pixel w-[80px] h-[80px] m-2"}
+          className={"pixel p-2 w-[100px] h-[100px]"}
           src={`assets/ui/${planet}_sprite${locked ? "_locked" : ""}.png`}
           alt={`Location ${planet} teleport button`}
         />
@@ -89,7 +89,7 @@ const RocketShop: React.FC = ({
           Teleport
         </h1>
         {data.level > 0 && (
-          <div className={"w-full h-full flex flex-wrap flex-row justify-center"}>
+          <div className={"w-full h-full flex flex-row justify-between w-full h-full"}>
               {Object.values(DATA.planets).map((planet, index) => {
                 if (data.level == index) return;
                 return (
