@@ -47,3 +47,8 @@ export type Data = {
   sounds: Sound[];
   planets: typeof PLANETS;
 };
+
+export type Marker = {
+  money: number;
+  location: string;
+}

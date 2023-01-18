@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { Drink, Marker } from "@utils/types";
 import ClickMarker from "@components/click_marker";
+import { getIngredientsUpgradedOnce } from "@utils/index";
 
 const TIME_VALUE: number = 0.25;
 const DRINK_SELL_VALUE: number = 5;
@@ -23,7 +24,15 @@ const DrinkButton: React.FC<Props> = ({
   const [markers, setMarkers] = useState<Marker[]>([]);
 
   useEffect(() => {
-    setStage(1);
+    setStage(getIngredientsUpgradedOnce(ingredients, data.ingredients) + 1);
+  }, []);
+
+  useEffect(() => {
+    setStage(getIngredientsUpgradedOnce(ingredients, data.ingredients) + 1);
+  }, [data.ingredients]);
+
+  useEffect(() => {
+    setStage(getIngredientsUpgradedOnce(ingredients, data.ingredients) + 1);
   }, [data.level]);
 
   useEffect(() => {
@@ -66,13 +75,7 @@ const DrinkButton: React.FC<Props> = ({
   };
 
   const handleClick = () => {
-    let numberOfIngredientsUpgradedOnce = 0;
-
-    ingredients.forEach((ingredient) => {
-      if (data.ingredients[ingredient.texture] > 0) {
-        numberOfIngredientsUpgradedOnce += 1;
-      }
-    });
+    let numberOfIngredientsUpgradedOnce = getIngredientsUpgradedOnce(ingredients, data.ingredients);
 
     setStage(s => s + 1);
 

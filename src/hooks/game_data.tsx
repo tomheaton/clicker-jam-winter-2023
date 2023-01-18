@@ -14,7 +14,7 @@ export const GameDataSchema = z.object({
   rocketUpgrades: z.record(z.number().min(0)),
 });
 
-type GameData = z.infer<typeof GameDataSchema>;
+export type GameData = z.infer<typeof GameDataSchema>;
 
 export enum GameDataActions {
   LOAD = "load",
