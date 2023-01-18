@@ -233,7 +233,7 @@ const CLICKABLE_UPGRADES: {
       upgradeType: GameDataActions.UPGRADE_CLICKABLE,
     },
     { 
-      name: "Ice_machine",
+      name: "Ice machine",
     texture: "ice_machine",
     description:
       "Perhaps your drinks will actually be digestible now...",
