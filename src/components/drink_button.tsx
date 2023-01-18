@@ -71,9 +71,13 @@ const DrinkButton: React.FC<Props> = ({
 
     setStage(s => s + 1);
 
+    console.log(stage)
+    console.log(ingredients.length)
+
     if (stage < (ingredients.length + 1)) return;
 
     setStage(numberOfIngredientsUpgradedOnce + 1);
+    console.log(stage)
 
     dispatch({
       type: GameDataActions.INCREASE_MONEY,
@@ -100,7 +104,9 @@ const DrinkButton: React.FC<Props> = ({
       ))}
       <img
         className={"pixel png-shadow w-full h-full hover:scale-110 hover:ease-in-out active:scale-125 "}
-        src={`assets/drinks/${texture}_${stage}.png`}
+        src={((stage == ingredients.length+1) && (texture === "final_elixir"))
+              ? `assets/drinks/final_elixir_5.gif`
+              : `assets/drinks/${texture}_${stage}.png`}
         alt={`${name} sprite`}
       />
     </button>
