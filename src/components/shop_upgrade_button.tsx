@@ -93,7 +93,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
           {locked ? "Upgrade locked" : name}
         </p>
         <p>
-          {locked ? `Get to location ${planetName.charAt(0).toUpperCase() + planetName.slice(1)}` : description}
+          {locked ? `Get to location '${planetName.charAt(0).toUpperCase() + planetName.slice(1)}'` : description}
         </p>
         {stage < costs.length && !locked && (
           <div className={"flex flex-col items-center"}>
