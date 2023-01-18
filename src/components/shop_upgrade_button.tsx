@@ -33,7 +33,8 @@ const ShopUpgradeButton: React.FC<Props> = ({
 
   if (upgradeType === GameDataActions.UPGRADE_CLICKABLE) {
     const currentIngredients = DATA.drinks[data.level].ingredients;
-    if (getIngredientsUpgradedOnce(currentIngredients, data.clickableUpgrades) < currentIngredients.length) {
+    let numberOfIngredientsUpgradedOnce = getIngredientsUpgradedOnce(currentIngredients, data.ingredients);
+    if (numberOfIngredientsUpgradedOnce < currentIngredients.length) {
       disabled = true;
     }
   }
@@ -51,10 +52,16 @@ const ShopUpgradeButton: React.FC<Props> = ({
       payload: texture,
     });
 
-    /*dispatch({
-      type: upgradeType,
+    // NOTES:
+    // Clickable Upgrades = INCREASE_DRINKS_PER_CLICK
+    // Bar Upgrades = INCREASE_DRINKS_PER_SECOND
+
+    dispatch({
+      type: upgradeType === GameDataActions.UPGRADE_CLICKABLE
+        ? GameDataActions.INCREASE_DRINKS_PER_CLICK
+        : GameDataActions.INCREASE_DRINKS_PER_SECOND,
       payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * data.drinksPerSecond,
-    });*/
+    });
 
     /*dispatch({
       type: GameDataActions.INCREASE_UPGRADE,
