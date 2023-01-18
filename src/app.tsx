@@ -88,7 +88,7 @@ const App: React.FC = () => {
       className={"pixel h-screen flex flex-col items-center justify-center bg-repeat-y"}
     >
       <h1 className={"mt-2 font-bold text-5xl text-white"}>
-        clicker-jam-2023
+        Cosmic Taphouse
       </h1>
       <br />
       <img
