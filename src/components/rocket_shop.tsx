@@ -65,12 +65,15 @@ const PlanetTeleportButton: React.FC<PlanetTeleportButtonProps> = ({
 const RocketShop: React.FC = ({
 }) => {
   const { data } = useGameData();
-  
+  const [stage, setStage] = useState<number>(0);
+  const handleBuy = () => {
+     setStage(t => (t + 1))
+    /*fix me pls @gonk*/
+    if(stage >= 3)
+      setStage(3)
+  }
   return (
     <div>
-      <h1 className={"text-4xl text-center"}>
-        Planet Upgrades
-      </h1>
       <div className={"flex flex-row justify-center"}>
         { /* Rocket parts TODO: put this back once rocket upgrades are correct in data*/ }
         {/* Object.values(DATA.items).map((item, index) => {
@@ -78,17 +81,23 @@ const RocketShop: React.FC = ({
             <RocketUpgrade part={index} />
           );
         }) */}
-        <RocketUpgrade part={0} />
-        <RocketUpgrade part={1} />
-        <RocketUpgrade part={2} />
-        <RocketUpgrade part={3} />
-      </div>
-      
-      { /* Roket menu to go to other planets */ }
-      <div className={"pt-20"}>
-        <h1 className={"text-4xl text-center"}>
-          Teleport
-        </h1>
+        </div>
+        <div className={"flex flex-row justify-left pt-4"}>
+            <img
+            
+              className={"pixel p-2 w-[190px] h-[240px]"}
+              src={`assets/upgrades/ships/ship_${DATA.planets[data.level]}_stage_${stage}.png`}
+              alt={`Rocket ship upgrade`}
+            />
+            <button
+            className={"bg-indigo-400 border-2 rounded-md w-[300px] h-[100px]"}
+            onClick={handleBuy}
+            >
+              {stage===3 ? "Fully Upgraded!":"Upgrade Ship"}
+          </button>
+          </div>
+      { /* Rocket menu to go to other planets */ }
+      <div className={"pt-2"}>
         {data.level > 0 && (
           <div className={"w-full h-full flex flex-row justify-between w-full h-full"}>
               {Object.values(DATA.planets).map((planet, index) => {
