@@ -92,7 +92,7 @@ const DrinkButton: React.FC<Props> = ({
 
   return (
     <button
-      className={"h-full w-full relative"}
+      className={"w-full relative"}
       onClick={handleClick}
     >
       {markers.length > 0 && markers.reverse().map((marker, i) => (

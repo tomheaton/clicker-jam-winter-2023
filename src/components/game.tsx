@@ -98,7 +98,7 @@ const Game: React.FC = () => {
           }}
           className={"w-full h-2/5 flex justify-evenly items-center mt-[200px] bg-no-repeat bg-bottom"}
         >
-          <div className={"w-2/5 flex items-center justify-evenly m-4"}>
+          <div className={"w-1/4 md:w-2/5 flex items-center justify-evenly m-4"}>
             {currentIngredients.slice(0, mp).map((ingredient) => (
               <IngredientButton
                 key={ingredient.name}
@@ -108,11 +108,11 @@ const Game: React.FC = () => {
             ))}
           </div>
 
-          <div className={"w-1/5 h-full -mt-20 z-[20]"}>
+          <div className={"min-w-[150px] w-1/5 h-full -mt-20 z-[20] flex items-center justify-center"}>
             <DrinkButton drink={currentDrink} />
           </div>
 
-          <div className={"w-2/5 flex items-center justify-evenly m-4"}>
+          <div className={"w-1/4 md:w-2/5 flex items-center justify-evenly m-4"}>
             {currentIngredients.slice(mp).map((ingredient) => (
               <IngredientButton
                 key={ingredient.name}

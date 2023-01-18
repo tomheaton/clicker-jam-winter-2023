@@ -47,7 +47,7 @@ const IngredientButton: React.FC<Props> = ({
 
   return (
     <button
-      className={"mt-32 w-[150px] h-[150px] group relative hover:scale-110 hover:ease-in-out active:scale-125"}
+      className={"mt-32 w-full h-full max-w-[150px] max-h-[150px] group relative"}
       onClick={handleUpgrade}
     >
       {/* Popup description */}
@@ -81,7 +81,7 @@ const IngredientButton: React.FC<Props> = ({
 
       {/* Ingredient sprite */}
       <img
-        className={"pixel png-shadow w-full h-full"}
+        className={"pixel png-shadow w-full h-full hover:scale-110 hover:ease-in-out active:scale-125"}
         src={`assets/ingredients/${texture}.png`}
         alt={`${name} sprite`}
       />
