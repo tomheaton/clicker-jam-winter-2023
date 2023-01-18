@@ -226,12 +226,62 @@ const CLICKABLE_UPGRADES: {
       name: "More hands 2",
       texture: "more_hands2",
       description:
-        "More hands 2 means more drinks! However the surgery bill ain't payin itself and people might look at you weirdly.",
+        "Look Ma, all hands!",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
       upgradeType: GameDataActions.UPGRADE_CLICKABLE,
     },
+    { 
+      name: "Ice_machine",
+    texture: "ice_machine",
+    description:
+      "Perhaps your drinks will actually be digestible now...",
+    costs: [20, 100, 200, 500],
+    flatIncrease: true,
+    increases: [1, 2, 5, 10],
+    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
+  },
+  { 
+      name: "Thermal gloves",
+    texture: "thermal_gloves",
+    description:
+      "Gotta ensure all those fancy new hands don't get burnt.",
+    costs: [20, 100, 200, 500],
+    flatIncrease: true,
+    increases: [1, 2, 5, 10],
+    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
+},
+{ 
+      name: "Sunglasses",
+    texture: "sunglasses",
+    description:
+      "Get some drip, make some tips.",
+    costs: [20, 100, 200, 500],
+    flatIncrease: true,
+    increases: [1, 2, 5, 10],
+    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
+},
+{ 
+      name: "Suit",
+    texture: "suit",
+    description:
+      "Shaken, not stirred.",
+    costs: [20, 100, 200, 500],
+    flatIncrease: true,
+    increases: [1, 2, 5, 10],
+    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
+},
+{ 
+      name: "Cupid's Bow",
+    texture: "cupids_bow",
+    description:
+      "Shall I compare thee to a summer's day? More luvin, more chuggin amirite?",
+    costs: [20, 100, 200, 500],
+    flatIncrease: true,
+    increases: [1, 2, 5, 10],
+    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
+},
   ],
   earth: [],
   sun: [],
