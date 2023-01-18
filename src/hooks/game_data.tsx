@@ -30,7 +30,7 @@ export enum GameDataActions {
   UPGRADE_BAR = "upgrade_bar",
   UPGRADE_CLICKABLE = "upgrade_clickable",
   UPGRADE_ROCKET = "upgrade_rocket",
-  INCREASE_UPGRADE = "increase_upgrade",
+  // INCREASE_UPGRADE = "increase_upgrade",
 }
 
 type GameDataAction =
@@ -38,24 +38,27 @@ type GameDataAction =
   type: Exclude<GameDataActions,
     | GameDataActions.LOAD
     | GameDataActions.UPGRADE_INGREDIENT
-    | GameDataActions.INCREASE_UPGRADE
+    | GameDataActions.UPGRADE_BAR
+    | GameDataActions.UPGRADE_CLICKABLE
+    | GameDataActions.UPGRADE_ROCKET
+    // | GameDataActions.INCREASE_UPGRADE
   >;
   payload: number;
 } | {
   type: GameDataActions.LOAD;
   payload: GameData;
 } | {
-  type: GameDataActions.UPGRADE_INGREDIENT;
+  type: GameDataActions.UPGRADE_INGREDIENT | GameDataActions.UPGRADE_BAR | GameDataActions.UPGRADE_CLICKABLE | GameDataActions.UPGRADE_ROCKET;
   payload: string;
-} | {
-  type: GameDataActions.INCREASE_UPGRADE;
-  payload: {
-    group: "barUpgrades" | "clickableUpgrades" | "rocketUpgrades";
-    name: keyof GameData["clickableUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
-  };
+  /*} | {
+    type: GameDataActions.INCREASE_UPGRADE;
+    payload: {
+      group: "barUpgrades" | "clickableUpgrades" | "rocketUpgrades";
+      name: keyof GameData["clickableUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
+    };*/
 };
 
-export const initialGameData: GameData = {
+export const getInitialGameData = (): GameData => ({
   money: 100,
   drinksPerClick: 1,
   drinkPrice: 20,
@@ -101,7 +104,7 @@ export const initialGameData: GameData = {
 
     return upgrades;
   })(),
-};
+});
 
 export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
   let state: GameData;
@@ -185,7 +188,7 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
       };
       break;
     // TODO: @tomheaton fix this
-    case GameDataActions.INCREASE_UPGRADE:
+    /*case GameDataActions.INCREASE_UPGRADE:
       let payload = action.payload as {
         group: "barUpgrades" | "clickableUpgrades" | "rocketUpgrades";
         name: keyof GameData["clickableUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
@@ -198,7 +201,7 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
           [payload.name]: oldState[payload.group][payload.name] + 1,
         },
       };
-      break;
+      break;*/
   }
 
   console.log("saving data");

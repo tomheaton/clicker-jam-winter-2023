@@ -58,14 +58,19 @@ const Shop: React.FC = () => {
           <div>
             {DATA.items.map((item) => (
               <button key={item.texture} className={"flex my-2 space-x-8"} onClick={() => {
-                dispatch({
+                /*dispatch({
                   type: GameDataActions.INCREASE_UPGRADE,
                   payload: {
                     group: "rocketUpgrades",
                     name: item.texture,
                   },
+                });*/
+                dispatch({
+                  type: GameDataActions.UPGRADE_ROCKET,
+                  payload: item.texture,
                 });
                 console.log(data.rocketUpgrades);
+                console.log("TODO: unlock planet");
               }}
               >
                 <img

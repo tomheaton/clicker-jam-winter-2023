@@ -1,4 +1,5 @@
 import { MUSIC, PLANETS, SOUNDS } from "../data";
+import { GameDataActions } from "@hooks/game_data";
 
 export type Ingredient = {
   name: string;
@@ -30,7 +31,7 @@ export type Upgrades = {
   costs: number[];
   flatIncrease: boolean; // 1: the upgrade increases the drinks/click at a flat rate, 0: it's a multiplier
   increases: number[];
-  upgradeType: "clickableUpgrades" | "barUpgrades" | "rocketUpgrades";
+  upgradeType: GameDataActions.UPGRADE_ROCKET | GameDataActions.UPGRADE_CLICKABLE | GameDataActions.UPGRADE_BAR;
 };
 
 export type Planet = typeof PLANETS[number];

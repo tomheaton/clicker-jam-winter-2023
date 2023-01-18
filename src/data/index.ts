@@ -1,5 +1,6 @@
 import { Drink, Ingredient, Item, Upgrades } from "@utils/types";
 import { getIngredients } from "../utils";
+import { GameDataActions } from "@hooks/game_data";
 
 // NOTE: when editing the descriptions, put one less description than upgrading costs, as first description is
 // builtin to the component
@@ -207,7 +208,7 @@ const CLICKABLE_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "clickableUpgrades",
+      upgradeType: GameDataActions.UPGRADE_CLICKABLE,
     },
     {
       name: "More hands 2",
@@ -217,7 +218,7 @@ const CLICKABLE_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "clickableUpgrades",
+      upgradeType: GameDataActions.UPGRADE_CLICKABLE,
     },
   ],
   earth: [],
@@ -238,7 +239,7 @@ const BAR_UPGRADES: {
       costs: [20_000, 100, 200, 500],
       flatIncrease: false,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Better drinks",
@@ -247,7 +248,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Alcohol factory",
@@ -256,7 +257,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Nicer glasses",
@@ -265,7 +266,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Atmosphere",
@@ -274,7 +275,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Music",
@@ -283,7 +284,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
   ],
   earth: [
@@ -294,7 +295,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Rocks",
@@ -303,7 +304,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "'No Politics' sign",
@@ -312,7 +313,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Humans allowed",
@@ -321,7 +322,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Water filter",
@@ -330,7 +331,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Outter space social media",
@@ -339,7 +340,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
   ],
   sun: [
@@ -350,7 +351,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Force field",
@@ -359,7 +360,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Solar panels",
@@ -368,7 +369,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Magma eater",
@@ -377,7 +378,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
   ],
   galaxy: [
@@ -388,7 +389,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Neutron star",
@@ -397,7 +398,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
   ],
   universe: [
@@ -408,7 +409,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Dark matter",
@@ -417,7 +418,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
       name: "Black hole",
@@ -426,7 +427,7 @@ const BAR_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: "barUpgrades",
+      upgradeType: GameDataActions.UPGRADE_BAR,
     },
   ],
   multiverse: [],

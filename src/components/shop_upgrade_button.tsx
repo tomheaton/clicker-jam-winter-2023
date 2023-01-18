@@ -3,6 +3,7 @@ import { Upgrades } from "@utils/types";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA } from "../data";
 import { CurrencyText } from "@components/currency";
+import { getIngredientsUpgradedOnce } from "@utils/index";
 
 type Props = {
   upgrade: Upgrades;
@@ -28,25 +29,11 @@ const ShopUpgradeButton: React.FC<Props> = ({
   const { data, dispatch } = useGameData();
   const [stage, setStage] = useState<number>(initialLevel);
 
-  const dispatchTypes = {
-    "clickableUpgrades": GameDataActions.INCREASE_DRINKS_PER_CLICK,
-    "barUpgrades": GameDataActions.INCREASE_DRINKS_PER_SECOND,
-    // TODO: @gonk add rocket upgrades
-    "rocketUpgrades": GameDataActions.INCREASE_DRINKS_PER_CLICK,
-  };
-
   let disabled = locked || data.money < costs[stage] || stage >= costs.length;
 
-  if (upgradeType === "clickableUpgrades") {
+  if (upgradeType === GameDataActions.UPGRADE_CLICKABLE) {
     const currentIngredients = DATA.drinks[data.level].ingredients;
-    let numberOfIngredientsUpgradedOnce = 0;
-    currentIngredients.forEach((ingredient) => {
-      if (data.ingredients[ingredient.texture] > 0) {
-        numberOfIngredientsUpgradedOnce += 1;
-      }
-    });
-
-    if (numberOfIngredientsUpgradedOnce < currentIngredients.length) {
+    if (getIngredientsUpgradedOnce(currentIngredients, data.clickableUpgrades) < currentIngredients.length) {
       disabled = true;
     }
   }
@@ -60,17 +47,22 @@ const ShopUpgradeButton: React.FC<Props> = ({
     });
 
     dispatch({
-      type: dispatchTypes[upgradeType],
-      payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * data.drinksPerSecond,
+      type: upgradeType,
+      payload: texture,
     });
 
-    dispatch({
+    /*dispatch({
+      type: upgradeType,
+      payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * data.drinksPerSecond,
+    });*/
+
+    /*dispatch({
       type: GameDataActions.INCREASE_UPGRADE,
       payload: {
         group: "barUpgrades",
         name: texture,
       },
-    });
+    });*/
 
     setStage(s => s + 1);
   };

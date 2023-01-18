@@ -1,11 +1,18 @@
 import React, { useEffect, useReducer, useState } from "react";
 import Game from "./components/game";
-import { GameDataActions, GameDataContext, gameDataReducer, GameDataSchema, initialGameData } from "@hooks/game_data";
+import {
+  GameDataActions,
+  GameDataContext,
+  gameDataReducer,
+  GameDataSchema,
+  getInitialGameData,
+} from "@hooks/game_data";
 import { toast } from "react-hot-toast";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
-  const [gameData, dispatch] = useReducer(gameDataReducer, initialGameData);
+  // const [gameData, dispatch] = useReducer(gameDataReducer, initialGameData);
+  const [gameData, dispatch] = useReducer(gameDataReducer, getInitialGameData());
 
   /*useEffect(() => {
     console.log("here");
@@ -82,7 +89,7 @@ const App: React.FC = () => {
     console.log("resetting game");
     dispatch({
       type: GameDataActions.LOAD,
-      payload: initialGameData,
+      payload: getInitialGameData(),
     });
     toast.success("Game Reset!");
   };
