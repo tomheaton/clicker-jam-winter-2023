@@ -25,15 +25,7 @@ const DrinkButton: React.FC<Props> = ({
 
   useEffect(() => {
     setStage(getIngredientsUpgradedOnce(ingredients, data.ingredients) + 1);
-  }, []);
-
-  useEffect(() => {
-    setStage(getIngredientsUpgradedOnce(ingredients, data.ingredients) + 1);
-  }, [data.ingredients]);
-
-  useEffect(() => {
-    setStage(getIngredientsUpgradedOnce(ingredients, data.ingredients) + 1);
-  }, [data.level]);
+  }, [data.ingredients, data.level]);
 
   useEffect(() => {
     return;
