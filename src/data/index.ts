@@ -161,6 +161,7 @@ export const DRINKS: Drink[] = [
   },
 ];
 
+// FIXME: Remove this
 const ITEMS: Item[] = [
   {
     name: "Ceres Rocket",
@@ -205,6 +206,8 @@ const ITEMS: Item[] = [
     costs: [1, 5, 10, 15],
   },
 ];
+
+
 
 export const PLANETS = ["ceres", "earth", "sun", "galaxy", "universe", "multiverse"] as const;
 

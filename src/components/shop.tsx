@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ShopUpgradeButton from "./shop_upgrade_button";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA } from "../data";
+import RocketShop from "@components/rocket_shop"
 
 const Shop: React.FC = () => {
   const { data, dispatch } = useGameData();
@@ -55,19 +56,23 @@ const Shop: React.FC = () => {
         )}
 
         {tab === 2 && (
+          <RocketShop />
+        )}
+
+        {/* tab === 2 && (
           <div>
             {DATA.items.map((item, index) => (
               <div key={item.texture} className={"flex w-full"}>
                 <button
                   className={"flex my-2 space-x-8 w-full"}
                   onClick={() => {
-                    /*dispatch({
-                      type: GameDataActions.INCREASE_UPGRADE,
-                      payload: {
-                        group: "rocketUpgrades",
-                        name: item.texture,
-                      },
-                    });*/
+                    //dispatch({
+                    //  type: GameDataActions.INCREASE_UPGRADE,
+                    //  payload: {
+                    //    group: "rocketUpgrades",
+                    //    name: item.texture,
+                    //  },
+                    //});
                     dispatch({
                       type: GameDataActions.UPGRADE_ROCKET,
                       payload: item.texture,
@@ -100,7 +105,7 @@ const Shop: React.FC = () => {
               </div>
             ))}
           </div>
-        )}
+        ) */}
       </div>
     </div>
   );
