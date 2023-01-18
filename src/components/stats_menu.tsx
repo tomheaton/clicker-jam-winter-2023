@@ -13,10 +13,9 @@ const StatsMenu: React.FC = () => {
       <h1 className={"text-center text-xl font-bold"}>Stats</h1>
       <div className={"mt-4"}>
         <CurrencyText preText={"Money:"} text={data.money.toLocaleString()} />
-        {/*<p>Money: ${gameData.money.toLocaleString()}</p>*/}
-        <p>Drink selling price: {data.drinkPrice}</p>
-        <p>Drinks per click: {data.drinksPerClick}</p>
-        <p>Drinks per second: {data.drinksPerSecond}</p>
+        <p>Drink selling price: {data.drinkPrice.toLocaleString()}</p>
+        <p>Drinks per click: {data.drinksPerClick.toLocaleString()}</p>
+        <p>Drinks per second: {data.drinksPerSecond.toLocaleString()}</p>
         <p>Location: {currentPlanet.charAt(0).toUpperCase() + currentPlanet.slice(1)}</p>
       </div>
     </div>

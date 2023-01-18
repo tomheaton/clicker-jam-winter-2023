@@ -18,19 +18,16 @@ const Game: React.FC = () => {
   const mp = parseInt((currentIngredients.length / 2).toFixed(0));
 
   useEffect(() => {
-    console.log("here");
     const timerTick = setInterval(() => {
-      console.log("tick");
-      console.log("payload", DRINK_SELL_VALUE * data.drinksPerSecond * data.drinkPrice);
       dispatch({
         type: GameDataActions.INCREASE_MONEY,
-        // TODO: change this to current drink sell value from DATA
+        // TODO: @gonk change this to current drink sell value from DATA
         payload: DRINK_SELL_VALUE * data.drinksPerSecond * data.drinkPrice,
       });
     }, 1_000);
 
     return () => clearInterval(timerTick);
-  }, []);
+  }, [data.drinksPerSecond]);
 
   return (
     // Carpet
