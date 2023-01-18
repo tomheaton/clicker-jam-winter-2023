@@ -87,7 +87,8 @@ const ShopUpgradeButton: React.FC<Props> = ({
         alt={`${name} upgrade sprite`}
       />
 
-      <div className={"scale-0 bg-red-500 absolute z-[2] group-hover:scale-100 opacity-100 disabled:opacity-100"}>
+      <div
+        className={"scale-0 bg-red-500 absolute z-[2] group-hover:scale-100 opacity-100 disabled:opacity-100 p-4 rounded-xl"}>
         <p>
           {locked ? "Upgrade locked" : name}
         </p>

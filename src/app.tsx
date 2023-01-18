@@ -11,28 +11,7 @@ import { toast } from "react-hot-toast";
 
 const App: React.FC = () => {
   const [start, setStart] = useState<boolean>(false);
-  // const [gameData, dispatch] = useReducer(gameDataReducer, initialGameData);
   const [gameData, dispatch] = useReducer(gameDataReducer, getInitialGameData());
-
-  /*useEffect(() => {
-    console.log("here");
-
-    const onUnload = (e: BeforeUnloadEvent) => {
-      e.preventDefault();
-      console.log("DON'T LEAVE ME!");
-      alert("DON'T LEAVE ME!");
-
-      const confirmationMessage = "Some message";
-      e.returnValue = confirmationMessage;
-      return confirmationMessage;
-    };
-
-    window.addEventListener("beforeunload", onUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", onUnload);
-    };
-  }, []);*/
 
   useEffect(() => {
     window.addEventListener("click", async () => {
@@ -40,13 +19,6 @@ const App: React.FC = () => {
       await audio.play();
     });
 
-    return window.removeEventListener("click", async () => {
-      const audio = new Audio(`/assets/sounds/click.mp3`);
-      await audio.play();
-    });
-  }, []);
-
-  useEffect(() => {
     console.log("loading saved data");
     const savedData = localStorage.getItem("gameData");
 
@@ -75,6 +47,11 @@ const App: React.FC = () => {
     dispatch({
       type: GameDataActions.LOAD,
       payload: result.data,
+    });
+
+    return window.removeEventListener("click", async () => {
+      const audio = new Audio(`/assets/sounds/click.mp3`);
+      await audio.play();
     });
   }, []);
 
