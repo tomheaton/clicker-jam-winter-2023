@@ -21,7 +21,7 @@ export type Item = {
   texture: string;
   itemCost: number;
   itemDescription: string;
-
+  costs: number[],
 };
 
 export type Upgrades = {

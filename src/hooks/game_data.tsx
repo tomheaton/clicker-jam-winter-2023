@@ -30,6 +30,7 @@ export enum GameDataActions {
   UPGRADE_BAR = "upgrade_bar",
   UPGRADE_CLICKABLE = "upgrade_clickable",
   UPGRADE_ROCKET = "upgrade_rocket",
+  RESET_ROCKET = "reset_rocket",
   // INCREASE_UPGRADE = "increase_upgrade",
 }
 
@@ -48,7 +49,12 @@ type GameDataAction =
   type: GameDataActions.LOAD;
   payload: GameData;
 } | {
-  type: GameDataActions.UPGRADE_INGREDIENT | GameDataActions.UPGRADE_BAR | GameDataActions.UPGRADE_CLICKABLE | GameDataActions.UPGRADE_ROCKET;
+  type:
+    | GameDataActions.UPGRADE_INGREDIENT
+    | GameDataActions.UPGRADE_BAR
+    | GameDataActions.UPGRADE_CLICKABLE
+    | GameDataActions.UPGRADE_ROCKET
+    | GameDataActions.RESET_ROCKET;
   payload: string;
   /*} | {
     type: GameDataActions.INCREASE_UPGRADE;
@@ -184,6 +190,15 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         rocketUpgrades: {
           ...oldState.rocketUpgrades,
           [action.payload]: oldState.rocketUpgrades[action.payload] + 1,
+        },
+      };
+      break;
+    case GameDataActions.RESET_ROCKET:
+      state = {
+        ...oldState,
+        rocketUpgrades: {
+          ...oldState.rocketUpgrades,
+          [action.payload]: 0,
         },
       };
       break;
