@@ -4,7 +4,6 @@ import { Drink, Marker } from "@utils/types";
 import ClickMarker from "@components/click_marker";
 import { getIngredientsUpgradedOnce } from "@utils/index";
 
-const TIME_VALUE: number = 0.25;
 const DRINK_SELL_VALUE: number = 5;
 
 type Props = {
@@ -16,18 +15,19 @@ const DrinkButton: React.FC<Props> = ({
                                       }) => {
   const { data, dispatch } = useGameData();
 
-  // TODO: remove cooldown
-  // NOTE(gonk): i left it for now so we can copy it to the drinks per second logic
-  const [onCooldown, setOnCooldown] = useState<boolean>(false);
-  const [timer, setTimer] = useState<number>(0);
   const [stage, setStage] = useState<number>(1);
   const [markers, setMarkers] = useState<Marker[]>([]);
+
+  useEffect(() => {
+    setMarkers([]);
+  }, [data.level]);
 
   useEffect(() => {
     setStage(getIngredientsUpgradedOnce(ingredients, data.ingredients) + 1);
   }, [data.ingredients, data.level]);
 
   useEffect(() => {
+    console.log("markers", markers);
     return;
     // const markerRemover = setTimeout(() => {
     const markerRemover = setInterval(() => {
@@ -40,44 +40,18 @@ const DrinkButton: React.FC<Props> = ({
     };
   }, [markers]);
 
-  useEffect(() => {
-    const timerTick = setInterval(() => {
-      if (onCooldown) {
-        setTimer((t) => t + TIME_VALUE);
-      }
-    });
-
-    return () => {
-      clearInterval(timerTick);
-    };
-  }, [onCooldown]);
-
-  useEffect(() => {
-    if (onCooldown && timer >= cooldown) {
-      setTimer(0);
-      setOnCooldown(false);
-    }
-  }, [cooldown, onCooldown, timer]);
-
-  let opacity = onCooldown ? (cooldown - (cooldown - timer)) / cooldown : 1;
-
-  const handleCooldown = () => {
-    setOnCooldown(true);
-    dispatch({ type: GameDataActions.INCREASE_MONEY, payload: DRINK_SELL_VALUE });
-  };
-
   const handleClick = () => {
     let numberOfIngredientsUpgradedOnce = getIngredientsUpgradedOnce(ingredients, data.ingredients);
 
     setStage(s => s + 1);
 
-    console.log(stage)
-    console.log(ingredients.length)
+    console.log(stage);
+    console.log(ingredients.length);
 
     if (stage < (ingredients.length + 1)) return;
 
     setStage(numberOfIngredientsUpgradedOnce + 1);
-    console.log(stage)
+    console.log(stage);
 
     dispatch({
       type: GameDataActions.INCREASE_MONEY,
@@ -104,9 +78,9 @@ const DrinkButton: React.FC<Props> = ({
       ))}
       <img
         className={"pixel png-shadow w-full h-full hover:scale-110 hover:ease-in-out active:scale-125 "}
-        src={((stage == ingredients.length+1) && (texture === "final_elixir"))
-              ? `assets/drinks/final_elixir_5.gif`
-              : `assets/drinks/${texture}_${stage}.png`}
+        src={((stage == ingredients.length + 1) && (texture === "final_elixir"))
+          ? `assets/drinks/final_elixir_5.gif`
+          : `assets/drinks/${texture}_${stage}.png`}
         alt={`${name} sprite`}
       />
     </button>
