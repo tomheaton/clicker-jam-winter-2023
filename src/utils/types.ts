@@ -1,4 +1,4 @@
-import { MUSIC, PLANETS, SOUNDS } from "../data";
+import { MUSIC, PLANETS, SOUNDS } from "@data/index";
 import { GameDataActions } from "@hooks/game_data";
 
 export type Ingredient = {

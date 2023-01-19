@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
-import { DATA } from "../data";
+import { DATA } from "@data/index";
 
 // TODO: rocket upgrade on click
 // TODO: save unlocked planets

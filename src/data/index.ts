@@ -1,5 +1,5 @@
 import { Drink, Ingredient, Item, Upgrades } from "@utils/types";
-import { getIngredients } from "../utils";
+import { getIngredients } from "@utils/index";
 import { GameDataActions } from "@hooks/game_data";
 
 // NOTE: when editing the descriptions, put one less description than upgrading costs, as first description is

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Upgrades } from "@utils/types";
 import { GameDataActions, useGameData } from "@hooks/game_data";
-import { DATA } from "../data";
+import { DATA } from "@data/index";
 import CurrencyText from "@components/currency";
 import { getIngredientsUpgradedOnce } from "@utils/index";
 
@@ -83,7 +83,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
     >
       <img
         className={"pixel w-full h-full disabled:opacity-20"}
-        src={`assets/upgrades/${locked ? "locked_upgrade" : "test_upgrade"}.png`}
+        src={`assets/upgrades/${locked ? "locked_upgrade" : texture}.png`}
         alt={`${name} upgrade sprite`}
       />
 

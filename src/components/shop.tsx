@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ShopUpgradeButton from "./shop_upgrade_button";
+import ShopUpgradeButton from "@components/shop_upgrade_button";
 import { useGameData } from "@hooks/game_data";
-import { DATA } from "../data";
+import { DATA } from "@data/index";
 import RocketShop from "@components/rocket_shop";
 
 const Shop: React.FC = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import Game from "./components/game";
+import Game from "@components/game";
 import {
   GameDataActions,
   GameDataContext,
