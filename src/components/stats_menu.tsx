@@ -37,7 +37,7 @@ const StatsMenu: React.FC = () => {
           <br/>
           <p>{(data.drinkPrice + DATA.drinks[data.level].baseSellPrice).toLocaleString()}</p>
           <p>{DATA.drinks[data.level].baseSellPrice.toLocaleString()}</p>
-          <p>{data.drinksPerClick.toLocaleString()}</p>
+          <p>{(data.drinksPerClick - numberOfIngredientsUpgradedOnce).toLocaleString()}</p>
           <p>{data.drinksPerSecond.toLocaleString()}</p>
         </div>
       </div>
