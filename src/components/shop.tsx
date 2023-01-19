@@ -15,7 +15,7 @@ const Shop: React.FC = () => {
           Bar
         </button>
         <button className={"btn-indigo"} onClick={() => setTab(1)}>
-          Clicker
+          Drinks
         </button>
         <button className={"btn-indigo"} onClick={() => setTab(2)}>
           Rocket
