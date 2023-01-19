@@ -1,4 +1,4 @@
-# clicker-jam-2023 - Cosmic Taphouse
+# clicker-jam-winter-2023 - Cosmic Taphouse
 
 This is a game made for the [Clicker Jam 2023](https://itch.io/jam/clicker-jam-winter-2023) on itch.io.
 
