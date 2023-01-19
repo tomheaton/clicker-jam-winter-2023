@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Upgrades } from "@utils/types";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA } from "../data";
-import { CurrencyText } from "@components/currency";
+import CurrencyText from "@components/currency";
 import { getIngredientsUpgradedOnce } from "@utils/index";
 
 type Props = {

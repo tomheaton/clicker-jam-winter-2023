@@ -6,7 +6,7 @@ import IngredientButton from "./ingredient_button";
 import Shop from "./shop";
 import SlideMenu from "./slide_menu";
 import StatsMenu from "./stats_menu";
-import { CurrencyText } from "@components/currency";
+import CurrencyText from "@components/currency";
 
 const DRINK_SELL_VALUE: number = 5;
 
