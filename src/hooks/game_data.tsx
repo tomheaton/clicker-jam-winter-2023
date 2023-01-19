@@ -7,11 +7,12 @@ export const GameDataSchema = z.object({
   drinkPrice: z.number().min(0),
   drinksPerClick: z.number().min(0),
   drinksPerSecond: z.number().min(0),
-  level: z.number().min(0),
+  level: z.number().min(0).max(5),
+  unlockedLevel: z.number().min(0).max(5),
   ingredients: z.record(z.number().min(0)),
   drinkUpgrades: z.record(z.number().min(0)),
   barUpgrades: z.record(z.number().min(0)),
-  rocketUpgrades: z.record(z.number().min(0)),
+  rocketLevel: z.number().min(0).max(4), // FIXME: @tomheaton if max in inclusive change '4' to '3'
 });
 
 export type GameData = z.infer<typeof GameDataSchema>;
@@ -32,6 +33,8 @@ export enum GameDataActions {
   UPGRADE_ROCKET = "upgrade_rocket",
   RESET_ROCKET = "reset_rocket",
   // INCREASE_UPGRADE = "increase_upgrade",
+  INCREASE_PLANETS_UNLOCKED = "increase_planets_unlocked",
+  SET_ROCKET_LEVEL = "set_rocket_level",
 }
 
 type GameDataAction =
@@ -42,7 +45,8 @@ type GameDataAction =
     | GameDataActions.UPGRADE_BAR
     | GameDataActions.UPGRADE_DRINK
     | GameDataActions.UPGRADE_ROCKET
-    // | GameDataActions.INCREASE_UPGRADE
+    | GameDataActions.INCREASE_PLANETS_UNLOCKED 
+    | GameDataActions.SET_ROCKET_LEVEL 
   >;
   payload: number;
 } | {
@@ -54,7 +58,9 @@ type GameDataAction =
     | GameDataActions.UPGRADE_BAR
     | GameDataActions.UPGRADE_DRINK
     | GameDataActions.UPGRADE_ROCKET
-    | GameDataActions.RESET_ROCKET;
+    | GameDataActions.RESET_ROCKET
+    | GameDataActions.INCREASE_PLANETS_UNLOCKED
+    | GameDataActions.SET_ROCKET_LEVEL;
   payload: string;
   /*} | {
     type: GameDataActions.INCREASE_UPGRADE;
@@ -70,6 +76,8 @@ export const getInitialGameData = (): GameData => ({
   drinkPrice: 20,
   drinksPerSecond: 0,
   level: 0,
+  rocketLevel: 0,
+  unlockedLevel: 0,
   ingredients: (() => {
     const ingredients: Record<string, number> = {};
 
@@ -97,15 +105,6 @@ export const getInitialGameData = (): GameData => ({
       value.map((upgrade) => {
         upgrades[upgrade.texture] = 0;
       });
-    });
-
-    return upgrades;
-  })(),
-  rocketUpgrades: (() => {
-    const upgrades: Record<string, number> = {};
-
-    DATA.items.forEach((upgrade) => {
-      upgrades[upgrade.texture] = 0;
     });
 
     return upgrades;
@@ -184,6 +183,7 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         },
       };
       break;
+    /*
     case GameDataActions.UPGRADE_ROCKET:
       state = {
         ...oldState,
@@ -200,6 +200,19 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
           ...oldState.rocketUpgrades,
           [action.payload]: 0,
         },
+      };
+      break;
+    */
+    case GameDataActions.INCREASE_PLANETS_UNLOCKED:
+      state = {
+        ...oldState,
+        unlockedLevel: oldState.unlockedLevel + 1,
+      };
+      break;
+    case GameDataActions.SET_ROCKET_LEVEL:
+      state = {
+        ...oldState,
+        rocketLevel: action.payload,
       };
       break;
     // TODO: @tomheaton fix this

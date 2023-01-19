@@ -67,9 +67,9 @@ const Shop: React.FC = () => {
                   className={"flex my-2 space-x-8 w-full"}
                   onClick={() => {
                     //dispatch({
-                    //  type: GameDataActions.INCREASE_UPGRADE,
+                    //  type: gamedataactions.increase_upgrade,
                     //  payload: {
-                    //    group: "rocketUpgrades",
+                    //    group: "rocketupgrades",
                     //    name: item.texture,
                     //  },
                     //});

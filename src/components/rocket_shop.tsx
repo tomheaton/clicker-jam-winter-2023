@@ -1,29 +1,7 @@
 import React, { useState } from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA } from "@data/index";
-
-// TODO: rocket upgrade on click
-// TODO: save unlocked planets
-
-type RocketUpgradeProps = {
-  part: number; // rocket part [0-2] (used to show sprite)
-};
-
-const RocketUpgrade: React.FC<RocketUpgradeProps> = ({
-                                                       part,
-                                                     }) => {
-  return (
-    <div>
-      <button>
-        <img
-          className={"pixel w-[120px] h-[120px] m-4"}
-          src={`assets/upgrades/rocket_${part + 1}.png`}
-          alt={`Rocket part ${part} sprite`}
-        />
-      </button>
-    </div>
-  );
-};
+import CurrencyText from "@components/currency"
 
 type PlanetTeleportButtonProps = {
   planet: string;
@@ -31,14 +9,13 @@ type PlanetTeleportButtonProps = {
 };
 
 const PlanetTeleportButton: React.FC<PlanetTeleportButtonProps> = ({
-                                                                     planet,
-                                                                     planetIndex,
-                                                                   }) => {
+  planet,
+  planetIndex,
+}) => {
   const { data, dispatch } = useGameData();
 
-  // FIXME: change this to check which planets are unlocked from data,
   // once that is added
-  const locked = planetIndex > data.level;
+  const locked = planetIndex > data.unlockedLevel;
 
   const changePlanet = () => {
     if (locked) return;
@@ -63,16 +40,38 @@ const PlanetTeleportButton: React.FC<PlanetTeleportButtonProps> = ({
 };
 
 const RocketShop: React.FC = () => {
-  const { data } = useGameData();
-  const [stage, setStage] = useState<number>(0);
+  const { data, dispatch } = useGameData();
 
   const handleBuy = () => {
-    setStage(t => (t + 1));
-
-    // FIXME: @gonk
-    if (stage >= 3) {
-      setStage(3);
+    if (data.unlockedLevel >= DATA.planets.length-1 && data.rocketLevel === 3)
+    {
+      // TODO: end of game, return for now
+      return;
     }
+
+    if (data.rocketLevel === 3)
+    {
+      dispatch({
+        type: GameDataActions.INCREASE_PLANETS_UNLOCKED,
+      });
+      dispatch({ type: GameDataActions.SET_LEVEL, payload: data.unlockedLevel + 1});
+      dispatch({ type: GameDataActions.SET_ROCKET_LEVEL, payload: 0 });
+
+      console.log("rocket lvl: " + data.rocketLevel)
+      return;
+    }
+
+    const upgradeCost = DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel];
+
+    if (data.money < upgradeCost) return;
+
+    dispatch({
+      type: GameDataActions.DECREASE_MONEY,
+      payload: upgradeCost,
+    });
+    dispatch({ type: GameDataActions.SET_ROCKET_LEVEL, payload: data.rocketLevel + 1});
+
+    console.log("rocket lvl: " + data.rocketLevel)
   };
 
   return (
@@ -89,21 +88,33 @@ const RocketShop: React.FC = () => {
             <div>
               <img
               className={"pixel p-2 w-[190px] h-[260px]"}
-              src={`assets/upgrades/ships/ship_${DATA.planets[data.level]}_stage_${stage}.png`}
+              src={`assets/upgrades/ships/ship_${DATA.planets[data.unlockedLevel]}_stage_${data.rocketLevel}.png`}
               alt={`Rocket ship upgrade`}
             />
           </div>
           <div>
             <button
               className={"bg-indigo-400 border-2 rounded-md text-white w-[300px] h-[100px]"}
+              disabled={data.money < DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel]}
               onClick={handleBuy}
-              >
-                {stage===3 ? "Fully Upgraded!":"Upgrade Ship"}
+            >
+              {data.rocketLevel === 3 && (
+                  <p>
+                    Fully Upgraded!
+                    Click to travel to next location!
+                  </p>
+              )}
+              {data.rocketLevel !== 3 && (
+                <div>
+                  <p>Buy upgrade</p>
+                  <div>
+                    <CurrencyText 
+                      text={DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel]}
+                    />
+                  </div>
+                </div>
+              )}
             </button>
-            <img
-              className={"pixel p-2 w-[80px] h-[80px]"}
-              src={`assets/upgrades/rocket_4.png`}
-              />
           </div>
           </div>
       { /* Rocket menu to go to other planets */ }

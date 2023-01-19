@@ -68,10 +68,10 @@ const Game: React.FC = () => {
               <button
                 className={"btn-indigo"}
                 onClick={() => {
-                  dispatch({ type: GameDataActions.INCREASE_MONEY, payload: 10_000 });
+                  dispatch({ type: GameDataActions.INCREASE_MONEY, payload: 100_000 });
                 }}
               >
-                Increase Money (10K)
+                Increase Money (100K)
               </button>
               <br />
               <div className={"space-x-4"}>

@@ -161,52 +161,14 @@ export const DRINKS: Drink[] = [
   },
 ];
 
-// FIXME: Remove this
-const ITEMS: Item[] = [
-  {
-    name: "Ceres Rocket",
-    texture: "ceres",
-    itemCost: 1_000_000,
-    itemDescription: "Return to Ceres",
-    costs: [1, 5, 10, 15],
-  },
-  {
-    name: "Earth Rocket",
-    texture: "earth",
-    itemCost: 1_000_000,
-    itemDescription: "Unlock Earth",
-    costs: [1, 5, 10, 15],
-  },
-  {
-    name: "Sun Rocket",
-    texture: "sun",
-    itemCost: 2_000_000,
-    itemDescription: "Unlock Sun",
-    costs: [1, 5, 10, 15],
-  },
-  {
-    name: "Galaxy Rocket",
-    texture: "galaxy",
-    itemCost: 4_000_000,
-    itemDescription: "Unlock Galaxy",
-    costs: [1, 5, 10, 15],
-  },
-  {
-    name: "Universe Rocket",
-    texture: "universe",
-    itemCost: 8_000_000,
-    itemDescription: "Unlock Universe",
-    costs: [1, 5, 10, 15],
-  },
-  {
-    name: "Multiverse Rocket",
-    texture: "multiverse",
-    itemCost: 16_000_000,
-    itemDescription: "Unlock Multiverse",
-    costs: [1, 5, 10, 15],
-  },
-];
-
+export const ROCKET_UPGRADE_COSTS = {
+  ceres:       [50_000, 65_000, 80_000],
+  earth:       [50_000, 65_000, 80_000],
+  sun:         [50_000, 65_000, 80_000],
+  galaxy:      [50_000, 65_000, 80_000],
+  universe:    [50_000, 65_000, 80_000],
+  multiverse:  [50_000, 65_000, 80_000],
+};
 
 export const PLANETS = ["ceres", "earth", "sun", "galaxy", "universe", "multiverse"] as const;
 
@@ -509,10 +471,10 @@ export const SOUNDS = [
 export const DATA = {
   ingredients: INGREDIENTS,
   drinks: DRINKS,
-  items: ITEMS,
   music: MUSIC,
   sounds: SOUNDS,
   planets: PLANETS,
   barUpgrades: BAR_UPGRADES,
   drinkUpgrades: DRINK_UPGRADES,
+  rocketUpgradeCosts: ROCKET_UPGRADE_COSTS,
 };
