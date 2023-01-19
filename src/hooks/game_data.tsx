@@ -75,9 +75,9 @@ type GameDataAction =
 }
 
 export const getInitialGameData = (): GameData => ({
-  money: 100,
+  money: 0,
   drinksPerClick: 1,
-  drinkPrice: 20,
+  drinkPrice: 1,
   drinksPerSecond: 0,
   level: 0,
   rocketLevel: 0,

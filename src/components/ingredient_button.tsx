@@ -26,7 +26,7 @@ const IngredientButton: React.FC<Props> = ({
     if (currentUpgrade >= upgradeCount) return;
 
     const ingredientDrinkValueIncreases= [
-      1.25, 1.75, 3, 5,
+      1.02, 1.04, 1.06, 1.08,
     ];
 
     if (currentUpgrade === 0) {
