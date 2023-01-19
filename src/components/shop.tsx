@@ -42,7 +42,7 @@ const Shop: React.FC = () => {
 
       <div>
         {tab === 0 && (
-          <div className={"pl-4"}>
+          <div className={"grid grid-cols-4"}>
             {Object.values(DATA.barUpgrades).map((value, index) => (
               value.map((upgrade) => (
                 <ShopUpgradeButton
@@ -58,7 +58,7 @@ const Shop: React.FC = () => {
         )}
 
         {tab === 1 && (
-          <div className={"pl-4"}>
+          <div className={"grid grid-cols-4"}>
             {Object.values(DATA.drinkUpgrades).map((value, index) => (
               value.map((upgrade) => (
                 <ShopUpgradeButton
