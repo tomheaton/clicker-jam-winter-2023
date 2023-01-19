@@ -9,10 +9,10 @@ const StatsMenu: React.FC = () => {
   const currentPlanet = DATA.planets[data.level];
 
   return (
-    <div className={"p-10"}>
-      <h1 className={"text-center text-xl font-bold"}>Stats</h1>
-      <div className={"mt-4"}>
-        <CurrencyText preText={"Money:"} text={data.money.toLocaleString()} />
+    <div className={"p-20"}>
+      <h1 className={"text-center text-white text-xl font-bold"}>Stats</h1>
+      <div className={"mt-4 text-white"}>
+        <CurrencyText preText={"Cosmic Dust:"} text={data.money.toLocaleString()} />
         <p>Drink selling price: {data.drinkPrice.toLocaleString()}</p>
         <p>Drinks per click: {data.drinksPerClick.toLocaleString()}</p>
         <p>Drinks per second: {data.drinksPerSecond.toLocaleString()}</p>
