@@ -84,7 +84,7 @@ const RocketShop: React.FC = () => {
         <div className={"w-full"}>
           <img
             className={"pixel p-2 w-[190px] h-[260px]"}
-            src={`/assets/upgrades/ships/ship_${DATA.planets[data.unlockedLevel]}_stage_${data.rocketLevel}.png`}
+            src={`assets/upgrades/ships/ship_${DATA.planets[data.unlockedLevel]}_stage_${data.rocketLevel}.png`}
             alt={`Rocket ship upgrade`}
           />
         </div>
