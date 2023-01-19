@@ -83,18 +83,25 @@ const RocketShop: React.FC = ({
         }) */}
         </div>
         <div className={"flex flex-row justify-left pt-4"}>
-            <img
-            
-              className={"pixel p-2 w-[190px] h-[240px]"}
+            <div>
+              <img
+              className={"pixel p-2 w-[190px] h-[260px]"}
               src={`assets/upgrades/ships/ship_${DATA.planets[data.level]}_stage_${stage}.png`}
               alt={`Rocket ship upgrade`}
             />
+          </div>
+          <div>
             <button
-            className={"bg-indigo-400 border-2 rounded-md w-[300px] h-[100px]"}
-            onClick={handleBuy}
-            >
-              {stage===3 ? "Fully Upgraded!":"Upgrade Ship"}
-          </button>
+              className={"bg-indigo-400 border-2 rounded-md text-white w-[300px] h-[100px]"}
+              onClick={handleBuy}
+              >
+                {stage===3 ? "Fully Upgraded!":"Upgrade Ship"}
+            </button>
+            <img
+              className={"pixel p-2 w-[80px] h-[80px]"}
+              src={`assets/upgrades/rocket_4.png`}
+              />
+          </div>
           </div>
       { /* Rocket menu to go to other planets */ }
       <div className={"pt-2"}>

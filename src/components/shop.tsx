@@ -11,14 +11,14 @@ const Shop: React.FC = () => {
   return (
     <div className={"p-10"}>
       <div className={"p-2 flex justify-evenly space-x-4"}>
-        <button className={"btn-blue"} onClick={() => setTab(0)}>
+        <button className={"btn  text-sm bg-[url(./assets/ui/tab.png)] bg-no-repeat bg-cover"} onClick={() => setTab(0)}>
           Bar Upgrades
         </button>
-        <button className={"btn-blue"} onClick={() => setTab(1)}>
+        <button className={"btn text-sm bg-[url(./assets/ui/tab.png)] bg-no-repeat bg-cover"} onClick={() => setTab(1)}>
           Clicker Upgrades
         </button>
-        <button className={"btn-blue"} onClick={() => setTab(2)}>
-          Rocket Upgrades
+        <button className={"btn bg-[url(./assets/ui/tab.png)] bg-no-repeat bg-cover"} onClick={() => setTab(2)}>
+          Rocket
         </button>
       </div>
 
