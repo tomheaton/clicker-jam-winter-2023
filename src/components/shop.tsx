@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import ShopUpgradeButton from "./shop_upgrade_button";
-import { GameDataActions, useGameData } from "@hooks/game_data";
+import { useGameData } from "@hooks/game_data";
 import { DATA } from "../data";
-import RocketShop from "@components/rocket_shop"
+import RocketShop from "@components/rocket_shop";
 
 const Shop: React.FC = () => {
-  const { data, dispatch } = useGameData();
+  const { data } = useGameData();
   const [tab, setTab] = useState<number>(0);
 
   return (
     <div className={"p-10"}>
-      <div className={"p-2 flex justify-evenly space-x-4"}>
-        <button className={"btn-blue"} onClick={() => setTab(0)}>
-          Bar Upgrades
+      <div className={"p-2 flex justify-evenly space-x-4 text-sm"}>
+        <button className={"btn-indigo"} onClick={() => setTab(0)}>
+          Bar
         </button>
-        <button className={"btn-blue"} onClick={() => setTab(1)}>
-          Clicker Upgrades
+        <button className={"btn-indigo"} onClick={() => setTab(1)}>
+          Clicker
         </button>
-        <button className={"btn-blue"} onClick={() => setTab(2)}>
-          Rocket Upgrades
+        <button className={"btn-indigo"} onClick={() => setTab(2)}>
+          Rocket
         </button>
       </div>
 

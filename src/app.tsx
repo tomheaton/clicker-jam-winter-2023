@@ -97,7 +97,7 @@ const App: React.FC = () => {
         alt={"game icon"}
       />
       <br />
-      <button onClick={handleStart} className={"btn-blue"}>
+      <button onClick={handleStart} className={"btn-indigo"}>
         start game
       </button>
       {import.meta.env.DEV && (

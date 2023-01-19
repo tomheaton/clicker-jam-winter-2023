@@ -65,7 +65,7 @@ const Game: React.FC = () => {
           />
           <br />
           <button
-            className={"btn-blue"}
+            className={"btn-indigo"}
             onClick={() => {
               dispatch({ type: GameDataActions.INCREASE_MONEY, payload: 10_000 });
             }}
