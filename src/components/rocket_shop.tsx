@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA } from "@data/index";
-import CurrencyText from "@components/currency"
+import CurrencyText from "@components/currency";
 
 type PlanetTeleportButtonProps = {
   planet: string;
@@ -9,9 +9,9 @@ type PlanetTeleportButtonProps = {
 };
 
 const PlanetTeleportButton: React.FC<PlanetTeleportButtonProps> = ({
-  planet,
-  planetIndex,
-}) => {
+                                                                     planet,
+                                                                     planetIndex,
+                                                                   }) => {
   const { data, dispatch } = useGameData();
 
   // once that is added
@@ -43,21 +43,17 @@ const RocketShop: React.FC = () => {
   const { data, dispatch } = useGameData();
 
   const handleBuy = () => {
-    if (data.unlockedLevel >= DATA.planets.length-1 && data.rocketLevel === 3)
-    {
+    if (data.unlockedLevel >= DATA.planets.length - 1 && data.rocketLevel === 3) {
       // TODO: end of game, return for now
       return;
     }
 
-    if (data.rocketLevel === 3)
-    {
-      dispatch({
-        type: GameDataActions.INCREASE_PLANETS_UNLOCKED,
-      });
-      dispatch({ type: GameDataActions.SET_LEVEL, payload: data.unlockedLevel + 1});
+    if (data.rocketLevel === 3) {
+      dispatch({ type: GameDataActions.INCREASE_PLANETS_UNLOCKED });
+      dispatch({ type: GameDataActions.SET_LEVEL, payload: data.unlockedLevel + 1 });
       dispatch({ type: GameDataActions.SET_ROCKET_LEVEL, payload: 0 });
 
-      console.log("rocket lvl: " + data.rocketLevel)
+      console.log("rocket lvl: " + data.rocketLevel);
       return;
     }
 
@@ -69,9 +65,9 @@ const RocketShop: React.FC = () => {
       type: GameDataActions.DECREASE_MONEY,
       payload: upgradeCost,
     });
-    dispatch({ type: GameDataActions.SET_ROCKET_LEVEL, payload: data.rocketLevel + 1});
+    dispatch({ type: GameDataActions.SET_ROCKET_LEVEL, payload: data.rocketLevel + 1 });
 
-    console.log("rocket lvl: " + data.rocketLevel)
+    console.log("rocket lvl: " + data.rocketLevel);
   };
 
   return (
@@ -83,45 +79,45 @@ const RocketShop: React.FC = () => {
             <RocketUpgrade part={index} />
           );
         }) */}
+      </div>
+      <div className={"flex flex-row justify-left pt-4"}>
+        <div>
+          <img
+            className={"pixel p-2 w-[190px] h-[260px]"}
+            src={`assets/upgrades/ships/ship_${DATA.planets[data.unlockedLevel]}_stage_${data.rocketLevel}.png`}
+            alt={`Rocket ship upgrade`}
+          />
         </div>
-        <div className={"flex flex-row justify-left pt-4"}>
-            <div>
-              <img
-              className={"pixel p-2 w-[190px] h-[260px]"}
-              src={`assets/upgrades/ships/ship_${DATA.planets[data.unlockedLevel]}_stage_${data.rocketLevel}.png`}
-              alt={`Rocket ship upgrade`}
-            />
-          </div>
-          <div>
-            <button
-              className={"bg-indigo-400 border-2 rounded-md text-white w-[300px] h-[100px]"}
-              disabled={data.money < DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel]}
-              onClick={handleBuy}
-            >
-              {data.rocketLevel === 3 && (
-                  <p>
-                    Fully Upgraded!
-                    Click to travel to {data.unlockedLevel < DATA.planets.length-1
-                                        ? DATA.planets[data.unlockedLevel+1].charAt(0).toUpperCase() + 
-                                          DATA.planets[data.unlockedLevel+1].slice(1)
-                                        : "the END"}!
-                  </p>
-              )}
-              {data.rocketLevel !== 3 && (
+        <div>
+          <button
+            className={"bg-indigo-400 border-2 rounded-md text-white w-[300px] h-[100px]"}
+            disabled={data.money < DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel]}
+            onClick={handleBuy}
+          >
+            {data.rocketLevel === 3 && (
+              <p>
+                Fully Upgraded!
+                Click to travel to {data.unlockedLevel < DATA.planets.length - 1
+                ? DATA.planets[data.unlockedLevel + 1].charAt(0).toUpperCase() +
+                DATA.planets[data.unlockedLevel + 1].slice(1)
+                : "the END"}!
+              </p>
+            )}
+            {data.rocketLevel !== 3 && (
+              <div>
+                <p>Buy upgrade</p>
                 <div>
-                  <p>Buy upgrade</p>
-                  <div>
-                    <CurrencyText 
-                      text={DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel].toLocaleString()}
-                      className={"flex justify-center"}
-                    />
-                  </div>
+                  <CurrencyText
+                    text={DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel].toLocaleString()}
+                    className={"flex justify-center"}
+                  />
                 </div>
-              )}
-            </button>
-          </div>
-          </div>
-      { /* Rocket menu to go to other planets */ }
+              </div>
+            )}
+          </button>
+        </div>
+      </div>
+      { /* Rocket menu to go to other planets */}
       <div className={"pt-2"}>
         {data.unlockedLevel > 0 && (
           <div className={"w-full h-full flex flex-row justify-between w-full h-full"}>

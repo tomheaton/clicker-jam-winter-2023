@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Upgrades } from "@utils/types";
+import { Planet, Upgrades } from "@utils/types";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { DATA } from "@data/index";
 import CurrencyText from "@components/currency";
@@ -8,7 +8,7 @@ import { getIngredientsUpgradedOnce } from "@utils/index";
 type Props = {
   upgrade: Upgrades;
   locked: boolean;
-  planetName: string;
+  planetName: Planet;
   initialLevel: number;
 };
 
@@ -86,7 +86,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
         alt={`${name} upgrade sprite`}
       />
 
-      { /* Hover popup */ }
+      { /* Hover popup */}
       <div
         className={"w-[500px] h-[200px] scale-0 bg-red-500 absolute group-hover:scale-100 opacity-100 disabled:opacity-100 p-4 rounded-xl"}>
         <p> {locked ? "Upgrade locked" : name} </p>

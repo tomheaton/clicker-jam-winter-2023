@@ -1,4 +1,4 @@
-import { Drink, Ingredient, Item, Upgrades } from "@utils/types";
+import { Drink, Ingredient, Upgrades } from "@utils/types";
 import { getIngredients } from "@utils/index";
 import { GameDataActions } from "@hooks/game_data";
 
@@ -168,12 +168,12 @@ export const DRINKS: Drink[] = [
 ];
 
 export const ROCKET_UPGRADE_COSTS = {
-  ceres:       [50_000, 65_000, 80_000],
-  earth:       [50_000, 65_000, 80_000],
-  sun:         [50_000, 65_000, 80_000],
-  galaxy:      [50_000, 65_000, 80_000],
-  universe:    [50_000, 65_000, 80_000],
-  multiverse:  [50_000, 65_000, 80_000],
+  ceres: [50_000, 65_000, 80_000],
+  earth: [50_000, 65_000, 80_000],
+  sun: [50_000, 65_000, 80_000],
+  galaxy: [50_000, 65_000, 80_000],
+  universe: [50_000, 65_000, 80_000],
+  multiverse: [50_000, 65_000, 80_000],
 };
 
 export const PLANETS = ["ceres", "earth", "sun", "galaxy", "universe", "multiverse"] as const;

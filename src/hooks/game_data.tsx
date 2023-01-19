@@ -45,8 +45,8 @@ type GameDataAction =
     | GameDataActions.UPGRADE_BAR
     | GameDataActions.UPGRADE_DRINK
     | GameDataActions.UPGRADE_ROCKET
-    | GameDataActions.INCREASE_PLANETS_UNLOCKED 
-    | GameDataActions.SET_ROCKET_LEVEL 
+    | GameDataActions.INCREASE_PLANETS_UNLOCKED
+    // | GameDataActions.SET_ROCKET_LEVEL
   >;
   payload: number;
 } | {
@@ -60,7 +60,7 @@ type GameDataAction =
     | GameDataActions.UPGRADE_ROCKET
     | GameDataActions.RESET_ROCKET
     | GameDataActions.INCREASE_PLANETS_UNLOCKED
-    | GameDataActions.SET_ROCKET_LEVEL;
+  // | GameDataActions.SET_ROCKET_LEVEL;
   payload: string;
   /*} | {
     type: GameDataActions.INCREASE_UPGRADE;
@@ -68,7 +68,9 @@ type GameDataAction =
       group: "barUpgrades" | "drinkUpgrades" | "rocketUpgrades";
       name: keyof GameData["drinkUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
     };*/
-};
+} | {
+  type: GameDataActions.INCREASE_PLANETS_UNLOCKED;
+}
 
 export const getInitialGameData = (): GameData => ({
   money: 100,
@@ -183,26 +185,24 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         },
       };
       break;
-    /*
     case GameDataActions.UPGRADE_ROCKET:
       state = {
         ...oldState,
-        rocketUpgrades: {
-          ...oldState.rocketUpgrades,
-          [action.payload]: oldState.rocketUpgrades[action.payload] + 1,
-        },
+        // rocketUpgrades: {
+        //   ...oldState.rocketUpgrades,
+        //   [action.payload]: oldState.rocketUpgrades[action.payload] + 1,
+        // },
       };
       break;
     case GameDataActions.RESET_ROCKET:
       state = {
         ...oldState,
-        rocketUpgrades: {
-          ...oldState.rocketUpgrades,
-          [action.payload]: 0,
-        },
+        // rocketUpgrades: {
+        //   ...oldState.rocketUpgrades,
+        //   [action.payload]: 0,
+        // },
       };
       break;
-    */
     case GameDataActions.INCREASE_PLANETS_UNLOCKED:
       state = {
         ...oldState,
