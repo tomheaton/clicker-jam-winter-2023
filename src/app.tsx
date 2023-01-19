@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import Game from "./components/game";
+import Game from "@components/game";
 import {
   GameDataActions,
   GameDataContext,
@@ -97,7 +97,7 @@ const App: React.FC = () => {
         alt={"game icon"}
       />
       <br />
-      <button onClick={handleStart} className={"btn-blue"}>
+      <button onClick={handleStart} className={"btn-indigo"}>
         start game
       </button>
       {import.meta.env.DEV && (

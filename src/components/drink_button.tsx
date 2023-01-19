@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
 import { Drink, Marker } from "@utils/types";
-import ClickMarker from "@components/click_marker";
+import DrinkMarker from "@components/drink_marker";
 import { getIngredientsUpgradedOnce } from "@utils/index";
 
 const DRINK_SELL_VALUE: number = 5;
@@ -74,7 +74,7 @@ const DrinkButton: React.FC<Props> = ({
       onClick={handleClick}
     >
       {markers.length > 0 && markers.reverse().map((marker, i) => (
-        <ClickMarker key={i} marker={marker} />
+        <DrinkMarker key={i} marker={marker} />
       ))}
       <img
         className={"pixel png-shadow w-full h-full hover:scale-110 hover:ease-in-out active:scale-125 "}

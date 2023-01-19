@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Upgrades } from "@utils/types";
 import { GameDataActions, useGameData } from "@hooks/game_data";
-import { DATA } from "../data";
-import { CurrencyText } from "@components/currency";
+import { DATA } from "@data/index";
+import CurrencyText from "@components/currency";
 import { getIngredientsUpgradedOnce } from "@utils/index";
 
 type Props = {
@@ -31,7 +31,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
 
   let disabled = locked || data.money < costs[stage] || stage >= costs.length;
 
-  if (upgradeType === GameDataActions.UPGRADE_CLICKABLE) {
+  if (upgradeType === GameDataActions.UPGRADE_DRINK) {
     const currentIngredients = DATA.drinks[data.level].ingredients;
     let numberOfIngredientsUpgradedOnce = getIngredientsUpgradedOnce(currentIngredients, data.ingredients);
     if (numberOfIngredientsUpgradedOnce < currentIngredients.length) {
@@ -57,7 +57,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
     // Bar Upgrades = INCREASE_DRINKS_PER_SECOND
 
     dispatch({
-      type: upgradeType === GameDataActions.UPGRADE_CLICKABLE
+      type: upgradeType === GameDataActions.UPGRADE_DRINK
         ? GameDataActions.INCREASE_DRINKS_PER_CLICK
         : GameDataActions.INCREASE_DRINKS_PER_SECOND,
       payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * data.drinksPerSecond,
@@ -83,7 +83,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
     >
       <img
         className={"pixel w-full h-full disabled:opacity-20"}
-        src={`assets/upgrades/${locked ? "locked_upgrade" : "test_upgrade"}.png`}
+        src={`assets/upgrades/${locked ? "locked_upgrade" : texture}.png`}
         alt={`${name} upgrade sprite`}
       />
 

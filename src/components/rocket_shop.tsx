@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GameDataActions, useGameData } from "@hooks/game_data";
-import { DATA } from "../data";
+import { DATA } from "@data/index";
 
 // TODO: rocket upgrade on click
 // TODO: save unlocked planets
@@ -10,8 +10,8 @@ type RocketUpgradeProps = {
 };
 
 const RocketUpgrade: React.FC<RocketUpgradeProps> = ({
-  part,
-}) => {
+                                                       part,
+                                                     }) => {
   return (
     <div>
       <button>
@@ -23,7 +23,7 @@ const RocketUpgrade: React.FC<RocketUpgradeProps> = ({
       </button>
     </div>
   );
-}
+};
 
 type PlanetTeleportButtonProps = {
   planet: string;
@@ -31,9 +31,9 @@ type PlanetTeleportButtonProps = {
 };
 
 const PlanetTeleportButton: React.FC<PlanetTeleportButtonProps> = ({
-  planet,
-  planetIndex,
-}) => {
+                                                                     planet,
+                                                                     planetIndex,
+                                                                   }) => {
   const { data, dispatch } = useGameData();
 
   // FIXME: change this to check which planets are unlocked from data,
@@ -45,9 +45,9 @@ const PlanetTeleportButton: React.FC<PlanetTeleportButtonProps> = ({
 
     dispatch({
       type: GameDataActions.SET_LEVEL,
-      payload: planetIndex
+      payload: planetIndex,
     });
-  }
+  };
 
   return (
     <div>
@@ -60,22 +60,25 @@ const PlanetTeleportButton: React.FC<PlanetTeleportButtonProps> = ({
       </button>
     </div>
   );
-}
+};
 
-const RocketShop: React.FC = ({
-}) => {
+const RocketShop: React.FC = () => {
   const { data } = useGameData();
   const [stage, setStage] = useState<number>(0);
+
   const handleBuy = () => {
-     setStage(t => (t + 1))
-    /*fix me pls @gonk*/
-    if(stage >= 3)
-      setStage(3)
-  }
+    setStage(t => (t + 1));
+
+    // FIXME: @gonk
+    if (stage >= 3) {
+      setStage(3);
+    }
+  };
+
   return (
     <div>
       <div className={"flex flex-row justify-center"}>
-        { /* Rocket parts TODO: put this back once rocket upgrades are correct in data*/ }
+        { /* Rocket parts TODO: put this back once rocket upgrades are correct in data*/}
         {/* Object.values(DATA.items).map((item, index) => {
           return (
             <RocketUpgrade part={index} />
@@ -107,12 +110,9 @@ const RocketShop: React.FC = ({
       <div className={"pt-2"}>
         {data.level > 0 && (
           <div className={"w-full h-full flex flex-row justify-between w-full h-full"}>
-              {Object.values(DATA.planets).map((planet, index) => {
-                if (data.level == index) return;
-                return (
-                  <PlanetTeleportButton planet={planet} planetIndex={index}/>
-                );
-              })}
+            {Object.values(DATA.planets).map((planet, i) => (
+              data.level !== i && <PlanetTeleportButton key={i} planet={planet} planetIndex={i} />
+            ))}
           </div>
         )}
         {data.level === 0 && (
@@ -125,6 +125,6 @@ const RocketShop: React.FC = ({
       </div>
     </div>
   );
-}
+};
 
 export default RocketShop;

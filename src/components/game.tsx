@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { DATA } from "../data";
+import { DATA } from "@data/index";
 import { GameDataActions, useGameData } from "@hooks/game_data";
-import DrinkButton from "./drink_button";
-import IngredientButton from "./ingredient_button";
-import Shop from "./shop";
-import SlideMenu from "./slide_menu";
-import StatsMenu from "./stats_menu";
-import { CurrencyText } from "@components/currency";
+import DrinkButton from "@components/drink_button";
+import IngredientButton from "@components/ingredient_button";
+import Shop from "@components/shop";
+import SlideMenu from "@components/slide_menu";
+import StatsMenu from "@components/stats_menu";
+import CurrencyText from "@components/currency";
 
 const DRINK_SELL_VALUE: number = 5;
 
@@ -59,35 +59,38 @@ const Game: React.FC = () => {
         {/* Window */}
         <div className={"w-full flex flex-col flex-1 items-center mt-20"}>
           <CurrencyText
-            preText={DATA.planets[data.level]}
             text={data.money.toLocaleString()}
             className={"font-bold text-5xl text-white"}
           />
-          <br />
-          <button
-            className={"btn-blue"}
-            onClick={() => {
-              dispatch({ type: GameDataActions.INCREASE_MONEY, payload: 10_000 });
-            }}
-          >
-            Increase Money (10K)
-          </button>
-          <br />
-          <div className={"space-x-4"}>
-            {DATA.planets.map((planet, index) => {
-              return (
-                <button
-                  key={planet}
-                  className={"btn-red"}
-                  onClick={() => {
-                    dispatch({ type: GameDataActions.SET_LEVEL, payload: index });
-                  }}
-                >
-                  {planet}
-                </button>
-              );
-            })}
-          </div>
+          {import.meta.env.DEV && (
+            <>
+              <br />
+              <button
+                className={"btn-indigo"}
+                onClick={() => {
+                  dispatch({ type: GameDataActions.INCREASE_MONEY, payload: 10_000 });
+                }}
+              >
+                Increase Money (10K)
+              </button>
+              <br />
+              <div className={"space-x-4"}>
+                {DATA.planets.map((planet, index) => {
+                  return (
+                    <button
+                      key={planet}
+                      className={"btn-red"}
+                      onClick={() => {
+                        dispatch({ type: GameDataActions.SET_LEVEL, payload: index });
+                      }}
+                    >
+                      {planet}
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </div>
 
         {/* Bar */}

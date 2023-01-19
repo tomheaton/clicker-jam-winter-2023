@@ -1,7 +1,7 @@
 import React from "react";
-import { DATA } from "../data";
+import { DATA } from "@data/index";
 import { useGameData } from "@hooks/game_data";
-import { CurrencyText } from "@components/currency";
+import CurrencyText from "@components/currency";
 
 const StatsMenu: React.FC = () => {
   const { data } = useGameData();

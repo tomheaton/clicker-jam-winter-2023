@@ -1,5 +1,5 @@
-import { INGREDIENTS } from "../data";
-import { Ingredient, Sound } from "./types";
+import { INGREDIENTS } from "@data/index";
+import { Ingredient, Sound } from "@utils/types";
 import { GameData } from "@hooks/game_data";
 
 export const getIngredients = (ingredientNames: string[]): Ingredient[] => {

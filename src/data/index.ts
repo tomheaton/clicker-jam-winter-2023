@@ -1,5 +1,5 @@
 import { Drink, Ingredient, Item, Upgrades } from "@utils/types";
-import { getIngredients } from "../utils";
+import { getIngredients } from "@utils/index";
 import { GameDataActions } from "@hooks/game_data";
 
 // NOTE: when editing the descriptions, put one less description than upgrading costs, as first description is
@@ -208,10 +208,9 @@ const ITEMS: Item[] = [
 ];
 
 
-
 export const PLANETS = ["ceres", "earth", "sun", "galaxy", "universe", "multiverse"] as const;
 
-const CLICKABLE_UPGRADES: {
+const DRINK_UPGRADES: {
   [key in typeof PLANETS[number]]: Upgrades[];
 } = {
   ceres: [
@@ -223,7 +222,7 @@ const CLICKABLE_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: GameDataActions.UPGRADE_CLICKABLE,
+      upgradeType: GameDataActions.UPGRADE_DRINK,
     },
     {
       name: "More hands 2",
@@ -233,58 +232,58 @@ const CLICKABLE_UPGRADES: {
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
-      upgradeType: GameDataActions.UPGRADE_CLICKABLE,
+      upgradeType: GameDataActions.UPGRADE_DRINK,
     },
-    { 
+    {
       name: "Ice machine",
-    texture: "ice_machine",
-    description:
-      "Perhaps your drinks will actually be digestible now...",
-    costs: [20, 100, 200, 500],
-    flatIncrease: true,
-    increases: [1, 2, 5, 10],
-    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
-  },
-  { 
+      texture: "ice_machine",
+      description:
+        "Perhaps your drinks will actually be digestible now...",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+      upgradeType: GameDataActions.UPGRADE_DRINK,
+    },
+    {
       name: "Thermal gloves",
-    texture: "thermal_gloves",
-    description:
-      "Gotta ensure all those fancy new hands don't get burnt.",
-    costs: [20, 100, 200, 500],
-    flatIncrease: true,
-    increases: [1, 2, 5, 10],
-    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
-},
-{ 
+      texture: "thermal_gloves",
+      description:
+        "Gotta ensure all those fancy new hands don't get burnt.",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+      upgradeType: GameDataActions.UPGRADE_DRINK,
+    },
+    {
       name: "Sunglasses",
-    texture: "sunglasses",
-    description:
-      "Get some drip, make some tips.",
-    costs: [20, 100, 200, 500],
-    flatIncrease: true,
-    increases: [1, 2, 5, 10],
-    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
-},
-{ 
+      texture: "sunglasses",
+      description:
+        "Get some drip, make some tips.",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+      upgradeType: GameDataActions.UPGRADE_DRINK,
+    },
+    {
       name: "Suit",
-    texture: "suit",
-    description:
-      "Shaken, not stirred.",
-    costs: [20, 100, 200, 500],
-    flatIncrease: true,
-    increases: [1, 2, 5, 10],
-    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
-},
-{ 
+      texture: "suit",
+      description:
+        "Shaken, not stirred.",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+      upgradeType: GameDataActions.UPGRADE_DRINK,
+    },
+    {
       name: "Cupid's Bow",
-    texture: "cupids_bow",
-    description:
-      "Shall I compare thee to a summer's day? More luvin, more chuggin amirite?",
-    costs: [20, 100, 200, 500],
-    flatIncrease: true,
-    increases: [1, 2, 5, 10],
-    upgradeType: GameDataActions.UPGRADE_CLICKABLE,
-},
+      texture: "cupids_bow",
+      description:
+        "Shall I compare thee to a summer's day? More luvin, more chuggin amirite?",
+      costs: [20, 100, 200, 500],
+      flatIncrease: true,
+      increases: [1, 2, 5, 10],
+      upgradeType: GameDataActions.UPGRADE_DRINK,
+    },
   ],
   earth: [],
   sun: [],
@@ -382,7 +381,7 @@ const BAR_UPGRADES: {
     },
     {
       name: "Humans allowed",
-      texture: "no_politics",
+      texture: "humans_allowed",
       description: "Humans finally allowed, crazy to think we were only allowing their pets in before.",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
@@ -399,7 +398,7 @@ const BAR_UPGRADES: {
       upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
-      name: "Outter space social media",
+      name: "Outer space social media",
       texture: "social_media",
       description: "Millions of followers waiting to order drinks.",
       costs: [20, 100, 200, 500],
@@ -515,5 +514,5 @@ export const DATA = {
   sounds: SOUNDS,
   planets: PLANETS,
   barUpgrades: BAR_UPGRADES,
-  clickableUpgrades: CLICKABLE_UPGRADES,
+  drinkUpgrades: DRINK_UPGRADES,
 };

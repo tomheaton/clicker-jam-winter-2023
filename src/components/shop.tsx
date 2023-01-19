@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import ShopUpgradeButton from "./shop_upgrade_button";
-import { GameDataActions, useGameData } from "@hooks/game_data";
-import { DATA } from "../data";
-import RocketShop from "@components/rocket_shop"
+import ShopUpgradeButton from "@components/shop_upgrade_button";
+import { useGameData } from "@hooks/game_data";
+import { DATA } from "@data/index";
+import RocketShop from "@components/rocket_shop";
 
 const Shop: React.FC = () => {
-  const { data, dispatch } = useGameData();
+  const { data } = useGameData();
   const [tab, setTab] = useState<number>(0);
 
   return (
     <div className={"p-10"}>
+<<<<<<< HEAD
       <div className={"p-2 flex justify-evenly space-x-4"}>
         <button className={"btn  text-sm bg-[url(./assets/ui/tab.png)] bg-no-repeat bg-cover"} onClick={() => setTab(0)}>
           Bar Upgrades
@@ -18,6 +19,16 @@ const Shop: React.FC = () => {
           Clicker Upgrades
         </button>
         <button className={"btn bg-[url(./assets/ui/tab.png)] bg-no-repeat bg-cover"} onClick={() => setTab(2)}>
+=======
+      <div className={"p-2 flex justify-evenly space-x-4 text-sm"}>
+        <button className={"btn-indigo"} onClick={() => setTab(0)}>
+          Bar
+        </button>
+        <button className={"btn-indigo"} onClick={() => setTab(1)}>
+          Drinks
+        </button>
+        <button className={"btn-indigo"} onClick={() => setTab(2)}>
+>>>>>>> bb2a402434581a9fdfdca49d97d805e09a8b6daa
           Rocket
         </button>
       </div>
@@ -41,14 +52,14 @@ const Shop: React.FC = () => {
 
         {tab === 1 && (
           <div className={"grid grid-cols-4"}>
-            {Object.values(DATA.clickableUpgrades).map((value, index) => (
+            {Object.values(DATA.drinkUpgrades).map((value, index) => (
               value.map((upgrade) => (
                 <ShopUpgradeButton
                   key={upgrade.name}
                   upgrade={upgrade}
                   locked={index > data.level}
                   planetName={DATA.planets[index]}
-                  initialLevel={data.clickableUpgrades[upgrade.texture]}
+                  initialLevel={data.drinkUpgrades[upgrade.texture]}
                 />
               ))
             ))}
