@@ -110,6 +110,7 @@ const RocketShop: React.FC = () => {
                   <div>
                     <CurrencyText 
                       text={DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel]}
+                      className={"flex justify-center"}
                     />
                   </div>
                 </div>
@@ -119,14 +120,14 @@ const RocketShop: React.FC = () => {
           </div>
       { /* Rocket menu to go to other planets */ }
       <div className={"pt-2"}>
-        {data.level > 0 && (
+        {data.unlockedLevel > 0 && (
           <div className={"w-full h-full flex flex-row justify-between w-full h-full"}>
             {Object.values(DATA.planets).map((planet, i) => (
               data.level !== i && <PlanetTeleportButton key={i} planet={planet} planetIndex={i} />
             ))}
           </div>
         )}
-        {data.level === 0 && (
+        {data.unlockedLevel === 0 && (
           <img
             className={"pl-10 pt-5 pixel w-[500px] h-[200px]"}
             src={"assets/ui/sprites_locked_all.png"}
