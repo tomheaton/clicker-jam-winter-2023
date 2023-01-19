@@ -10,7 +10,7 @@ const StatsMenu: React.FC = () => {
   const currentPlanet = DATA.planets[data.level];
 
   let numberOfIngredientsUpgradedOnce =
-    getIngredientsUpgradedOnce(DATA.drinks[data.level].ingredients, data.ingredients); 
+    getIngredientsUpgradedOnce(DATA.drinks[data.level].ingredients, data.ingredients);
 
   return (
     <div className={"p-20"}>
@@ -25,8 +25,8 @@ const StatsMenu: React.FC = () => {
           <br/>
           <p>Drink value:</p>
           <p>{DATA.drinks[data.level].name} base value</p>
-          <p>Drinks p/click:</p>
-          <p>Drinks p/s:</p>
+          <p>Drinks/click:</p>
+          <p>Drinks/s:</p>
         </div>
         <div className={"stats btn-shdw text-right pt-4"}>
           <CurrencyText text={data.money.toLocaleString()}/>
