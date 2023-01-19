@@ -30,7 +30,7 @@ const Shop: React.FC = () => {
                 <ShopUpgradeButton
                   key={upgrade.name}
                   upgrade={upgrade}
-                  locked={index > data.level}
+                  locked={index > data.unlockedLevel}
                   planetName={DATA.planets[index]}
                   initialLevel={data.barUpgrades[upgrade.texture]}
                 />
@@ -46,7 +46,7 @@ const Shop: React.FC = () => {
                 <ShopUpgradeButton
                   key={upgrade.name}
                   upgrade={upgrade}
-                  locked={index > data.level}
+                  locked={index > data.unlockedLevel}
                   planetName={DATA.planets[index]}
                   initialLevel={data.drinkUpgrades[upgrade.texture]}
                 />
@@ -59,53 +59,6 @@ const Shop: React.FC = () => {
           <RocketShop />
         )}
 
-        {/* tab === 2 && (
-          <div>
-            {DATA.items.map((item, index) => (
-              <div key={item.texture} className={"flex w-full"}>
-                <button
-                  className={"flex my-2 space-x-8 w-full"}
-                  onClick={() => {
-                    //dispatch({
-                    //  type: gamedataactions.increase_upgrade,
-                    //  payload: {
-                    //    group: "rocketupgrades",
-                    //    name: item.texture,
-                    //  },
-                    //});
-                    dispatch({
-                      type: GameDataActions.UPGRADE_ROCKET,
-                      payload: item.texture,
-                    });
-                  }}
-                  disabled={data.rocketUpgrades[item.texture] >= item.costs.length}
-                >
-                  <img
-                    className={"pixel w-[64px] h-[64px]"}
-                    src={`assets/ui/${item.texture}_sprite.png`}
-                    alt={`${item.name} sprite`}
-                  />
-                  <div className={"text-left"}>
-                    <p>Name: {item.name}</p>
-                    <p>Cost: ${item.itemCost.toLocaleString()}</p>
-                    <p>Description: {item.itemDescription}</p>
-                    <p>Level: {data.rocketUpgrades[item.texture]}</p>
-                  </div>
-                </button>
-                <button
-                  className={"btn-red m-4"}
-                  onClick={() => {
-                    dispatch({ type: GameDataActions.SET_LEVEL, payload: index });
-                    dispatch({ type: GameDataActions.RESET_ROCKET, payload: item.texture });
-                  }}
-                  disabled={data.rocketUpgrades[item.texture] < item.costs.length}
-                >
-                  Travel
-                </button>
-              </div>
-            ))}
-          </div>
-        ) */}
       </div>
     </div>
   );
