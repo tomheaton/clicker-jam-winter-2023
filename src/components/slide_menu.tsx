@@ -24,7 +24,7 @@ const SlideMenu: React.FC<Props> = ({
       {/* Background image */}
       <img
         className={"pixel w-full h-full absolute z-[-9]"}
-        src={"assets/ui/slide_menu_background.png"}
+        src={fromLeft ? "assets/ui/shop_bg.png" : "assets/ui/stats_bg.png" }
         alt={"Slide menu background image"}
       />
 

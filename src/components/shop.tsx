@@ -10,25 +10,14 @@ const Shop: React.FC = () => {
 
   return (
     <div className={"p-10"}>
-<<<<<<< HEAD
       <div className={"p-2 flex justify-evenly space-x-4"}>
-        <button className={"btn  text-sm bg-[url(./assets/ui/tab.png)] bg-no-repeat bg-cover"} onClick={() => setTab(0)}>
-          Bar Upgrades
-        </button>
-        <button className={"btn text-sm bg-[url(./assets/ui/tab.png)] bg-no-repeat bg-cover"} onClick={() => setTab(1)}>
-          Clicker Upgrades
-        </button>
-        <button className={"btn bg-[url(./assets/ui/tab.png)] bg-no-repeat bg-cover"} onClick={() => setTab(2)}>
-=======
-      <div className={"p-2 flex justify-evenly space-x-4 text-sm"}>
-        <button className={"btn-indigo"} onClick={() => setTab(0)}>
+        <button className={"btn btn-shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover"} onClick={() => setTab(0)}>
           Bar
         </button>
-        <button className={"btn-indigo"} onClick={() => setTab(1)}>
+        <button className={"btn btn-shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover"} onClick={() => setTab(1)}>
           Drinks
         </button>
-        <button className={"btn-indigo"} onClick={() => setTab(2)}>
->>>>>>> bb2a402434581a9fdfdca49d97d805e09a8b6daa
+        <button className={"btn btn-shdw bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover"} onClick={() => setTab(2)}>
           Rocket
         </button>
       </div>

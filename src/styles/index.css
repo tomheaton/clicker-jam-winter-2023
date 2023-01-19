@@ -40,6 +40,10 @@ body::-webkit-scrollbar {
   @apply px-4 py-2 text-white font-bold rounded-lg bg-indigo-500 hover:bg-indigo-600;
 }
 
+.btn-shdw {
+  text-shadow: 3px 3px black;
+}
+
 .dev {
   @apply border-2 border-red-500 dark:border-blue-500;
 }
