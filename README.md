@@ -2,9 +2,13 @@
 
 This is a game made for the [Clicker Jam Winter 2023](https://itch.io/jam/clicker-jam-winter-2023) on itch.io.
 
-Our submission can be found [here](https://itch.io/jam/clicker-jam-winter-2023/rate/1885069) and the project [here](https://tomheaton.itch.io/cosmic-taphouse)
+Our submission can be found [here](https://itch.io/jam/clicker-jam-winter-2023/rate/1885069) and the project [here](https://tomheaton.itch.io/cosmic-taphouse).
 
 [![splash](./resources/splash.png)](https://itch.io/jam/clicker-jam-winter-2023/rate/1885069)
+
+## About
+
+A clicker in which you can live your intergalactic bartending dreams. Make cocktails, build a rocket and travel the stars in Cosmic Taphouse.
 
 ## Screenshots
 
