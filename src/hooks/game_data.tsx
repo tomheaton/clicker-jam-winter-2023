@@ -34,6 +34,9 @@ export enum GameDataActions {
   // INCREASE_UPGRADE = "increase_upgrade",
   INCREASE_PLANETS_UNLOCKED = "increase_planets_unlocked",
   SET_ROCKET_LEVEL = "set_rocket_level",
+  INCREASE_DRINK_PRICE_MUL = "increase_drink_price_mul",
+  INCREASE_DRINKS_PER_CLICK_MUL = "increase_drinks_per_click_mul",
+  INCREASE_DRINKS_PER_SECOND_MUL = "increase_drinks_per_second_mul",
 }
 
 type GameDataAction =
@@ -161,6 +164,12 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
       state = {
         ...oldState,
         drinksPerSecond: oldState.drinksPerSecond + action.payload,
+      };
+      break;
+    case GameDataActions.INCREASE_DRINKS_PER_SECOND_MUL:
+      state = {
+        ...oldState,
+        drinksPerSecond: Math.round(oldState.drinksPerSecond * action.payload),
       };
       break;
     case GameDataActions.SET_LEVEL:
