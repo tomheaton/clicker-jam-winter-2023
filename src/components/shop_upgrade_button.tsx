@@ -56,20 +56,26 @@ const ShopUpgradeButton: React.FC<Props> = ({
     // Clickable Upgrades = INCREASE_DRINKS_PER_CLICK
     // Bar Upgrades = INCREASE_DRINKS_PER_SECOND
 
-    dispatch({
-      type: upgradeType === GameDataActions.UPGRADE_DRINK
-        ? GameDataActions.INCREASE_DRINKS_PER_CLICK
-        : GameDataActions.INCREASE_DRINKS_PER_SECOND,
-      payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * data.drinksPerSecond,
-    });
-
-    /*dispatch({
-      type: GameDataActions.INCREASE_UPGRADE,
-      payload: {
-        group: "barUpgrades",
-        name: texture,
-      },
-    });*/
+    if (upgradeType === GameDataActions.UPGRADE_DRINK)
+    {
+        // Drinks/click upgrade
+        dispatch({
+          type: (flatIncrease || stage === 0)
+            ? GameDataActions.INCREASE_DRINKS_PER_CLICK
+            : GameDataActions.INCREASE_DRINKS_PER_CLICK_MUL,
+          payload: increases[stage],
+        });
+    }
+    else
+    {
+        // Drinks/s upgrade
+        dispatch({
+          type: (flatIncrease || stage === 0)
+            ? GameDataActions.INCREASE_DRINKS_PER_SECOND
+            : GameDataActions.INCREASE_DRINKS_PER_SECOND_MUL,
+          payload: increases[stage],
+        });
+    }
 
     setStage(s => s + 1);
   };

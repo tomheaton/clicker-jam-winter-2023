@@ -25,10 +25,19 @@ const IngredientButton: React.FC<Props> = ({
     if (data.money < upgradeCosts[currentUpgrade]) return;
     if (currentUpgrade >= upgradeCount) return;
 
+    const ingredientDrinkValueIncreases= [
+      1.25, 1.75, 3, 5,
+    ];
+
     if (currentUpgrade === 0) {
       dispatch({
         type: GameDataActions.INCREASE_DRINKS_PER_CLICK,
         payload: 1,
+      });
+    } else {
+      dispatch({
+        type: GameDataActions.INCREASE_DRINK_PRICE_MUL,
+        payload: ingredientDrinkValueIncreases[currentUpgrade],
       });
     }
 

@@ -21,9 +21,8 @@ export enum GameDataActions {
   LOAD = "load",
   INCREASE_MONEY = "increase_money",
   DECREASE_MONEY = "decrease_money",
-  // TODO: @gonk increase by percentage too (instead of just flat rate)
+  // NOTE(gonk): this is a flat value that gets added to drink base value
   INCREASE_DRINK_PRICE = "increase_drink_price",
-  // TODO: @gonk change this drink price to drink price multiplier
   INCREASE_DRINKS_PER_CLICK = "increase_drinks_per_click",
   INCREASE_DRINKS_PER_SECOND = "increase_drinks_per_second",
   SET_LEVEL = "set_level",
@@ -138,10 +137,22 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         drinkPrice: oldState.drinkPrice + action.payload,
       };
       break;
+    case GameDataActions.INCREASE_DRINK_PRICE_MUL:
+      state = {
+        ...oldState,
+        drinkPrice: Math.round(oldState.drinkPrice * action.payload),
+      };
+      break;
     case GameDataActions.INCREASE_DRINKS_PER_CLICK:
       state = {
         ...oldState,
         drinksPerClick: oldState.drinksPerClick + action.payload,
+      };
+      break;
+    case GameDataActions.INCREASE_DRINKS_PER_CLICK_MUL:
+      state = {
+        ...oldState,
+        drinksPerClick: Math.round(oldState.drinksPerClick * action.payload),
       };
       break;
     case GameDataActions.INCREASE_DRINKS_PER_SECOND:
