@@ -10,13 +10,22 @@ const StatsMenu: React.FC = () => {
 
   return (
     <div className={"p-20"}>
-      <h1 className={"text-center text-white text-xl font-bold"}>Stats</h1>
-      <div className={"mt-4 text-white"}>
-        <CurrencyText preText={"Cosmic Dust:"} text={data.money.toLocaleString()} />
-        <p>Drink selling price: {data.drinkPrice.toLocaleString()}</p>
-        <p>Drinks per click: {data.drinksPerClick.toLocaleString()}</p>
-        <p>Drinks per second: {data.drinksPerSecond.toLocaleString()}</p>
-        <p>Location: {currentPlanet.charAt(0).toUpperCase() + currentPlanet.slice(1)}</p>
+      <h1 className={"stats btn-shdw text-center text-xl font-bold"}>Stats</h1>
+      <div className={"flex flex-row justify-between"}>
+        <div className={"stats btn-shdw mt-4"}>
+          <p>Cosmic Dust:</p>
+          <p>Location:</p>
+          <p>Drink value:</p>
+          <p>Drinks p/click:</p>
+          <p>Drinks p/s:</p>
+        </div>
+        <div className={"stats btn-shdw text-right pt-4"}>
+          <CurrencyText text={data.money.toLocaleString()}/>
+          <p>{currentPlanet.charAt(0).toUpperCase() + currentPlanet.slice(1)}</p>
+          <p>{data.drinkPrice.toLocaleString()}</p>
+          <p>{data.drinksPerClick.toLocaleString()}</p>
+          <p>{data.drinksPerSecond.toLocaleString()}</p>
+        </div>
       </div>
     </div>
   );

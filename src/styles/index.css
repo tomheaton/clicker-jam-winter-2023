@@ -48,6 +48,11 @@ body::-webkit-scrollbar {
   text-shadow: 2px 2px #C2A06C;
 }
 
+.stats {
+  @apply text-[#432208]
+
+}
+
 .dev {
   @apply border-2 border-red-500 dark:border-blue-500;
 }
