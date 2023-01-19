@@ -117,7 +117,7 @@ const RocketShop: React.FC = () => {
         )}
         {data.level === 0 && (
           <img
-            className={"pixel w-full h-full"}
+            className={"pl-10 pt-5 pixel w-[500px] h-[200px]"}
             src={"assets/ui/sprites_locked_all.png"}
             alt={`Planets locked sprite`}
           />

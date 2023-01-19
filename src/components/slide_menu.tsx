@@ -59,7 +59,7 @@ const SlideMenu: React.FC<Props> = ({
         />
       </button>
 
-      <div className={"h-full w-full overflow-y-scroll"}>
+      <div className={"h-full w-full"}>
         {children}
       </div>
     </div>

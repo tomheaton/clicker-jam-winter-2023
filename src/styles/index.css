@@ -29,7 +29,7 @@ body::-webkit-scrollbar {
 }
 
 .btn-brown {
-  @apply px-4 py-2 text-[#432208] font-bold rounded-lg hover:bg-neutral-800;
+  @apply px-4 py-2 font-bold rounded-md hover:text-[#432208] hover:bg-inherit;
 }
 
 .btn-indigo {
@@ -44,9 +44,15 @@ body::-webkit-scrollbar {
   @apply px-4 py-2 text-white font-bold rounded-lg bg-indigo-500 hover:bg-indigo-600;
 }
 
-.btn-shdw {
+.shdw {
+  text-shadow: 2px 2px #B59460;
+  transition: 0.3s;
+}
+
+.shdw:hover {
   text-shadow: 2px 2px #C2A06C;
 }
+
 
 .stats {
   @apply text-[#432208]

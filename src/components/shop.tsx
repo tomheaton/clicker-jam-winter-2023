@@ -11,20 +11,20 @@ const Shop: React.FC = () => {
   return (
     <div className={"p-10"}>
       <div className={"p-2 flex justify-evenly space-x-4"}>
-        <button className={"btn-brown btn-shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover"} onClick={() => setTab(0)}>
+        <button className={`btn-brown shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover w-[120px] h-[60px] ${tab === 0 ? "text-[#432208] bg-neutral-800 opacity-100" : "text-[#593417] bg-black opacity-80"}`} onClick={() => setTab(0)}>
           Bar
         </button>
-        <button className={"btn-brown btn-shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover"} onClick={() => setTab(1)}>
+        <button className={`btn-brown shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover w-[120px] h-[60px] ${tab === 1 ? "text-[#432208] bg-neutral-800 opacity-100" : "text-[#593417] bg-black opacity-80"}`} onClick={() => setTab(1)}>
           Drinks
         </button>
-        <button className={"btn-brown btn-shdw bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover"} onClick={() => setTab(2)}>
+        <button className={`btn-brown shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover w-[120px] h-[60px] ${tab === 2 ? "text-[#432208] bg-neutral-800 opacity-100" : "text-[#593417] bg-black opacity-80"}`} onClick={() => setTab(2)}>
           Rocket
         </button>
       </div>
 
       <div>
         {tab === 0 && (
-          <div className={"grid grid-cols-4 col"}>
+          <div className={"pl-4"}>
             {Object.values(DATA.barUpgrades).map((value, index) => (
               value.map((upgrade) => (
                 <ShopUpgradeButton
@@ -40,7 +40,7 @@ const Shop: React.FC = () => {
         )}
 
         {tab === 1 && (
-          <div className={"grid grid-cols-4"}>
+          <div className={"pl-4"}>
             {Object.values(DATA.drinkUpgrades).map((value, index) => (
               value.map((upgrade) => (
                 <ShopUpgradeButton
