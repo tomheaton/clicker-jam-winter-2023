@@ -128,36 +128,42 @@ export const DRINKS: Drink[] = [
     texture: "moojito",
     cooldown: 5,
     ingredients: getIngredients(["boba_ceres", "milk"]),
+    baseSellPrice: 10,
   },
   {
     name: "H2 Ouzini ",
     texture: "h2_ouzini",
     cooldown: 5,
     ingredients: getIngredients(["boba_earth", "topping_veggies_earth", "water"]),
+    baseSellPrice: 20,
   },
   {
     name: "Sunrise Spice",
     texture: "sunrise_spice",
     cooldown: 5,
     ingredients: getIngredients(["topping_veggies_sun", "cherries", "juice_sun"]),
+    baseSellPrice: 50,
   },
   {
     name: "Lilac Lager",
     texture: "lilac_lager",
     cooldown: 5,
     ingredients: getIngredients(["juice_galaxy", "sprinkles_galaxy", "cream"]),
+    baseSellPrice: 100,
   },
   {
     name: "Battery Acid",
     texture: "battery_acid",
     cooldown: 5,
     ingredients: getIngredients(["neon_liquid", "fizz", "sprinkles_universe", "glow_powder_universe"]),
+    baseSellPrice: 500,
   },
   {
     name: "Final Elixir",
     texture: "final_elixir",
     cooldown: 5,
     ingredients: getIngredients(["glow_powder_multiverse", "void", "stars", "rainbow_swirl"]),
+    baseSellPrice: 1000,
   },
 ];
 

@@ -2,11 +2,15 @@ import React from "react";
 import { DATA } from "@data/index";
 import { useGameData } from "@hooks/game_data";
 import CurrencyText from "@components/currency";
+import { getIngredientsUpgradedOnce } from "@utils/index";
 
 const StatsMenu: React.FC = () => {
   const { data } = useGameData();
 
   const currentPlanet = DATA.planets[data.level];
+
+  let numberOfIngredientsUpgradedOnce =
+    getIngredientsUpgradedOnce(DATA.drinks[data.level].ingredients, data.ingredients); 
 
   return (
     <div className={"p-20"}>
@@ -15,6 +19,10 @@ const StatsMenu: React.FC = () => {
         <div className={"stats btn-shdw mt-4"}>
           <p>Cosmic Dust:</p>
           <p>Location:</p>
+          <br/>
+          <p>Cosmic Dust/s:</p>
+          <p>Cosmic Dust/click:</p>
+          <br/>
           <p>Drink value:</p>
           <p>Drinks p/click:</p>
           <p>Drinks p/s:</p>
@@ -22,6 +30,10 @@ const StatsMenu: React.FC = () => {
         <div className={"stats btn-shdw text-right pt-4"}>
           <CurrencyText text={data.money.toLocaleString()}/>
           <p>{currentPlanet.charAt(0).toUpperCase() + currentPlanet.slice(1)}</p>
+          <br/>
+          <p>{((DATA.drinks[data.unlockedLevel].baseSellPrice + data.drinkPrice) * data.drinksPerSecond).toLocaleString()}</p>
+          <p>{(DATA.drinks[data.level].baseSellPrice + data.drinkPrice) * (data.drinksPerClick - numberOfIngredientsUpgradedOnce )}</p>
+          <br/>
           <p>{data.drinkPrice.toLocaleString()}</p>
           <p>{data.drinksPerClick.toLocaleString()}</p>
           <p>{data.drinksPerSecond.toLocaleString()}</p>

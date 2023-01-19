@@ -88,7 +88,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
 
       { /* Hover popup */ }
       <div
-        className={"w-[500px] h-[200px] scale-0 bg-red-500 absolute z-[20] group-hover:scale-100 opacity-100 disabled:opacity-100 p-4 rounded-xl"}>
+        className={"w-[500px] h-[200px] scale-0 bg-red-500 absolute group-hover:scale-100 opacity-100 disabled:opacity-100 p-4 rounded-xl"}>
         <p> {locked ? "Upgrade locked" : name} </p>
         <p>
           {locked ? `Get to location '${planetName.charAt(0).toUpperCase() + planetName.slice(1)}'` : description}

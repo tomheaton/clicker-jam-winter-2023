@@ -3,8 +3,7 @@ import { GameDataActions, useGameData } from "@hooks/game_data";
 import { Drink, Marker } from "@utils/types";
 import DrinkMarker from "@components/drink_marker";
 import { getIngredientsUpgradedOnce } from "@utils/index";
-
-const DRINK_SELL_VALUE: number = 5;
+import { DATA } from "@data/index";
 
 type Props = {
   drink: Drink;
@@ -41,25 +40,22 @@ const DrinkButton: React.FC<Props> = ({
   }, [markers]);
 
   const handleClick = () => {
-    let numberOfIngredientsUpgradedOnce = getIngredientsUpgradedOnce(ingredients, data.ingredients);
+    let numberOfIngredientsUpgradedOnce = getIngredientsUpgradedOnce(ingredients, data.ingredients); 
+    const sellValue = (DATA.drinks[data.level].baseSellPrice + data.drinkPrice) * (data.drinksPerClick - numberOfIngredientsUpgradedOnce);
 
     setStage(s => s + 1);
-
-    console.log(stage);
-    console.log(ingredients.length);
 
     if (stage < (ingredients.length + 1)) return;
 
     setStage(numberOfIngredientsUpgradedOnce + 1);
-    console.log(stage);
 
     dispatch({
       type: GameDataActions.INCREASE_MONEY,
-      payload: DRINK_SELL_VALUE * data.drinkPrice,
+      payload: sellValue,
     });
 
     setMarkers([...markers, {
-      money: DRINK_SELL_VALUE * data.drinkPrice * (data.drinksPerClick - numberOfIngredientsUpgradedOnce),
+      money: sellValue,
       location: ["text-left", "text-center", "text-right"][Math.floor(Math.random() * 3)],
     }]);
 

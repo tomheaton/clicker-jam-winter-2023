@@ -8,8 +8,6 @@ import SlideMenu from "@components/slide_menu";
 import StatsMenu from "@components/stats_menu";
 import CurrencyText from "@components/currency";
 
-const DRINK_SELL_VALUE: number = 5;
-
 const Game: React.FC = () => {
   const { data, dispatch } = useGameData();
 
@@ -21,8 +19,7 @@ const Game: React.FC = () => {
     const timerTick = setInterval(() => {
       dispatch({
         type: GameDataActions.INCREASE_MONEY,
-        // TODO: @gonk change this to current drink sell value from DATA
-        payload: DRINK_SELL_VALUE * data.drinksPerSecond * data.drinkPrice,
+        payload: (DATA.drinks[data.unlockedLevel].baseSellPrice + data.drinkPrice) * data.drinksPerSecond,
       });
     }, 1_000);
 

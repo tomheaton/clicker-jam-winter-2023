@@ -13,6 +13,7 @@ export type Drink = {
   texture: string;
   ingredients: Ingredient[];
   cooldown: number;
+  baseSellPrice: number;
 };
 
 export type Upgrades = {
