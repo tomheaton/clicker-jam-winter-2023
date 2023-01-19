@@ -2,7 +2,9 @@
 
 This is a game made for the [Clicker Jam Winter 2023](https://itch.io/jam/clicker-jam-winter-2023) on itch.io.
 
-[![splash](./resources/splash.png)](https://itch.io/jam/clicker-jam-winter-2023)
+Our submission can be found [here](https://itch.io/jam/clicker-jam-winter-2023/rate/1885069) and the project [here](https://tomheaton.itch.io/cosmic-taphouse)
+
+[![splash](./resources/splash.png)](https://itch.io/jam/clicker-jam-winter-2023/rate/1885069)
 
 ## Screenshots
 
