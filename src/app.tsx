@@ -15,7 +15,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     window.addEventListener("click", async () => {
-      const audio = new Audio(`/assets/sounds/click.mp3`);
+      const audio = new Audio(`assets/sounds/click.mp3`);
       await audio.play();
     });
 
@@ -50,14 +50,14 @@ const App: React.FC = () => {
     });
 
     return window.removeEventListener("click", async () => {
-      const audio = new Audio(`/assets/sounds/click.mp3`);
+      const audio = new Audio(`assets/sounds/click.mp3`);
       await audio.play();
     });
   }, []);
 
   const handleStart = async () => {
     setStart(true);
-    let audio = new Audio("/assets/music/battery_acid.mp3");
+    let audio = new Audio("assets/music/battery_acid.mp3");
     audio.loop = true;
     await audio.play();
   };
