@@ -395,7 +395,7 @@ const BAR_UPGRADES: {
       description: "This is a big one! Get this one!! THIS ONE IS REALLY GOOD!!! BUY NOW.",
       costs: [50_000_000, 100_000_000, 800_000_000, 1_000_000_000],
       flatIncrease: false,
-      increases: [],
+      increases: [1, 4, 5, 10],
       upgradeType: GameDataActions.UPGRADE_BAR,
     },
     {
