@@ -24,6 +24,7 @@ const StatsMenu: React.FC = () => {
           <p>Cosmic Dust/click:</p>
           <br/>
           <p>Drink value:</p>
+          <p>{DATA.drinks[data.level].name} base value</p>
           <p>Drinks p/click:</p>
           <p>Drinks p/s:</p>
         </div>
@@ -34,7 +35,8 @@ const StatsMenu: React.FC = () => {
           <p>{((DATA.drinks[data.unlockedLevel].baseSellPrice + data.drinkPrice) * data.drinksPerSecond).toLocaleString()}</p>
           <p>{(DATA.drinks[data.level].baseSellPrice + data.drinkPrice) * (data.drinksPerClick - numberOfIngredientsUpgradedOnce )}</p>
           <br/>
-          <p>{data.drinkPrice.toLocaleString()}</p>
+          <p>{(data.drinkPrice + DATA.drinks[data.level].baseSellPrice).toLocaleString()}</p>
+          <p>{DATA.drinks[data.level].baseSellPrice.toLocaleString()}</p>
           <p>{data.drinksPerClick.toLocaleString()}</p>
           <p>{data.drinksPerSecond.toLocaleString()}</p>
         </div>
