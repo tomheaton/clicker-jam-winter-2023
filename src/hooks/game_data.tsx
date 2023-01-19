@@ -9,7 +9,7 @@ export const GameDataSchema = z.object({
   drinksPerSecond: z.number().min(0),
   level: z.number().min(0),
   ingredients: z.record(z.number().min(0)),
-  clickableUpgrades: z.record(z.number().min(0)),
+  drinkUpgrades: z.record(z.number().min(0)),
   barUpgrades: z.record(z.number().min(0)),
   rocketUpgrades: z.record(z.number().min(0)),
 });
@@ -28,7 +28,7 @@ export enum GameDataActions {
   SET_LEVEL = "set_level",
   UPGRADE_INGREDIENT = "upgrade_ingredient",
   UPGRADE_BAR = "upgrade_bar",
-  UPGRADE_CLICKABLE = "upgrade_clickable",
+  UPGRADE_DRINK = "upgrade_drink",
   UPGRADE_ROCKET = "upgrade_rocket",
   RESET_ROCKET = "reset_rocket",
   // INCREASE_UPGRADE = "increase_upgrade",
@@ -40,7 +40,7 @@ type GameDataAction =
     | GameDataActions.LOAD
     | GameDataActions.UPGRADE_INGREDIENT
     | GameDataActions.UPGRADE_BAR
-    | GameDataActions.UPGRADE_CLICKABLE
+    | GameDataActions.UPGRADE_DRINK
     | GameDataActions.UPGRADE_ROCKET
     // | GameDataActions.INCREASE_UPGRADE
   >;
@@ -52,15 +52,15 @@ type GameDataAction =
   type:
     | GameDataActions.UPGRADE_INGREDIENT
     | GameDataActions.UPGRADE_BAR
-    | GameDataActions.UPGRADE_CLICKABLE
+    | GameDataActions.UPGRADE_DRINK
     | GameDataActions.UPGRADE_ROCKET
     | GameDataActions.RESET_ROCKET;
   payload: string;
   /*} | {
     type: GameDataActions.INCREASE_UPGRADE;
     payload: {
-      group: "barUpgrades" | "clickableUpgrades" | "rocketUpgrades";
-      name: keyof GameData["clickableUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
+      group: "barUpgrades" | "drinkUpgrades" | "rocketUpgrades";
+      name: keyof GameData["drinkUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
     };*/
 };
 
@@ -79,10 +79,10 @@ export const getInitialGameData = (): GameData => ({
 
     return ingredients;
   })(),
-  clickableUpgrades: (() => {
+  drinkUpgrades: (() => {
     const upgrades: Record<string, number> = {};
 
-    Object.values(DATA.clickableUpgrades).forEach((value) => {
+    Object.values(DATA.drinkUpgrades).forEach((value) => {
       value.map((upgrade) => {
         upgrades[upgrade.texture] = 0;
       });
@@ -175,12 +175,12 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
         },
       };
       break;
-    case GameDataActions.UPGRADE_CLICKABLE:
+    case GameDataActions.UPGRADE_DRINK:
       state = {
         ...oldState,
-        clickableUpgrades: {
-          ...oldState.clickableUpgrades,
-          [action.payload]: oldState.clickableUpgrades[action.payload] + 1,
+        drinkUpgrades: {
+          ...oldState.drinkUpgrades,
+          [action.payload]: oldState.drinkUpgrades[action.payload] + 1,
         },
       };
       break;
@@ -205,8 +205,8 @@ export const gameDataReducer = (oldState: GameData, action: GameDataAction) => {
     // TODO: @tomheaton fix this
     /*case GameDataActions.INCREASE_UPGRADE:
       let payload = action.payload as {
-        group: "barUpgrades" | "clickableUpgrades" | "rocketUpgrades";
-        name: keyof GameData["clickableUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
+        group: "barUpgrades" | "drinkUpgrades" | "rocketUpgrades";
+        name: keyof GameData["drinkUpgrades"] | keyof GameData["barUpgrades"] | keyof GameData["rocketUpgrades"];
       };
 
       state = {

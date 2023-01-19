@@ -6,7 +6,7 @@ type Props = {
   marker: Marker;
 };
 
-const ClickMarker: React.FC<Props> = ({ marker: { money, location } }) => {
+const DrinkMarker: React.FC<Props> = ({ marker: { money, location } }) => {
   return (
     <motion.div
       className={"absolute w-full"}
@@ -28,4 +28,4 @@ const ClickMarker: React.FC<Props> = ({ marker: { money, location } }) => {
   );
 };
 
-export default ClickMarker;
+export default DrinkMarker;

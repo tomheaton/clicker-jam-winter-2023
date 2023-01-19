@@ -41,14 +41,14 @@ const Shop: React.FC = () => {
 
         {tab === 1 && (
           <div className={"grid grid-cols-4"}>
-            {Object.values(DATA.clickableUpgrades).map((value, index) => (
+            {Object.values(DATA.drinkUpgrades).map((value, index) => (
               value.map((upgrade) => (
                 <ShopUpgradeButton
                   key={upgrade.name}
                   upgrade={upgrade}
                   locked={index > data.level}
                   planetName={DATA.planets[index]}
-                  initialLevel={data.clickableUpgrades[upgrade.texture]}
+                  initialLevel={data.drinkUpgrades[upgrade.texture]}
                 />
               ))
             ))}

@@ -31,7 +31,7 @@ export type Upgrades = {
   costs: number[];
   flatIncrease: boolean; // 1: the upgrade increases the drinks/click at a flat rate, 0: it's a multiplier
   increases: number[];
-  upgradeType: GameDataActions.UPGRADE_ROCKET | GameDataActions.UPGRADE_CLICKABLE | GameDataActions.UPGRADE_BAR;
+  upgradeType: GameDataActions.UPGRADE_ROCKET | GameDataActions.UPGRADE_DRINK | GameDataActions.UPGRADE_BAR;
 };
 
 export type Planet = typeof PLANETS[number];

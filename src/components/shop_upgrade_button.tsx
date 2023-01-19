@@ -31,7 +31,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
 
   let disabled = locked || data.money < costs[stage] || stage >= costs.length;
 
-  if (upgradeType === GameDataActions.UPGRADE_CLICKABLE) {
+  if (upgradeType === GameDataActions.UPGRADE_DRINK) {
     const currentIngredients = DATA.drinks[data.level].ingredients;
     let numberOfIngredientsUpgradedOnce = getIngredientsUpgradedOnce(currentIngredients, data.ingredients);
     if (numberOfIngredientsUpgradedOnce < currentIngredients.length) {
@@ -57,7 +57,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
     // Bar Upgrades = INCREASE_DRINKS_PER_SECOND
 
     dispatch({
-      type: upgradeType === GameDataActions.UPGRADE_CLICKABLE
+      type: upgradeType === GameDataActions.UPGRADE_DRINK
         ? GameDataActions.INCREASE_DRINKS_PER_CLICK
         : GameDataActions.INCREASE_DRINKS_PER_SECOND,
       payload: (flatIncrease || stage === 0) ? increases[stage] : (1 + increases[stage]) * data.drinksPerSecond,
