@@ -32,7 +32,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
   let disabled = locked || data.money < costs[stage] || stage >= costs.length;
 
   if (upgradeType === GameDataActions.UPGRADE_DRINK) {
-    const currentIngredients = DATA.drinks[data.level].ingredients;
+    const currentIngredients = DATA.drinks[DATA.planets.indexOf(planetName)].ingredients;
     let numberOfIngredientsUpgradedOnce = getIngredientsUpgradedOnce(currentIngredients, data.ingredients);
     if (numberOfIngredientsUpgradedOnce < currentIngredients.length) {
       disabled = true;
@@ -86,11 +86,10 @@ const ShopUpgradeButton: React.FC<Props> = ({
         alt={`${name} upgrade sprite`}
       />
 
+      { /* Hover popup */ }
       <div
-        className={"scale-0 bg-red-500 absolute z-[2] group-hover:scale-100 opacity-100 disabled:opacity-100 p-4 rounded-xl"}>
-        <p>
-          {locked ? "Upgrade locked" : name}
-        </p>
+        className={"w-[500px] h-[200px] scale-0 bg-red-500 absolute z-[20] group-hover:scale-100 opacity-100 disabled:opacity-100 p-4 rounded-xl"}>
+        <p> {locked ? "Upgrade locked" : name} </p>
         <p>
           {locked ? `Get to location '${planetName.charAt(0).toUpperCase() + planetName.slice(1)}'` : description}
         </p>
@@ -106,6 +105,7 @@ const ShopUpgradeButton: React.FC<Props> = ({
           Level: {stage < costs.length ? stage : "Max"}
         </p>
       </div>
+
     </button>
   );
 };

@@ -197,15 +197,17 @@ const DRINK_UPGRADES: {
       upgradeType: GameDataActions.UPGRADE_DRINK,
     },
     {
-      name: "Ice machine",
-      texture: "ice_machine",
+      name: "Suit",
+      texture: "suit",
       description:
-        "Perhaps your drinks will actually be digestible now...",
+        "Shaken, not stirred.",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
       upgradeType: GameDataActions.UPGRADE_DRINK,
     },
+  ],
+  earth: [
     {
       name: "Thermal gloves",
       texture: "thermal_gloves",
@@ -216,6 +218,8 @@ const DRINK_UPGRADES: {
       increases: [1, 2, 5, 10],
       upgradeType: GameDataActions.UPGRADE_DRINK,
     },
+  ],
+  sun: [
     {
       name: "Sunglasses",
       texture: "sunglasses",
@@ -226,16 +230,20 @@ const DRINK_UPGRADES: {
       increases: [1, 2, 5, 10],
       upgradeType: GameDataActions.UPGRADE_DRINK,
     },
+  ],
+  galaxy: [
     {
-      name: "Suit",
-      texture: "suit",
+      name: "Ice machine",
+      texture: "ice_machine",
       description:
-        "Shaken, not stirred.",
+        "Perhaps your drinks will actually be digestible now...",
       costs: [20, 100, 200, 500],
       flatIncrease: true,
       increases: [1, 2, 5, 10],
       upgradeType: GameDataActions.UPGRADE_DRINK,
     },
+  ],
+  universe: [
     {
       name: "Cupid's Bow",
       texture: "cupids_bow",
@@ -247,10 +255,6 @@ const DRINK_UPGRADES: {
       upgradeType: GameDataActions.UPGRADE_DRINK,
     },
   ],
-  earth: [],
-  sun: [],
-  galaxy: [],
-  universe: [],
   multiverse: [],
 };
 

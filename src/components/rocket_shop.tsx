@@ -112,7 +112,7 @@ const RocketShop: React.FC = () => {
                   <p>Buy upgrade</p>
                   <div>
                     <CurrencyText 
-                      text={DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel]}
+                      text={DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel].toLocaleString()}
                       className={"flex justify-center"}
                     />
                   </div>
