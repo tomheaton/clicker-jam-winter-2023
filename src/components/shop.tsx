@@ -11,20 +11,38 @@ const Shop: React.FC = () => {
   return (
     <div className={"p-10"}>
       <div className={"p-2 flex justify-evenly space-x-4"}>
-        <button className={`btn-brown shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover w-[120px] h-[60px] ${tab === 0 ? "text-[#432208] bg-neutral-800 opacity-100" : "text-[#593417] bg-black opacity-80"}`} onClick={() => setTab(0)}>
+        <button
+          style={{
+            backgroundImage: "url('./assets/ui/tab.png')",
+          }}
+          className={`btn-brown shdw text-sm bg-no-repeat bg-cover w-[120px] h-[60px] ${tab === 0 ? "text-[#432208] bg-neutral-800 opacity-100" : "text-[#593417] bg-black opacity-80"}`}
+          onClick={() => setTab(0)}
+        >
           Bar
         </button>
-        <button className={`btn-brown shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover w-[120px] h-[60px] ${tab === 1 ? "text-[#432208] bg-neutral-800 opacity-100" : "text-[#593417] bg-black opacity-80"}`} onClick={() => setTab(1)}>
+        <button
+          style={{
+            backgroundImage: "url('./assets/ui/tab.png')",
+          }}
+          className={`btn-brown shdw text-sm bg-no-repeat bg-cover w-[120px] h-[60px] ${tab === 1 ? "text-[#432208] bg-neutral-800 opacity-100" : "text-[#593417] bg-black opacity-80"}`}
+          onClick={() => setTab(1)}
+        >
           Drinks
         </button>
-        <button className={`btn-brown shdw text-sm bg-[url(./assets/ui/tab2.png)] bg-no-repeat bg-cover w-[120px] h-[60px] ${tab === 2 ? "text-[#432208] bg-neutral-800 opacity-100" : "text-[#593417] bg-black opacity-80"}`} onClick={() => setTab(2)}>
+        <button
+          style={{
+            backgroundImage: "url('./assets/ui/tab.png')",
+          }}
+          className={`btn-brown shdw text-sm bg-no-repeat bg-cover w-[120px] h-[60px] ${tab === 2 ? "text-[#432208] bg-neutral-800 opacity-100" : "text-[#593417] bg-black opacity-80"}`}
+          onClick={() => setTab(2)}
+        >
           Rocket
         </button>
       </div>
 
       <div>
         {tab === 0 && (
-          <div className={"pl-4"}>
+          <div className={"grid grid-cols-4"}>
             {Object.values(DATA.barUpgrades).map((value, index) => (
               value.map((upgrade) => (
                 <ShopUpgradeButton
@@ -40,7 +58,7 @@ const Shop: React.FC = () => {
         )}
 
         {tab === 1 && (
-          <div className={"pl-4"}>
+          <div className={"grid grid-cols-4"}>
             {Object.values(DATA.drinkUpgrades).map((value, index) => (
               value.map((upgrade) => (
                 <ShopUpgradeButton
@@ -58,7 +76,6 @@ const Shop: React.FC = () => {
         {tab === 2 && (
           <RocketShop />
         )}
-
       </div>
     </div>
   );

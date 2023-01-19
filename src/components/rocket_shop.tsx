@@ -81,16 +81,16 @@ const RocketShop: React.FC = () => {
         }) */}
       </div>
       <div className={"flex flex-row justify-left pt-4"}>
-        <div>
+        <div className={"w-full"}>
           <img
             className={"pixel p-2 w-[190px] h-[260px]"}
             src={`assets/upgrades/ships/ship_${DATA.planets[data.unlockedLevel]}_stage_${data.rocketLevel}.png`}
             alt={`Rocket ship upgrade`}
           />
         </div>
-        <div>
+        <div className={"flex flex-1 items-center"}>
           <button
-            className={"bg-indigo-400 border-2 rounded-md text-white w-[300px] h-[100px]"}
+            className={`btn-indigo ${data.rocketLevel === 3 ? "animate-bounce" : ""}`}
             disabled={data.money < DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel]}
             onClick={handleBuy}
           >
