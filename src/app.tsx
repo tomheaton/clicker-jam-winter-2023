@@ -82,18 +82,18 @@ const App: React.FC = () => {
   return (
     <div
       style={{
-        backgroundSize: "100%",
-        backgroundImage: `url('./assets/ui/carpet_ceres.png')`,
+        backgroundSize: "25%",
+        backgroundImage: `url('./assets/ui/bg_main.png')`,
       }}
-      className={"pixel h-screen flex flex-col items-center justify-center bg-repeat-y"}
+      className={"pixel h-screen flex flex-col items-center justify-center bg-repeat"}
     >
-      <h1 className={"mt-2 font-bold text-5xl text-white"}>
+      <h1 className={"mt-2 font-bold text-5xl text-white animate-bounce"}>
         Cosmic Taphouse
       </h1>
       <br />
       <img
         className={"pixel w-[200px] h-[200px]"}
-        src={"/icon.png"}
+        src={"icon.png"}
         alt={"game icon"}
       />
       <br />

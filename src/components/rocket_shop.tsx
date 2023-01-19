@@ -90,7 +90,7 @@ const RocketShop: React.FC = () => {
         </div>
         <div className={"flex flex-1 items-center"}>
           <button
-            className={"btn-indigo"}
+            className={`btn-indigo ${data.rocketLevel === 3 ? "animate-bounce" : ""}`}
             disabled={data.money < DATA.rocketUpgradeCosts[DATA.planets[data.unlockedLevel]][data.rocketLevel]}
             onClick={handleBuy}
           >
