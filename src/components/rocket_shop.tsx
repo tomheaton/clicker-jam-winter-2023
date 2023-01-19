@@ -101,7 +101,10 @@ const RocketShop: React.FC = () => {
               {data.rocketLevel === 3 && (
                   <p>
                     Fully Upgraded!
-                    Click to travel to next location!
+                    Click to travel to {data.unlockedLevel < DATA.planets.length-1
+                                        ? DATA.planets[data.unlockedLevel+1].charAt(0).toUpperCase() + 
+                                          DATA.planets[data.unlockedLevel+1].slice(1)
+                                        : "the END"}!
                   </p>
               )}
               {data.rocketLevel !== 3 && (
